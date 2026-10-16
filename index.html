@@ -191,7 +191,7 @@
 
         <!-- Right Side Contact & Action -->
         <div class="hidden sm:flex items-center gap-5">
-          <a href="tel:+254700357022" class="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-brand-blue">
+          <a href="tel:+254700357022" onclick="handlePhoneClick(event)" class="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-brand-blue cursor-pointer" title="Call or WhatsApp Techashi">
             <span class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-brand-blue">
               <i data-lucide="phone" class="w-4 h-4"></i>
             </span>
@@ -1234,24 +1234,36 @@
 
           <div class="space-y-3 pt-2">
             
-            <div class="flex items-center gap-4 p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
-              <div class="w-10 h-10 rounded-full bg-brand-blue-light text-brand-blue flex items-center justify-center shrink-0">
-                <i data-lucide="phone" class="w-5 h-5"></i>
+            <div onclick="openConnectModal()" class="flex items-center justify-between p-4 rounded-xl bg-white border border-slate-200 shadow-sm hover:border-brand-blue transition cursor-pointer group">
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-full bg-brand-blue-light text-brand-blue flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                  <i data-lucide="phone" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <div class="text-[11px] font-semibold text-slate-400 uppercase">Call / WhatsApp Us</div>
+                  <div class="text-sm font-bold text-slate-900 group-hover:text-brand-blue transition-colors">+254 700 357 022</div>
+                </div>
               </div>
-              <div>
-                <div class="text-[11px] font-semibold text-slate-400 uppercase">Call / WhatsApp Us</div>
-                <div class="text-sm font-bold text-slate-900">+254 700 357 022</div>
-              </div>
+              <span class="text-xs font-semibold text-brand-blue bg-blue-50 px-2.5 py-1 rounded-lg border border-blue-100 flex items-center gap-1 group-hover:bg-brand-blue group-hover:text-white transition">
+                <span>Connect</span>
+                <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+              </span>
             </div>
 
-            <div class="flex items-center gap-4 p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
-              <div class="w-10 h-10 rounded-full bg-brand-green-light text-brand-green-deep flex items-center justify-center shrink-0">
-                <i data-lucide="mail" class="w-5 h-5"></i>
+            <div onclick="copyToClipboard('info@techashisolutions.com', 'Official email copied!')" class="flex items-center justify-between p-4 rounded-xl bg-white border border-slate-200 shadow-sm hover:border-brand-green transition cursor-pointer group">
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-full bg-brand-green-light text-brand-green-deep flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                  <i data-lucide="mail" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <div class="text-[11px] font-semibold text-slate-400 uppercase">Official Email</div>
+                  <div class="text-sm font-bold text-slate-900 group-hover:text-brand-green-deep transition-colors">info@techashisolutions.com</div>
+                </div>
               </div>
-              <div>
-                <div class="text-[11px] font-semibold text-slate-400 uppercase">Official Email</div>
-                <div class="text-sm font-bold text-slate-900">info@techashisolutions.com</div>
-              </div>
+              <span class="text-xs font-semibold text-slate-600 bg-slate-100 px-2.5 py-1 rounded-lg border border-slate-200 flex items-center gap-1 group-hover:bg-brand-green-deep group-hover:text-white transition">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                <span>Copy</span>
+              </span>
             </div>
 
             <div class="flex items-center gap-4 p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
@@ -1353,9 +1365,10 @@
         <button onclick="openQuoteModal()" class="w-full sm:w-auto px-8 py-3 rounded-full font-bold text-sm text-brand-blue-deep bg-brand-green hover:bg-brand-green-dark transition-all shadow-md">
           Request a Quote
         </button>
-        <a href="tel:+254700000000" class="w-full sm:w-auto px-8 py-3 rounded-full font-semibold text-sm text-white bg-white/10 hover:bg-white/20 border border-white/30 transition-all">
-          Schedule a Call
-        </a>
+        <button onclick="openConnectModal()" class="w-full sm:w-auto px-8 py-3 rounded-full font-semibold text-sm text-white bg-white/10 hover:bg-white/20 border border-white/30 transition-all flex items-center justify-center gap-2">
+          <i data-lucide="phone-call" class="w-4 h-4 text-brand-green"></i>
+          <span>Schedule a Call</span>
+        </button>
       </div>
 
     </div>
@@ -1380,7 +1393,6 @@
         <div class="space-y-3">
           <h4 class="text-white font-bold text-sm">Quick Links</h4>
           <ul class="space-y-2">
-            <li><a href="#home" class="hover:text-brand-green transition-colors">Home</a></li>
             <li><a href="#about" class="hover:text-brand-green transition-colors">About Us</a></li>
             <li><a href="/company-profile" class="text-brand-green font-semibold hover:underline flex items-center gap-1">📄 Company Profile (PDF)</a></li>
             <li><a href="#services-hub" class="hover:text-brand-green transition-colors">Our Services</a></li>
@@ -1407,7 +1419,7 @@
           <h4 class="text-white font-bold text-sm">Contact Us</h4>
           <div class="space-y-2 text-slate-400">
             <p class="font-medium text-slate-300">Chaka Place Building, 3rd Floor<br>Argwings Kodhek Rd, Nairobi</p>
-            <p><a href="tel:+254700357022" class="hover:text-brand-green font-semibold text-white">+254 700 357 022</a></p>
+            <p><a href="tel:+254700357022" onclick="handlePhoneClick(event)" class="hover:text-brand-green font-semibold text-white flex items-center gap-1 cursor-pointer" title="Call or WhatsApp">+254 700 357 022</a></p>
             <p><a href="mailto:info@techashisolutions.com" class="hover:text-white">info@techashisolutions.com</a></p>
             <p>Mon – Sat: 8:00 AM – 6:00 PM</p>
           </div>
@@ -1475,6 +1487,100 @@
     </div>
   </div>
 
+  <!-- ================= DIRECT CONNECT / PHONE & WHATSAPP MODAL ================= -->
+  <div id="connect-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-7 shadow-2xl relative border border-slate-100 overflow-hidden transform transition-all duration-300 scale-95">
+      <!-- Decorative Accent Top Gradient Bar -->
+      <div class="h-1.5 bg-gradient-to-r from-brand-blue via-sky-400 to-brand-green absolute top-0 left-0 right-0"></div>
+
+      <button onclick="closeConnectModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-700 p-1.5 rounded-full hover:bg-slate-100 transition">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="flex items-center gap-3.5 mb-4">
+        <div class="w-12 h-12 rounded-2xl bg-brand-blue-light text-brand-blue flex items-center justify-center shrink-0">
+          <i data-lucide="headset" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-600">Engineers Available</span>
+          </div>
+          <h3 class="text-xl font-extrabold font-display text-slate-900 mt-0.5">Speak with Techashi</h3>
+        </div>
+      </div>
+
+      <p class="text-xs sm:text-sm text-slate-600 mb-5 leading-relaxed">
+        Choose how you would like to connect with our hardware, networking, and fuel automation team:
+      </p>
+
+      <div class="space-y-3 mb-5">
+        <!-- Option 1: WhatsApp Direct Chat (Works on both desktop web & phone app without prompting 'Pick an app') -->
+        <a href="https://wa.me/254700357022?text=Hello%20Techashi%20Solutions,%20I%20would%20like%20to%20inquire%20about%20your%20IT%20services%20and%20products." target="_blank" class="w-full py-3.5 px-4 rounded-xl font-bold text-sm text-white bg-emerald-600 hover:bg-emerald-700 transition flex items-center justify-between shadow-sm group">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center">
+              <i data-lucide="message-circle" class="w-4 h-4"></i>
+            </span>
+            <div class="text-left">
+              <div class="font-bold leading-none">Chat on WhatsApp</div>
+              <div class="text-[11px] text-emerald-100 font-normal mt-0.5">Direct chat via WhatsApp Web or App</div>
+            </div>
+          </div>
+          <i data-lucide="arrow-right" class="w-4 h-4 text-emerald-200 group-hover:translate-x-1 transition-transform"></i>
+        </a>
+
+        <!-- Option 2: Direct Hotline with Instant Copy -->
+        <div class="flex items-center justify-between p-3.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100/70 transition">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-brand-blue/10 text-brand-blue flex items-center justify-center">
+              <i data-lucide="phone-call" class="w-4 h-4"></i>
+            </span>
+            <div>
+              <div class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Direct Hotline</div>
+              <div class="text-sm font-bold text-slate-900">+254 700 357 022</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <button onclick="copyToClipboard('+254700357022', 'Phone number copied!')" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-white border border-slate-200 text-slate-700 hover:text-brand-blue hover:border-brand-blue transition flex items-center gap-1 shadow-2xs" title="Copy Number">
+              <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+              <span>Copy</span>
+            </button>
+            <a href="tel:+254700357022" class="p-1.5 text-xs font-semibold rounded-lg bg-white border border-slate-200 text-slate-700 hover:text-brand-blue hover:border-brand-blue transition" title="Dial via system app">
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Option 3: Official Email with Instant Copy -->
+        <div class="flex items-center justify-between p-3.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100/70 transition">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-sky-100 text-sky-700 flex items-center justify-center">
+              <i data-lucide="mail" class="w-4 h-4"></i>
+            </span>
+            <div>
+              <div class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Official Email</div>
+              <div class="text-sm font-bold text-slate-900">info@techashisolutions.com</div>
+            </div>
+          </div>
+          <button onclick="copyToClipboard('info@techashisolutions.com', 'Email copied!')" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-white border border-slate-200 text-slate-700 hover:text-brand-blue hover:border-brand-blue transition flex items-center gap-1 shadow-2xs" title="Copy Email">
+            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+            <span>Copy</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Action: Switch to Quote Modal -->
+      <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+        <span class="text-slate-500">Need a written itemized quote?</span>
+        <button onclick="closeConnectModal(); openQuoteModal();" class="font-bold text-brand-blue hover:text-brand-blue-dark flex items-center gap-1">
+          <span>Open Quote Form</span>
+          <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
   <!-- ================= TOAST NOTIFICATION CONTAINER ================= -->
   <div id="toast-container" class="fixed top-5 right-5 z-[9999] flex flex-col gap-3 max-w-md w-full pointer-events-none px-4 sm:px-0"></div>
 
@@ -1529,6 +1635,7 @@
 
     const quoteModal = document.getElementById('quote-modal');
     const modalServiceInput = document.getElementById('modal-service-input');
+    const connectModal = document.getElementById('connect-modal');
 
     function openQuoteModal(serviceName = '') {
       if (serviceName) modalServiceInput.value = serviceName;
@@ -1537,6 +1644,52 @@
 
     function closeQuoteModal() {
       quoteModal.classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    function openConnectModal() {
+      connectModal.classList.remove('opacity-0', 'pointer-events-none');
+      const dialog = connectModal.querySelector('.bg-white');
+      if (dialog) dialog.classList.remove('scale-95');
+    }
+
+    function closeConnectModal() {
+      connectModal.classList.add('opacity-0', 'pointer-events-none');
+      const dialog = connectModal.querySelector('.bg-white');
+      if (dialog) dialog.classList.add('scale-95');
+    }
+
+    function handlePhoneClick(e) {
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      if (!isMobile) {
+        if (e) e.preventDefault();
+        openConnectModal();
+      }
+    }
+
+    function copyToClipboard(text, successMessage = 'Copied to clipboard!') {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast({
+            title: 'Copied!',
+            message: `${successMessage} <strong class="text-brand-blue">${text}</strong>`,
+            type: 'info',
+            duration: 3500
+          });
+        });
+      } else {
+        const input = document.createElement('input');
+        input.value = text;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand('copy');
+        document.body.removeChild(input);
+        showToast({
+          title: 'Copied!',
+          message: `${successMessage} <strong class="text-brand-blue">${text}</strong>`,
+          type: 'info',
+          duration: 3500
+        });
+      }
     }
 
     // ================= BEAUTIFUL TOAST NOTIFICATION SYSTEM =================
