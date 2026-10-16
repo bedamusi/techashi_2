@@ -2044,33 +2044,19 @@
         `;
       }).join('');
 
-      // Render View All / Show Less button
+      // Render View All Button to open dedicated /products page
       if (toggleWrap) {
-        if (!search && filtered.length > HOME_INITIAL_LIMIT) {
-          if (!homeShowAllProducts) {
-            toggleWrap.innerHTML = `
-              <div class="flex flex-col items-center gap-2">
-                <button type="button" onclick="toggleHomeProductsExpand()" class="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full font-bold text-sm text-brand-blue bg-white hover:bg-brand-blue hover:text-white border-2 border-brand-blue/30 hover:border-brand-blue shadow-sm hover:shadow-md transition-all duration-300 group cursor-pointer">
-                  <span>View All In-Stock Equipment (${filtered.length} Items)</span>
-                  <i data-lucide="chevron-down" class="w-4 h-4 text-brand-blue group-hover:text-white group-hover:translate-y-0.5 transition-all"></i>
-                </button>
-                <p class="text-xs text-slate-400">Showing 4 featured items &bull; Click to view full inventory</p>
-              </div>
-            `;
-          } else {
-            toggleWrap.innerHTML = `
-              <div class="flex flex-col items-center gap-2">
-                <button type="button" onclick="toggleHomeProductsExpand()" class="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full font-bold text-sm text-slate-700 bg-white hover:bg-slate-100 border border-slate-300 shadow-sm transition-all duration-300 group cursor-pointer">
-                  <span>Show Less (Show 4 Featured)</span>
-                  <i data-lucide="chevron-up" class="w-4 h-4 text-slate-500 group-hover:-translate-y-0.5 transition-all"></i>
-                </button>
-                <p class="text-xs text-slate-400">Showing all ${filtered.length} products</p>
-              </div>
-            `;
-          }
-        } else {
-          toggleWrap.innerHTML = '';
-        }
+        const totalAvailable = filtered.length;
+        const categoryQuery = homeCurrentCategory !== 'all' ? `?category=${homeCurrentCategory}` : '';
+        toggleWrap.innerHTML = `
+          <div class="flex flex-col items-center gap-2">
+            <a href="/products${categoryQuery}" class="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full font-bold text-sm text-brand-blue bg-white hover:bg-brand-blue hover:text-white border-2 border-brand-blue/30 hover:border-brand-blue shadow-sm hover:shadow-md transition-all duration-300 group cursor-pointer">
+              <span>View All In-Stock Equipment (${totalAvailable} Items)</span>
+              <i data-lucide="arrow-right" class="w-4 h-4 text-brand-blue group-hover:text-white group-hover:translate-x-1 transition-all"></i>
+            </a>
+            <p class="text-xs text-slate-400">Showing 4 featured items &bull; Click to open complete inventory catalog</p>
+          </div>
+        `;
       }
 
       if (window.lucide) lucide.createIcons();

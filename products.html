@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>In-Stock IT Equipment & Hardware Catalog | Techashi Solutions Ltd.</title>
+  <meta name="description" content="Browse enterprise IT hardware, laptops, servers, CCTV surveillance, networking cabling, and forecourt fuel automation in stock at Techashi Solutions Ltd. Nairobi, Kenya.">
+  <link rel="icon" type="image/png" href="assets/logo-emblem.png">
+
+  <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              blue: '#075293',
+              'blue-dark': '#043A6B',
+              'blue-deep': '#03213D',
+              'blue-light': '#EBF4FC',
+              'soft-blue': '#F0F7FF',
+              green: '#8EC640',
+              'green-dark': '#74A72E',
+              'green-deep': '#4C7317',
+              'green-light': '#F3F9EA',
+              slate: '#0B131E',
+              charcoal: '#0F172A',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          boxShadow: {
+            'card': '0 4px 20px -2px rgba(11, 19, 30, 0.05)',
+            'card-hover': '0 20px 30px -10px rgba(7, 82, 147, 0.12)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-slate-50 font-sans text-slate-800 antialiased selection:bg-brand-blue selection:text-white min-h-screen flex flex-col justify-between">
+
+  <!-- ================= 1. TOP HEADER & NAVBAR ================= -->
+  <!-- Top Utility Bar -->
+  <div class="bg-brand-blue-deep text-slate-300 text-xs py-2 px-4 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+      <div class="flex items-center gap-4 text-[11px] sm:text-xs">
+        <span class="flex items-center gap-1.5">
+          <i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-green"></i>
+          <span>Chaka Place, 3rd Floor, Argwings Kodhek Rd, Nairobi</span>
+        </span>
+        <span class="hidden md:inline text-slate-600">|</span>
+        <span class="hidden md:flex items-center gap-1.5">
+          <i data-lucide="clock" class="w-3.5 h-3.5 text-brand-green"></i>
+          <span>Mon – Sat: 8:00 AM – 6:00 PM</span>
+        </span>
+      </div>
+      <div class="flex items-center gap-4 text-[11px] sm:text-xs">
+        <a href="https://wa.me/254700357022" target="_blank" class="flex items-center gap-1 text-emerald-400 hover:text-emerald-300 font-semibold">
+          <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+          <span>WhatsApp Quick Desk</span>
+        </a>
+        <span class="text-slate-600">|</span>
+        <span class="text-brand-green font-semibold">KRA Compliant ETR Invoicing</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navbar -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo -->
+        <a href="/" class="flex items-center gap-3">
+          <img src="assets/logo.png" alt="Techashi Solutions Ltd." class="h-10 sm:h-12 w-auto object-contain">
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-700">
+          <a href="/#services-hub" class="hover:text-brand-blue transition-colors">Our Services</a>
+          <a href="/products" class="text-brand-blue font-bold flex items-center gap-1.5 border-b-2 border-brand-blue pb-0.5">
+            <span>Hardware Catalog</span>
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-brand-blue text-white" id="nav-count-badge">8</span>
+          </a>
+          <a href="/#about" class="hover:text-brand-blue transition-colors">About Us</a>
+          <a href="/#showcase" class="hover:text-brand-blue transition-colors">Projects</a>
+          <a href="/company-profile" class="text-brand-blue font-bold hover:text-brand-blue-dark transition-colors flex items-center gap-1.5">
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-brand-green-light text-brand-green-deep border border-brand-green/30">2026</span>
+            <span>Profile</span>
+          </a>
+          <a href="/#contact" class="hover:text-brand-blue transition-colors">Contact</a>
+        </nav>
+
+        <!-- Right Side Contact & Action -->
+        <div class="hidden sm:flex items-center gap-5">
+          <a href="tel:+254700357022" onclick="handlePhoneClick(event)" class="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-brand-blue cursor-pointer" title="Call or WhatsApp Techashi">
+            <span class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-brand-blue">
+              <i data-lucide="phone" class="w-4 h-4"></i>
+            </span>
+            <span>+254 700 357 022</span>
+          </a>
+          <button onclick="openQuoteModal('Hardware Procurement')" class="px-5 py-2.5 rounded-full text-sm font-bold text-white bg-brand-blue hover:bg-brand-blue-dark transition-all shadow-sm flex items-center gap-2">
+            <span>Get a Quote</span>
+          </button>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <div class="flex lg:hidden">
+          <button id="mobile-toggle" class="p-2 text-slate-700 focus:outline-none">
+            <i data-lucide="menu" class="w-7 h-7"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-100 bg-white px-5 py-4 space-y-3">
+      <a href="/" class="block py-2 text-sm font-medium text-slate-700">Home</a>
+      <a href="/#services-hub" class="block py-2 text-sm font-medium text-slate-700">Our Services</a>
+      <a href="/products" class="block py-2 text-sm font-bold text-brand-blue">🛒 Hardware & Equipment Catalog</a>
+      <a href="/company-profile" class="block py-2 text-sm font-bold text-brand-green-deep">📄 View Company Profile (PDF)</a>
+      <a href="/#about" class="block py-2 text-sm font-medium text-slate-700">About Us</a>
+      <a href="/#contact" class="block py-2 text-sm font-medium text-slate-700">Contact Us</a>
+      <button onclick="openQuoteModal()" class="w-full mt-2 py-3 rounded-full text-sm font-bold text-white bg-brand-blue text-center">
+        Request a Free Quote
+      </button>
+    </div>
+  </header>
+
+  <!-- ================= 2. BREADCRUMB & HERO BANNER ================= -->
+  <section class="bg-gradient-to-b from-brand-blue-deep to-[#073663] text-white py-12 sm:py-16 relative overflow-hidden">
+    <!-- Subtle Background Grid Pattern -->
+    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#8EC640_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-xs text-slate-300 mb-4">
+        <a href="/" class="hover:text-brand-green transition-colors flex items-center gap-1">
+          <i data-lucide="home" class="w-3.5 h-3.5"></i>
+          <span>Home</span>
+        </a>
+        <i data-lucide="chevron-right" class="w-3 h-3 text-slate-400"></i>
+        <span class="text-brand-green font-semibold">Equipment & Hardware Catalog</span>
+      </nav>
+
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+        <div class="max-w-2xl space-y-3">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-white/10 text-brand-green border border-white/15">
+            <span class="w-2 h-2 rounded-full bg-brand-green animate-pulse"></span>
+            <span>VERIFIED IN-STOCK & DEPLOYMENT READY</span>
+          </div>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display tracking-tight text-white">
+            Enterprise IT Equipment & Hardware
+          </h1>
+          <p class="text-slate-200 text-sm sm:text-base leading-relaxed">
+            Direct inventory supply with certified manufacturer warranties. Commercial-grade laptops, rack servers, managed PoE network switches, CCTV surveillance kits, and forecourt fuel automation.
+          </p>
+        </div>
+
+        <!-- Quick Value Badges -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 shrink-0 text-xs">
+          <div class="p-3 rounded-xl bg-white/10 backdrop-blur-xs border border-white/15">
+            <div class="font-bold text-white flex items-center gap-1.5">
+              <i data-lucide="shield-check" class="w-4 h-4 text-brand-green"></i>
+              <span>1-Yr Warranty</span>
+            </div>
+            <div class="text-[11px] text-slate-300 mt-0.5">All Hardware Backed</div>
+          </div>
+          <div class="p-3 rounded-xl bg-white/10 backdrop-blur-xs border border-white/15">
+            <div class="font-bold text-white flex items-center gap-1.5">
+              <i data-lucide="truck" class="w-4 h-4 text-sky-300"></i>
+              <span>Fast Dispatch</span>
+            </div>
+            <div class="text-[11px] text-slate-300 mt-0.5">Same-Day Nairobi Delivery</div>
+          </div>
+          <div class="p-3 rounded-xl bg-white/10 backdrop-blur-xs border border-white/15 col-span-2 sm:col-span-1">
+            <div class="font-bold text-white flex items-center gap-1.5">
+              <i data-lucide="receipt" class="w-4 h-4 text-emerald-300"></i>
+              <span>ETR Compliant</span>
+            </div>
+            <div class="text-[11px] text-slate-300 mt-0.5">Tax Invoicing Backed</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 3. FILTER, SEARCH & CATALOG SECTION ================= -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full flex-1">
+    
+    <!-- Controls Bar -->
+    <div class="bg-white rounded-2xl p-4 sm:p-5 shadow-xs border border-slate-200 mb-8 space-y-4">
+      
+      <!-- Row 1: Search and Sort -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        
+        <!-- Search Input -->
+        <div class="relative w-full sm:w-96">
+          <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+          <input type="text" id="catalog-search" oninput="applyCatalogFilters()" placeholder="Search by model, brand, spec, or SKU..." class="w-full pl-10 pr-4 py-2.5 text-xs sm:text-sm rounded-xl border border-slate-200 outline-none focus:border-brand-blue bg-slate-50/70 focus:bg-white transition">
+        </div>
+
+        <!-- Right Side: Items count & Sorting -->
+        <div class="flex items-center justify-between sm:justify-end gap-4 w-full sm:w-auto text-xs sm:text-sm">
+          <span class="text-slate-500 font-medium" id="catalog-status-text">
+            Loading equipment...
+          </span>
+
+          <div class="flex items-center gap-2">
+            <span class="text-slate-400 text-xs hidden md:inline">Sort:</span>
+            <select id="catalog-sort" onchange="applyCatalogFilters()" class="px-3 py-2 text-xs sm:text-sm rounded-xl border border-slate-200 outline-none bg-white font-medium text-slate-700 focus:border-brand-blue">
+              <option value="featured">Featured / Stock</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="name">Product Name (A-Z)</option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Row 2: Category Filter Tabs -->
+      <div class="border-t border-slate-100 pt-3">
+        <div id="catalog-categories" class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Active Filters Feedback & Clear -->
+    <div id="catalog-active-filter-bar" class="hidden mb-6 flex items-center justify-between text-xs text-slate-600 bg-brand-soft-blue px-4 py-2.5 rounded-xl border border-blue-100">
+      <span id="active-filter-desc">Filtered by Category</span>
+      <button onclick="resetCatalogFilters()" class="text-brand-blue font-bold hover:underline flex items-center gap-1">
+        <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+        <span>Clear Filters</span>
+      </button>
+    </div>
+
+    <!-- Equipment Grid -->
+    <div id="catalog-products-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <!-- Dynamically populated from /api/products -->
+      <div class="col-span-full py-20 text-center text-slate-400">
+        <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-brand-blue border-r-transparent mb-3"></div>
+        <p class="text-sm font-semibold text-slate-600">Loading Techashi Solutions Equipment Catalog...</p>
+      </div>
+    </div>
+
+    <!-- Bottom Corporate Procurement Banner -->
+    <div class="mt-14 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-brand-blue-deep via-brand-blue to-brand-blue-dark text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 border border-white/10">
+      <div class="flex items-center gap-4">
+        <div class="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center shrink-0 border border-white/15">
+          <i data-lucide="building-2" class="w-7 h-7 text-brand-green"></i>
+        </div>
+        <div>
+          <span class="text-[11px] font-bold uppercase tracking-wider text-brand-green bg-white/10 px-2.5 py-0.5 rounded-full">Corporate & Enterprise Sales</span>
+          <h3 class="text-lg sm:text-xl font-bold font-display mt-1">Need a custom tender bid, LPO processing, or specialized specs?</h3>
+          <p class="text-xs sm:text-sm text-slate-200 mt-0.5 leading-relaxed">
+            Our enterprise procurement team prepares itemized formal quotation PDFs with competitive wholesale pricing and delivery schedules.
+          </p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 shrink-0 w-full md:w-auto">
+        <button onclick="openQuoteModal('Enterprise Procurement Inquiry')" class="w-full md:w-auto px-6 py-3.5 rounded-full font-bold text-xs sm:text-sm text-brand-blue-deep bg-brand-green hover:bg-brand-green-dark transition-all shadow-md flex items-center justify-center gap-2">
+          <span>Request Corporate Quotation</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ================= 4. CORPORATE FOOTER ================= -->
+  <footer class="bg-brand-blue-deep text-slate-300 pt-16 pb-12 text-xs border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-12 border-b border-slate-800">
+        
+        <!-- Col 1 -->
+        <div class="space-y-4">
+          <img src="assets/logo-dark.png" alt="Techashi Solutions Ltd." class="h-12 w-auto object-contain">
+          <p class="text-slate-400 leading-relaxed pr-4">
+            Techashi Solutions Ltd. is a premier IT solutions provider combining enterprise hardware sales, structured networking, CCTV security, and fuel forecourt automation across Kenya.
+          </p>
+        </div>
+
+        <!-- Col 2 -->
+        <div class="space-y-3">
+          <h4 class="text-white font-bold text-sm">Quick Navigation</h4>
+          <ul class="space-y-2">
+            <li><a href="/" class="hover:text-brand-green transition-colors">Home Page</a></li>
+            <li><a href="/products" class="text-brand-green font-semibold hover:underline">Equipment Catalog</a></li>
+            <li><a href="/company-profile" class="hover:text-brand-green transition-colors flex items-center gap-1">📄 Company Profile (PDF)</a></li>
+            <li><a href="/#services-hub" class="hover:text-brand-green transition-colors">Our Services</a></li>
+            <li><a href="/#showcase" class="hover:text-brand-green transition-colors">Projects & Showcase</a></li>
+            <li><a href="/#contact" class="hover:text-brand-green transition-colors">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3 -->
+        <div class="space-y-3">
+          <h4 class="text-white font-bold text-sm">Hardware & Equipment</h4>
+          <ul class="space-y-2">
+            <li><a href="/products" onclick="setCatalogCategory('laptops')" class="hover:text-brand-green transition-colors">PCs & Laptops</a></li>
+            <li><a href="/products" onclick="setCatalogCategory('servers')" class="hover:text-brand-green transition-colors">Enterprise Rack Servers</a></li>
+            <li><a href="/products" onclick="setCatalogCategory('networking')" class="hover:text-brand-green transition-colors">PoE Switches & Routers</a></li>
+            <li><a href="/products" onclick="setCatalogCategory('cctv')" class="hover:text-brand-green transition-colors">CCTV & Surveillance Kits</a></li>
+            <li><a href="/products" onclick="setCatalogCategory('forecourt')" class="hover:text-brand-green transition-colors">Fuel Forecourt Automation</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4 -->
+        <div class="space-y-3">
+          <h4 class="text-white font-bold text-sm">Contact Us</h4>
+          <div class="space-y-2 text-slate-400">
+            <p class="font-medium text-slate-300">Chaka Place Building, 3rd Floor<br>Argwings Kodhek Rd, Nairobi</p>
+            <p><a href="tel:+254700357022" onclick="handlePhoneClick(event)" class="hover:text-brand-green font-semibold text-white flex items-center gap-1 cursor-pointer">+254 700 357 022</a></p>
+            <p><a href="mailto:info@techashisolutions.com" class="hover:text-white">info@techashisolutions.com</a></p>
+            <p>Mon – Sat: 8:00 AM – 6:00 PM</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-500">
+        <div>
+          © 2026 Techashi Solutions Ltd. All rights reserved. • techashisolutions.com
+        </div>
+        <div class="flex items-center gap-6">
+          <a href="/company-profile" class="hover:text-slate-300">Company Profile</a>
+          <a href="#" class="hover:text-slate-400">Privacy Policy</a>
+          <a href="#" class="hover:text-slate-400">Terms of Service</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ================= 5. MODALS & TOAST NOTIFICATIONS ================= -->
+
+  <!-- QUOTE MODAL -->
+  <div id="quote-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl relative border border-slate-100">
+      <button onclick="closeQuoteModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 p-1 rounded-full hover:bg-slate-100">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="mb-4">
+        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-brand-blue-light text-brand-blue border border-blue-200">EQUIPMENT QUOTE</span>
+        <h3 class="text-xl font-bold font-display text-slate-900 mt-2">Request an Itemized Quote</h3>
+      </div>
+
+      <form onsubmit="handleModalSubmit(event)" class="space-y-3">
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Your Name *</label>
+          <input type="text" required placeholder="John Doe" class="w-full px-3 py-2 rounded-lg border border-slate-200 text-xs sm:text-sm outline-none focus:border-brand-blue">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Phone / WhatsApp *</label>
+          <input type="tel" required placeholder="07XX XXX XXX" class="w-full px-3 py-2 rounded-lg border border-slate-200 text-xs sm:text-sm outline-none focus:border-brand-blue">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Email Address <span class="text-slate-400 font-normal text-[11px]">(Optional for written quote)</span></label>
+          <input type="email" placeholder="name@company.com" class="w-full px-3 py-2 rounded-lg border border-slate-200 text-xs sm:text-sm outline-none focus:border-brand-blue">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Equipment / Model Needed</label>
+          <input type="text" id="modal-service-input" placeholder="e.g. Dell PowerEdge R440" class="w-full px-3 py-2 rounded-lg border border-slate-200 text-xs sm:text-sm outline-none focus:border-brand-blue font-semibold text-slate-900">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Quantity & Specifications Notes</label>
+          <textarea rows="3" placeholder="Tell us quantity needed, delivery location, or special configuration..." class="w-full px-3 py-2 rounded-lg border border-slate-200 text-xs sm:text-sm outline-none focus:border-brand-blue"></textarea>
+        </div>
+        <button type="submit" class="w-full py-3 rounded-full font-bold text-white bg-brand-blue hover:bg-brand-blue-dark transition-colors shadow-sm text-sm flex items-center justify-center gap-2">
+          <span>Submit Quote Request</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- DIRECT CONNECT / SPEAK WITH TECHASHI MODAL -->
+  <div id="connect-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-7 shadow-2xl relative border border-slate-100 overflow-hidden transform transition-all duration-300 scale-95">
+      <div class="h-1.5 bg-gradient-to-r from-brand-blue via-sky-400 to-brand-green absolute top-0 left-0 right-0"></div>
+
+      <button onclick="closeConnectModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-700 p-1.5 rounded-full hover:bg-slate-100 transition">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="flex items-center gap-3.5 mb-4">
+        <div class="w-12 h-12 rounded-2xl bg-brand-blue-light text-brand-blue flex items-center justify-center shrink-0">
+          <i data-lucide="headset" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-600">Engineers Available</span>
+          </div>
+          <h3 class="text-xl font-extrabold font-display text-slate-900 mt-0.5">Speak with Techashi</h3>
+        </div>
+      </div>
+
+      <p class="text-xs sm:text-sm text-slate-600 mb-5 leading-relaxed">
+        Choose how you would like to connect with our hardware, networking, and fuel automation team:
+      </p>
+
+      <div class="space-y-3 mb-5">
+        <a href="https://wa.me/254700357022?text=Hello%20Techashi%20Solutions,%20I%20would%20like%20to%20inquire%20about%20your%20IT%20equipment%20catalog." target="_blank" class="w-full py-3.5 px-4 rounded-xl font-bold text-sm text-white bg-emerald-600 hover:bg-emerald-700 transition flex items-center justify-between shadow-sm group">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center">
+              <i data-lucide="message-circle" class="w-4 h-4"></i>
+            </span>
+            <div class="text-left">
+              <div class="font-bold leading-none">Chat on WhatsApp</div>
+              <div class="text-[11px] text-emerald-100 font-normal mt-0.5">Direct chat via WhatsApp Web or App</div>
+            </div>
+          </div>
+          <i data-lucide="arrow-right" class="w-4 h-4 text-emerald-200 group-hover:translate-x-1 transition-transform"></i>
+        </a>
+
+        <div class="flex items-center justify-between p-3.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100/70 transition">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-brand-blue/10 text-brand-blue flex items-center justify-center">
+              <i data-lucide="phone-call" class="w-4 h-4"></i>
+            </span>
+            <div>
+              <div class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Direct Hotline</div>
+              <div class="text-sm font-bold text-slate-900">+254 700 357 022</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <button onclick="copyToClipboard('+254700357022', 'Phone number copied!')" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-white border border-slate-200 text-slate-700 hover:text-brand-blue hover:border-brand-blue transition flex items-center gap-1 shadow-2xs" title="Copy Number">
+              <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+              <span>Copy</span>
+            </button>
+            <a href="tel:+254700357022" class="p-1.5 text-xs font-semibold rounded-lg bg-white border border-slate-200 text-slate-700 hover:text-brand-blue hover:border-brand-blue transition" title="Dial via system app">
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between p-3.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100/70 transition">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-sky-100 text-sky-700 flex items-center justify-center">
+              <i data-lucide="mail" class="w-4 h-4"></i>
+            </span>
+            <div>
+              <div class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Official Email</div>
+              <div class="text-sm font-bold text-slate-900">info@techashisolutions.com</div>
+            </div>
+          </div>
+          <button onclick="copyToClipboard('info@techashisolutions.com', 'Email copied!')" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-white border border-slate-200 text-slate-700 hover:text-brand-blue hover:border-brand-blue transition flex items-center gap-1 shadow-2xs" title="Copy Email">
+            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+            <span>Copy</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+        <span class="text-slate-500">Need a written itemized quote?</span>
+        <button onclick="closeConnectModal(); openQuoteModal();" class="font-bold text-brand-blue hover:text-brand-blue-dark flex items-center gap-1">
+          <span>Open Quote Form</span>
+          <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TOAST CONTAINER -->
+  <div id="toast-container" class="fixed top-5 right-5 z-[9999] flex flex-col gap-3 max-w-md w-full pointer-events-none px-4 sm:px-0"></div>
+
+  <!-- FLOATING WHATSAPP BUTTON -->
+  <a href="https://wa.me/254700357022?text=Hello%20Techashi%20Solutions,%20I%20am%20viewing%20your%20in-stock%20equipment%20catalog." target="_blank" class="fixed bottom-6 right-6 z-40 bg-emerald-600 hover:bg-emerald-700 text-white p-3.5 rounded-full shadow-2xl flex items-center justify-center transition-all transform hover:scale-110" title="Chat on WhatsApp">
+    <i data-lucide="message-circle" class="w-6 h-6"></i>
+  </a>
+
+  <!-- ================= 6. JAVASCRIPT LOGIC ================= -->
+  <script>
+    lucide.createIcons();
+
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    const quoteModal = document.getElementById('quote-modal');
+    const modalServiceInput = document.getElementById('modal-service-input');
+    const connectModal = document.getElementById('connect-modal');
+
+    function openQuoteModal(serviceName = '') {
+      if (serviceName) modalServiceInput.value = serviceName;
+      quoteModal.classList.remove('opacity-0', 'pointer-events-none');
+    }
+
+    function closeQuoteModal() {
+      quoteModal.classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    function openConnectModal() {
+      connectModal.classList.remove('opacity-0', 'pointer-events-none');
+      const dialog = connectModal.querySelector('.bg-white');
+      if (dialog) dialog.classList.remove('scale-95');
+    }
+
+    function closeConnectModal() {
+      connectModal.classList.add('opacity-0', 'pointer-events-none');
+      const dialog = connectModal.querySelector('.bg-white');
+      if (dialog) dialog.classList.add('scale-95');
+    }
+
+    function handlePhoneClick(e) {
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      if (!isMobile) {
+        if (e) e.preventDefault();
+        openConnectModal();
+      }
+    }
+
+    function copyToClipboard(text, successMessage = 'Copied to clipboard!') {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast({
+            title: 'Copied!',
+            message: `${successMessage} <strong class="text-brand-blue">${text}</strong>`,
+            type: 'info',
+            duration: 3500
+          });
+        });
+      } else {
+        const input = document.createElement('input');
+        input.value = text;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand('copy');
+        document.body.removeChild(input);
+        showToast({
+          title: 'Copied!',
+          message: `${successMessage} <strong class="text-brand-blue">${text}</strong>`,
+          type: 'info',
+          duration: 3500
+        });
+      }
+    }
+
+    function showToast({ title, message, type = 'success', duration = 5500 }) {
+      const container = document.getElementById('toast-container');
+      if (!container) return;
+
+      const toast = document.createElement('div');
+      toast.className = 'pointer-events-auto bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-slate-100 p-4 relative overflow-hidden transition-all duration-300 transform translate-y-[-20px] opacity-0 scale-95 flex items-start gap-3.5';
+
+      let iconHtml = '';
+      if (type === 'success') {
+        iconHtml = `
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-green-600 text-white flex items-center justify-center shrink-0 shadow-md shadow-emerald-500/20">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+          </div>
+        `;
+      } else if (type === 'info') {
+        iconHtml = `
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-blue to-sky-600 text-white flex items-center justify-center shrink-0 shadow-md shadow-blue-500/20">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          </div>
+        `;
+      } else {
+        iconHtml = `
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-rose-500 to-red-600 text-white flex items-center justify-center shrink-0 shadow-md shadow-rose-500/20">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+          </div>
+        `;
+      }
+
+      toast.innerHTML = `
+        ${iconHtml}
+        <div class="flex-1 pr-6">
+          <div class="flex items-center gap-2">
+            <span class="text-[10px] font-extrabold uppercase tracking-wider text-brand-blue bg-blue-50 px-2 py-0.5 rounded-full border border-blue-200">Techashi Solutions</span>
+            <span class="text-[11px] text-slate-400">Just now</span>
+          </div>
+          <h4 class="text-sm font-bold text-slate-900 mt-1">${title}</h4>
+          <div class="text-xs text-slate-600 mt-1 leading-relaxed">${message}</div>
+        </div>
+        <button class="toast-close absolute top-3 right-3 text-slate-400 hover:text-slate-700 p-1 rounded-full hover:bg-slate-100 transition">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+        <div class="toast-progress absolute bottom-0 left-0 h-1 bg-gradient-to-r from-brand-blue via-sky-400 to-brand-green w-full"></div>
+      `;
+
+      container.appendChild(toast);
+
+      requestAnimationFrame(() => {
+        toast.classList.remove('translate-y-[-20px]', 'opacity-0', 'scale-95');
+        toast.classList.add('translate-y-0', 'opacity-100', 'scale-100');
+      });
+
+      const progressBar = toast.querySelector('.toast-progress');
+      if (progressBar) {
+        progressBar.style.transition = `width ${duration}ms linear`;
+        requestAnimationFrame(() => {
+          progressBar.style.width = '0%';
+        });
+      }
+
+      function dismiss() {
+        toast.classList.remove('translate-y-0', 'opacity-100', 'scale-100');
+        toast.classList.add('translate-x-full', 'opacity-0');
+        setTimeout(() => {
+          if (toast.parentElement) toast.remove();
+        }, 300);
+      }
+
+      toast.querySelector('.toast-close').addEventListener('click', dismiss);
+      const timer = setTimeout(dismiss, duration);
+      toast.addEventListener('mouseenter', () => {
+        clearTimeout(timer);
+        if (progressBar) progressBar.style.transition = 'none';
+      });
+    }
+
+    async function handleModalSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const origText = submitBtn ? submitBtn.innerHTML : 'Submit Quote Request';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="inline-flex items-center gap-2"><svg class="animate-spin h-4 w-4 text-white" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Sending Quote Request...</span>';
+      }
+
+      const name = form.querySelector('input[placeholder="John Doe"]').value;
+      const phone = form.querySelector('input[placeholder="07XX XXX XXX"]').value;
+      const emailInput = form.querySelector('input[type="email"]');
+      const email = emailInput ? emailInput.value : '';
+      const service = document.getElementById('modal-service-input').value;
+      const notes = form.querySelector('textarea').value;
+
+      try {
+        await fetch('/api/inquiries', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name,
+            phone,
+            email,
+            service: service || 'Equipment Quote',
+            message: notes
+          })
+        });
+      } catch (err) {
+        console.warn('Quote modal submit error:', err);
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = origText;
+        }
+      }
+
+      closeQuoteModal();
+      showToast({
+        title: 'Quote Request Dispatched!',
+        message: `Thank you, <strong class="text-slate-900">${name}</strong>! Your quote request for <strong class="text-brand-blue">"${service || 'Equipment'}"</strong> has been sent to our sales desk. Our team will contact you on <strong class="text-slate-900">${phone}</strong> shortly.`,
+        type: 'success',
+        duration: 6500
+      });
+      form.reset();
+    }
+
+    // --- CATALOG DATA & FILTER LOGIC ---
+    let catalogProducts = [];
+    let catalogCurrentCategory = 'all';
+
+    const CATALOG_CATEGORIES = [
+      { id: 'all', name: 'All In-Stock' },
+      { id: 'laptops', name: 'PCs & Laptops' },
+      { id: 'networking', name: 'Networking & Cabling' },
+      { id: 'cctv', name: 'CCTV Security' },
+      { id: 'servers', name: 'Servers & Storage' },
+      { id: 'forecourt', name: 'Fuel Forecourt' },
+      { id: 'desktops', name: 'Desktops' },
+      { id: 'accessories', name: 'Accessories' }
+    ];
+
+    async function loadCatalog() {
+      try {
+        const res = await fetch('/api/products');
+        if (res.ok) {
+          const data = await res.json();
+          catalogProducts = data.products || data || [];
+          
+          // Update badge in nav
+          const navBadge = document.getElementById('nav-count-badge');
+          if (navBadge) navBadge.textContent = catalogProducts.length;
+
+          // Check if category is passed in URL query e.g. /products?category=servers
+          const urlParams = new URLSearchParams(window.location.search);
+          const categoryParam = urlParams.get('category');
+          if (categoryParam && CATALOG_CATEGORIES.some(c => c.id === categoryParam)) {
+            catalogCurrentCategory = categoryParam;
+          }
+
+          renderCatalogCategories();
+          applyCatalogFilters();
+        }
+      } catch (err) {
+        console.error('Error loading catalog products:', err);
+        const grid = document.getElementById('catalog-products-grid');
+        if (grid) {
+          grid.innerHTML = `
+            <div class="col-span-full py-16 text-center text-red-500">
+              <p class="font-bold">Failed to load equipment catalog.</p>
+              <button onclick="loadCatalog()" class="mt-3 px-4 py-2 bg-brand-blue text-white rounded-xl text-xs font-bold">Retry</button>
+            </div>
+          `;
+        }
+      }
+    }
+
+    function renderCatalogCategories() {
+      const container = document.getElementById('catalog-categories');
+      if (!container) return;
+
+      container.innerHTML = CATALOG_CATEGORIES.map(cat => {
+        const count = cat.id === 'all' 
+          ? catalogProducts.length 
+          : catalogProducts.filter(p => p.category === cat.id).length;
+
+        const isActive = catalogCurrentCategory === cat.id;
+
+        return `
+          <button type="button" onclick="setCatalogCategory('${cat.id}')" class="shrink-0 px-4 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 ${
+            isActive
+              ? 'bg-brand-blue text-white shadow-xs'
+              : 'bg-slate-100 text-slate-700 hover:bg-slate-200/80 border border-slate-200'
+          }">
+            <span>${cat.name}</span>
+            <span class="px-1.5 py-0.2 rounded-full text-[10px] ${
+              isActive ? 'bg-white/20 text-white' : 'bg-white text-slate-500'
+            }">${count}</span>
+          </button>
+        `;
+      }).join('');
+    }
+
+    function setCatalogCategory(catId) {
+      catalogCurrentCategory = catId;
+      renderCatalogCategories();
+      applyCatalogFilters();
+
+      // Update URL query without page reload
+      const url = new URL(window.location);
+      if (catId === 'all') {
+        url.searchParams.delete('category');
+      } else {
+        url.searchParams.set('category', catId);
+      }
+      window.history.replaceState({}, '', url);
+    }
+
+    function resetCatalogFilters() {
+      catalogCurrentCategory = 'all';
+      const searchInput = document.getElementById('catalog-search');
+      if (searchInput) searchInput.value = '';
+      const sortSelect = document.getElementById('catalog-sort');
+      if (sortSelect) sortSelect.value = 'featured';
+
+      renderCatalogCategories();
+      applyCatalogFilters();
+
+      const url = new URL(window.location);
+      url.searchParams.delete('category');
+      window.history.replaceState({}, '', url);
+    }
+
+    function applyCatalogFilters() {
+      const grid = document.getElementById('catalog-products-grid');
+      const statusText = document.getElementById('catalog-status-text');
+      const filterBar = document.getElementById('catalog-active-filter-bar');
+      const filterDesc = document.getElementById('active-filter-desc');
+      if (!grid) return;
+
+      const search = (document.getElementById('catalog-search')?.value || '').trim().toLowerCase();
+      const sortMode = document.getElementById('catalog-sort')?.value || 'featured';
+
+      let filtered = catalogProducts.filter(p => {
+        const matchCat = catalogCurrentCategory === 'all' || p.category === catalogCurrentCategory;
+        const matchSearch = `${p.name || ''} ${p.description || ''} ${p.sku || ''}`.toLowerCase().includes(search);
+        return matchCat && matchSearch;
+      });
+
+      // Sort
+      if (sortMode === 'price-asc') {
+        filtered.sort((a, b) => (Number(a.offer_price || a.price) || 0) - (Number(b.offer_price || b.price) || 0));
+      } else if (sortMode === 'price-desc') {
+        filtered.sort((a, b) => (Number(b.offer_price || b.price) || 0) - (Number(a.offer_price || a.price) || 0));
+      } else if (sortMode === 'name') {
+        filtered.sort((a, b) => String(a.name || '').localeCompare(String(b.name || '')));
+      }
+
+      // Update Status Text
+      if (statusText) {
+        statusText.innerHTML = `Showing <strong class="text-slate-900">${filtered.length}</strong> of ${catalogProducts.length} items`;
+      }
+
+      // Update Active Filter Bar
+      if (filterBar && filterDesc) {
+        if (catalogCurrentCategory !== 'all' || search) {
+          filterBar.classList.remove('hidden');
+          const catName = CATALOG_CATEGORIES.find(c => c.id === catalogCurrentCategory)?.name || 'Category';
+          let desc = `Category: <strong>${catName}</strong>`;
+          if (search) desc += ` &bull; Search: <strong>"${search}"</strong>`;
+          filterDesc.innerHTML = desc;
+        } else {
+          filterBar.classList.add('hidden');
+        }
+      }
+
+      if (!filtered.length) {
+        grid.innerHTML = `
+          <div class="col-span-full py-20 text-center text-slate-400 bg-white rounded-2xl border border-slate-200">
+            <i data-lucide="package-search" class="w-12 h-12 mx-auto text-slate-300 mb-3"></i>
+            <h4 class="text-base font-bold text-slate-800">No equipment found matching criteria</h4>
+            <p class="text-xs text-slate-500 mt-1 max-w-sm mx-auto">Try clearing search terms or switching to "All In-Stock" category.</p>
+            <button onclick="resetCatalogFilters()" class="mt-4 px-5 py-2.5 rounded-full text-xs font-bold text-brand-blue bg-blue-50 hover:bg-brand-blue hover:text-white border border-blue-200 transition">
+              Reset Filters
+            </button>
+          </div>
+        `;
+        if (window.lucide) lucide.createIcons();
+        return;
+      }
+
+      grid.innerHTML = filtered.map(p => {
+        const imgSrc = (p.images && p.images[0]?.src) || 'https://placehold.co/400x300?text=Techashi';
+        const hasOffer = p.offer_price != null && Number(p.offer_price) > 0 && Number(p.offer_price) < Number(p.price);
+        const specsList = Array.isArray(p.specs) ? p.specs : (String(p.specs || '').split(/[|\n]/).filter(Boolean));
+        const catObj = CATALOG_CATEGORIES.find(c => c.id === p.category);
+        const catName = catObj ? catObj.name : (p.category || 'Hardware');
+
+        const waText = encodeURIComponent(`Hello Techashi Solutions, I am interested in ordering/inquiring about: ${p.name} (Ref: ${p.sku || p.id}). Please send quotation & availability.`);
+
+        return `
+          <article class="group bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between">
+            <div>
+              <!-- Image Banner with Badges -->
+              <div class="h-52 overflow-hidden relative bg-slate-50 flex items-center justify-center p-4">
+                <img src="${imgSrc}" alt="${p.name}" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 drop-shadow-xs" onerror="this.onerror=null;this.src='https://placehold.co/400x300?text=Techashi';">
+                
+                ${hasOffer ? `
+                  <div class="absolute top-3 right-3 bg-red-600 text-white px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider shadow-xs">
+                    Special Offer
+                  </div>
+                ` : (p.stock != null ? `
+                  <div class="absolute top-3 right-3 bg-white/95 px-2.5 py-0.5 rounded-full text-[10px] font-bold text-brand-green-deep border border-slate-100 shadow-2xs">
+                    ${p.stock} In Stock
+                  </div>
+                ` : '')}
+
+                <div class="absolute bottom-2 left-3">
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-brand-blue bg-white/95 backdrop-blur-xs px-2.5 py-0.5 rounded-md border border-blue-100 shadow-2xs">
+                    ${catName}
+                  </span>
+                </div>
+              </div>
+
+              <!-- Product Info Body -->
+              <div class="p-5">
+                ${p.sku ? `<div class="text-[10px] font-mono text-slate-400 mb-1">SKU: ${p.sku}</div>` : ''}
+                <h3 class="font-heading font-bold text-slate-900 text-base leading-snug group-hover:text-brand-blue transition-colors line-clamp-2">
+                  ${p.name}
+                </h3>
+                <p class="text-slate-500 text-xs mt-2 line-clamp-3 leading-relaxed">
+                  ${p.description || ''}
+                </p>
+
+                ${specsList.length ? `
+                  <div class="mt-3 flex flex-wrap gap-1.5">
+                    ${specsList.slice(0, 4).map(s => `
+                      <span class="text-[10px] bg-slate-100 text-slate-700 px-2.5 py-0.5 rounded font-medium border border-slate-200/60">
+                        ${s}
+                      </span>
+                    `).join('')}
+                  </div>
+                ` : ''}
+              </div>
+            </div>
+
+            <!-- Footer: Price & CTA Actions -->
+            <div class="p-5 pt-0">
+              <div class="pt-3 border-t border-slate-100 flex items-center justify-between gap-3">
+                <div>
+                  <div class="text-[10px] text-slate-400 uppercase font-semibold">Pricing (KES)</div>
+                  ${hasOffer ? `
+                    <div class="flex items-baseline gap-1.5">
+                      <span class="text-xs text-slate-400 line-through">KES ${Number(p.price).toLocaleString()}</span>
+                      <span class="font-heading font-extrabold text-base text-red-600">KES ${Number(p.offer_price).toLocaleString()}</span>
+                    </div>
+                  ` : `
+                    <div class="font-heading font-extrabold text-base text-brand-navy">
+                      KES ${Number(p.price || 0).toLocaleString()}
+                    </div>
+                  `}
+                </div>
+
+                <div class="flex items-center gap-1.5">
+                  <a href="https://wa.me/254700357022?text=${waText}" target="_blank" class="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-600 hover:bg-emerald-600 hover:text-white border border-emerald-200 transition flex items-center justify-center shrink-0" title="Chat on WhatsApp about this item">
+                    <i data-lucide="message-circle" class="w-4 h-4"></i>
+                  </a>
+                  <button onclick="openQuoteModal('${p.name.replace(/'/g, "\\'")}')" class="px-3.5 py-2 rounded-xl text-xs font-bold text-white bg-brand-blue hover:bg-brand-blue-dark transition flex items-center gap-1 shadow-xs">
+                    <span>Quote</span>
+                    <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      if (window.lucide) lucide.createIcons();
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      loadCatalog();
+    });
+  </script>
+</body>
+</html>

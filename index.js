@@ -861,6 +861,8 @@ function createServer(port) {
       targetFile = '/admin.html';
     } else if (pathname === '/company-profile' || pathname === '/profile') {
       targetFile = '/company-profile.html';
+    } else if (pathname === '/products' || pathname === '/catalog' || pathname === '/equipment') {
+      targetFile = '/products.html';
     }
 
     const filePath = path.join(__dirname, targetFile);
