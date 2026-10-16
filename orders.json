@@ -1,5 +1,95 @@
 [
   {
+    "id": "750b0bc6-5478-461d-a92e-5992f4725194",
+    "order_number": "TA-261016-0536",
+    "idempotency_key": "e58d727d-a128-4923-ada8-bc9270fae97a",
+    "customer_name": "beda musindalo",
+    "customer_email": "bedamusindalo299@gmail.com",
+    "customer_phone": "0705511703",
+    "fulfillment": "delivery",
+    "delivery_address": "test",
+    "payment_method": "arranged_with_store",
+    "payment_status": "unpaid",
+    "status": "pending",
+    "subtotal": 22500,
+    "delivery_fee": 0,
+    "total": 22500,
+    "customer_notes": null,
+    "inventory_reserved": 1,
+    "created_at": "2026-10-16 07:52:34",
+    "items": [
+      {
+        "product_id": "prod-3",
+        "product_name": "Ubiquiti UniFi U6-Lite / U6-Pro Access Point",
+        "category": "networking",
+        "sku": "TECH-U6PRO",
+        "image_src": "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80",
+        "unit_price": 22500,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": "bdfce7ba-774f-42cc-a807-839c4a464bd1",
+    "order_number": "TA-261016-4148",
+    "idempotency_key": "test-1792137102475",
+    "customer_name": "Beda Musindalo",
+    "customer_email": "bedamusindalo299@gmail.com",
+    "customer_phone": "0700357022",
+    "fulfillment": "delivery",
+    "delivery_address": "Westlands Nairobi",
+    "payment_method": "arranged_with_store",
+    "payment_status": "unpaid",
+    "status": "pending",
+    "subtotal": 125000,
+    "delivery_fee": 0,
+    "total": 125000,
+    "customer_notes": "Deliver with receipt",
+    "inventory_reserved": 1,
+    "created_at": "2026-10-16 07:51:42",
+    "items": [
+      {
+        "product_id": "dell-optiplex-7090",
+        "product_name": "Dell OptiPlex 7090 Tower Workstation",
+        "category": "general",
+        "sku": "",
+        "image_src": null,
+        "unit_price": 125000,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": "bf04969a-6a5c-4378-bbef-75d7575cbbac",
+    "order_number": "TA-261016-3927",
+    "idempotency_key": "test-1792137055654",
+    "customer_name": "Beda Musindalo",
+    "customer_email": "bedamusindalo299@gmail.com",
+    "customer_phone": "0700357022",
+    "fulfillment": "delivery",
+    "delivery_address": "Westlands Nairobi",
+    "payment_method": "arranged_with_store",
+    "payment_status": "unpaid",
+    "status": "pending",
+    "subtotal": 0,
+    "delivery_fee": 0,
+    "total": 0,
+    "customer_notes": "Please call before delivery",
+    "inventory_reserved": 1,
+    "created_at": "2026-10-16 07:50:55",
+    "items": [
+      {
+        "product_id": "dell-optiplex-7090",
+        "product_name": "Dell OptiPlex 7090 Tower Workstation",
+        "category": "general",
+        "sku": "",
+        "image_src": null,
+        "unit_price": 0,
+        "quantity": 1
+      }
+    ]
+  },
+  {
     "id": "ac2e3d01-1990-4e18-ae31-915a9303bc8c",
     "order_number": "TA-261016-82E0",
     "idempotency_key": "8917fb3b-c9ce-4640-aa8c-a1bda4b95a07",
@@ -9,7 +99,7 @@
     "fulfillment": "pickup",
     "delivery_address": null,
     "payment_method": "arranged_with_store",
-    "payment_status": "unpaid",
+    "payment_status": "paid",
     "status": "pending",
     "subtotal": 0,
     "delivery_fee": 0,
@@ -26,7 +116,8 @@
         "unit_price": 0,
         "quantity": 1
       }
-    ]
+    ],
+    "updated_at": "2026-10-16 07:46:45"
   },
   {
     "id": "e81d7f19-3c72-4d51-87ab-98e6c7104a11",
