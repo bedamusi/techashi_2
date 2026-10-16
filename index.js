@@ -892,7 +892,7 @@ function createServer(port) {
         }
       } else {
         res.writeHead(200, { 'Content-Type': contentType });
-        res.end(content, 'utf-8');
+        res.end(content);
       }
     });
   });
