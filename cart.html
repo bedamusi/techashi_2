@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Bag & Checkout | Techashi Solutions Ltd.</title>
+  <meta name="description" content="Review your selected IT hardware, servers, laptops, and equipment and submit your procurement order.">
+  <link rel="icon" type="image/png" href="assets/logo-emblem.png">
+
+  <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              blue: '#075293',
+              'blue-dark': '#043A6B',
+              'blue-deep': '#03213D',
+              'blue-light': '#EBF4FC',
+              'soft-blue': '#F0F7FF',
+              green: '#8EC640',
+              'green-dark': '#74A72E',
+              'green-deep': '#4C7317',
+              'green-light': '#F3F9EA',
+              slate: '#0B131E',
+              navy: '#0B1E36',
+              charcoal: '#0F172A',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'sans-serif'],
+            heading: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-[#f5f8fb] font-sans text-slate-800 antialiased selection:bg-brand-blue selection:text-white min-h-screen flex flex-col justify-between">
+
+  <!-- ================= 1. TOP HEADER & NAVBAR ================= -->
+  <!-- Top Utility Bar -->
+  <div class="bg-brand-blue-deep text-slate-300 text-xs py-2 px-4 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+      <div class="flex items-center gap-4 text-[11px] sm:text-xs">
+        <span class="flex items-center gap-1.5">
+          <i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-green"></i>
+          <span>Chaka Place, 3rd Floor, Argwings Kodhek Rd, Nairobi</span>
+        </span>
+        <span class="hidden md:inline text-slate-600">|</span>
+        <span class="hidden md:flex items-center gap-1.5">
+          <i data-lucide="clock" class="w-3.5 h-3.5 text-brand-green"></i>
+          <span>Mon – Sat: 8:00 AM – 6:00 PM</span>
+        </span>
+      </div>
+      <div class="flex items-center gap-4 text-[11px] sm:text-xs">
+        <a href="https://wa.me/254700357022" target="_blank" class="flex items-center gap-1 text-emerald-400 hover:text-emerald-300 font-semibold">
+          <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+          <span>WhatsApp Hotline</span>
+        </a>
+        <span class="text-slate-600">|</span>
+        <span class="text-brand-green font-semibold">KRA Compliant ETR Receipts</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navbar -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo -->
+        <a href="/" class="flex items-center gap-3">
+          <img src="assets/logo.png" alt="Techashi Solutions Ltd." class="h-10 sm:h-12 w-auto object-contain">
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-700">
+          <a href="/" class="hover:text-brand-blue transition-colors">Home</a>
+          <a href="/products" class="hover:text-brand-blue transition-colors font-semibold">Hardware Catalog</a>
+          <a href="/#services-hub" class="hover:text-brand-blue transition-colors">Our Services</a>
+          <a href="/#about" class="hover:text-brand-blue transition-colors">About Us</a>
+          <a href="/company-profile" class="text-brand-blue font-bold hover:text-brand-blue-dark transition-colors flex items-center gap-1.5">
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-brand-green-light text-brand-green-deep border border-brand-green/30">2026</span>
+            <span>Profile</span>
+          </a>
+          <a href="/#contact" class="hover:text-brand-blue transition-colors">Contact</a>
+        </nav>
+
+        <!-- Right Side Actions & Cart Badge -->
+        <div class="flex items-center gap-3 sm:gap-4">
+          <!-- Active Bag Button -->
+          <a href="/cart" class="relative grid h-10 w-10 place-items-center rounded-full bg-brand-blue text-white shadow-sm hover:bg-brand-blue-dark transition" title="View your shopping bag">
+            <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+            <span class="cart-count-badge absolute -top-1 -right-1 grid h-5 min-w-[20px] place-items-center rounded-full bg-red-600 px-1 text-[10px] font-bold text-white shadow-xs hidden">
+              0
+            </span>
+          </a>
+
+          <a href="tel:+254700357022" class="hidden sm:flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-700 hover:text-brand-blue">
+            <span class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-brand-blue">
+              <i data-lucide="phone" class="w-4 h-4"></i>
+            </span>
+            <span>+254 700 357 022</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= 2. MAIN SHOPPING BAG & CHECKOUT WORKFLOW ================= -->
+  <main class="min-h-[75vh] px-4 pb-24 pt-10 sm:px-8 lg:px-12 flex-1">
+    <div class="mx-auto max-w-7xl">
+
+      <!-- Top Header & Progress Steps -->
+      <div class="border-b border-slate-200 pb-7">
+        <a href="/products" class="inline-flex items-center gap-2 text-xs font-semibold text-slate-500 transition hover:text-brand-blue">
+          <i data-lucide="arrow-left" class="w-4 h-4"></i>
+          <span>Continue shopping hardware</span>
+        </a>
+
+        <div class="mt-5 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p class="text-xs font-bold uppercase tracking-[.18em] text-brand-blue">Techashi Store</p>
+            <h1 id="page-title" class="mt-2 text-3xl font-heading font-extrabold tracking-tight text-brand-navy sm:text-5xl">
+              Your bag.
+            </h1>
+          </div>
+          <p id="bag-count-text" class="text-sm font-semibold text-slate-500"></p>
+        </div>
+
+        <!-- 2-Step Progress Indicator (Bag -> Checkout) -->
+        <div id="step-indicator" class="mt-6 flex max-w-sm items-center gap-3 text-xs font-semibold">
+          <span id="step-badge-bag" class="flex items-center gap-2 text-brand-blue">
+            <span class="grid h-6 w-6 place-items-center rounded-full bg-brand-blue text-white text-[11px] font-bold">1</span>
+            <span>Bag</span>
+          </span>
+          <span class="h-px flex-1 bg-slate-300"></span>
+          <span id="step-badge-checkout" class="flex items-center gap-2 text-slate-400">
+            <span class="grid h-6 w-6 place-items-center rounded-full bg-slate-200 text-slate-500 text-[11px] font-bold">2</span>
+            <span>Checkout</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Container for dynamic view states -->
+      <div id="cart-content-view">
+        <!-- Rendered via JS -->
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ================= 3. CORPORATE FOOTER ================= -->
+  <footer class="bg-brand-blue-deep text-slate-300 pt-16 pb-12 text-xs border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-12 border-b border-slate-800">
+        
+        <!-- Col 1 -->
+        <div class="space-y-4">
+          <img src="assets/logo-dark.png" alt="Techashi Solutions Ltd." class="h-12 w-auto object-contain">
+          <p class="text-slate-400 leading-relaxed pr-4">
+            Techashi Solutions Ltd. is a premier IT solutions provider combining enterprise hardware sales, structured networking, CCTV security, and fuel forecourt automation across Kenya.
+          </p>
+        </div>
+
+        <!-- Col 2 -->
+        <div class="space-y-3">
+          <h4 class="text-white font-bold text-sm">Quick Links</h4>
+          <ul class="space-y-2">
+            <li><a href="/" class="hover:text-brand-green transition-colors">Home</a></li>
+            <li><a href="/products" class="hover:text-brand-green transition-colors">Hardware Catalog</a></li>
+            <li><a href="/company-profile" class="hover:text-brand-green transition-colors">Company Profile (PDF)</a></li>
+            <li><a href="/#services-hub" class="hover:text-brand-green transition-colors">Our Services</a></li>
+            <li><a href="/#contact" class="hover:text-brand-green transition-colors">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3 -->
+        <div class="space-y-3">
+          <h4 class="text-white font-bold text-sm">Store Policies</h4>
+          <ul class="space-y-2">
+            <li><span class="text-slate-400">Direct Invoice & ETR Receipts</span></li>
+            <li><span class="text-slate-400">Warranty Backed Deployment</span></li>
+            <li><span class="text-slate-400">Bank Transfer / Paybill / Cash</span></li>
+            <li><span class="text-slate-400">Same-Day Delivery in Nairobi</span></li>
+          </ul>
+        </div>
+
+        <!-- Col 4 -->
+        <div class="space-y-3">
+          <h4 class="text-white font-bold text-sm">Contact Us</h4>
+          <div class="space-y-2 text-slate-400">
+            <p class="font-medium text-slate-300">Chaka Place Building, 3rd Floor<br>Argwings Kodhek Rd, Nairobi</p>
+            <p><a href="tel:+254700357022" class="hover:text-brand-green font-semibold text-white">+254 700 357 022</a></p>
+            <p><a href="mailto:info@techashisolutions.com" class="hover:text-white">info@techashisolutions.com</a></p>
+            <p>Mon – Sat: 8:00 AM – 6:00 PM</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-500">
+        <div>
+          © 2026 Techashi Solutions Ltd. All rights reserved. • techashisolutions.com
+        </div>
+        <div class="flex items-center gap-6">
+          <a href="/company-profile" class="hover:text-slate-300">Company Profile</a>
+          <a href="#" class="hover:text-slate-400">Privacy Policy</a>
+          <a href="#" class="hover:text-slate-400">Terms of Service</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- TOAST CONTAINER -->
+  <div id="toast-container" class="fixed top-5 right-5 z-[9999] flex flex-col gap-3 max-w-md w-full pointer-events-none px-4 sm:px-0"></div>
+
+  <!-- CART ENGINE & APPLICATION LOGIC -->
+  <script src="cart.js"></script>
+  <script>
+    lucide.createIcons();
+
+    const money = amount => `KES ${Number(amount || 0).toLocaleString('en-KE')}`;
+
+    function makeRequestKey() {
+      return window.crypto?.randomUUID?.() || 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, digit => {
+        const random = Math.floor(Math.random() * 16);
+        return (digit === 'x' ? random : (random & 0x3) | 0x8).toString(16);
+      });
+    }
+
+    // State
+    let currentStep = 'cart'; // 'cart' | 'checkout' | 'complete'
+    let productsCatalog = [];
+    let fulfillment = 'delivery'; // 'delivery' | 'pickup'
+    let orderForm = { name: '', email: '', phone: '', address: '', notes: '' };
+    let placedOrder = null;
+    let isSubmitting = false;
+
+    // Toast helper
+    function showToast({ title, message, type = 'success', duration = 4000 }) {
+      const container = document.getElementById('toast-container');
+      if (!container) return;
+
+      const toast = document.createElement('div');
+      toast.className = 'pointer-events-auto bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-slate-100 p-4 relative overflow-hidden transition-all duration-300 transform translate-y-[-20px] opacity-0 scale-95 flex items-start gap-3.5';
+
+      let iconHtml = '';
+      if (type === 'success') {
+        iconHtml = `
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-green-600 text-white flex items-center justify-center shrink-0 shadow-md shadow-emerald-500/20">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+          </div>
+        `;
+      } else {
+        iconHtml = `
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-rose-500 to-red-600 text-white flex items-center justify-center shrink-0 shadow-md shadow-rose-500/20">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+          </div>
+        `;
+      }
+
+      toast.innerHTML = `
+        ${iconHtml}
+        <div class="flex-1 pr-6">
+          <div class="flex items-center gap-2">
+            <span class="text-[10px] font-extrabold uppercase tracking-wider text-brand-blue bg-blue-50 px-2 py-0.5 rounded-full border border-blue-200">Techashi Store</span>
+            <span class="text-[11px] text-slate-400">Just now</span>
+          </div>
+          <h4 class="text-sm font-bold text-slate-900 mt-1">${title}</h4>
+          <div class="text-xs text-slate-600 mt-1 leading-relaxed">${message}</div>
+        </div>
+        <button class="toast-close absolute top-3 right-3 text-slate-400 hover:text-slate-700 p-1 rounded-full hover:bg-slate-100 transition">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+      `;
+
+      container.appendChild(toast);
+      requestAnimationFrame(() => {
+        toast.classList.remove('translate-y-[-20px]', 'opacity-0', 'scale-95');
+        toast.classList.add('translate-y-0', 'opacity-100', 'scale-100');
+      });
+
+      function dismiss() {
+        toast.classList.remove('translate-y-0', 'opacity-100', 'scale-100');
+        toast.classList.add('translate-x-full', 'opacity-0');
+        setTimeout(() => { if (toast.parentElement) toast.remove(); }, 300);
+      }
+      toast.querySelector('.toast-close').addEventListener('click', dismiss);
+      setTimeout(dismiss, duration);
+    }
+    window.showToast = showToast;
+
+    async function loadCatalogAndRender() {
+      try {
+        const res = await fetch('/api/products');
+        if (res.ok) {
+          const data = await res.json();
+          productsCatalog = data.products || data || [];
+        }
+      } catch (e) {
+        console.error('Error fetching catalog:', e);
+      }
+      renderView();
+    }
+
+    function getUnitPrice(product) {
+      if (!product) return 0;
+      return (product.offer_price != null && Number(product.offer_price) > 0)
+        ? Number(product.offer_price)
+        : Number(product.price || 0);
+    }
+
+    function getPopulatedLines() {
+      const items = TechashiCart.getItems();
+      const catalogMap = new Map(productsCatalog.map(p => [p.id, p]));
+      return items.map(item => ({
+        ...item,
+        product: catalogMap.get(item.productId)
+      }));
+    }
+
+    function calculateSubtotal(lines) {
+      return lines.reduce((sum, item) => {
+        return sum + (item.product ? getUnitPrice(item.product) * item.quantity : 0);
+      }, 0);
+    }
+
+    function setStep(step) {
+      currentStep = step;
+      renderView();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function setFulfillmentOption(opt) {
+      fulfillment = opt;
+      renderView();
+    }
+
+    function renderView() {
+      const container = document.getElementById('cart-content-view');
+      const pageTitle = document.getElementById('page-title');
+      const bagCountText = document.getElementById('bag-count-text');
+      const stepIndicator = document.getElementById('step-indicator');
+      const stepBag = document.getElementById('step-badge-bag');
+      const stepCheckout = document.getElementById('step-badge-checkout');
+
+      const lines = getPopulatedLines();
+      const totalCount = TechashiCart.getCount();
+      const subtotal = calculateSubtotal(lines);
+
+      // --- STATE: ORDER COMPLETE ---
+      if (currentStep === 'complete' && placedOrder) {
+        pageTitle.textContent = 'Order received.';
+        bagCountText.textContent = '';
+        stepIndicator.classList.add('hidden');
+
+        const firstName = (orderForm.name || 'Customer').split(' ')[0];
+
+        container.innerHTML = `
+          <div class="mx-auto max-w-2xl rounded-3xl bg-white px-6 py-12 text-center shadow-xl border border-slate-100 sm:px-12 sm:py-16 my-8">
+            <span class="mx-auto grid h-16 w-16 place-items-center rounded-full bg-emerald-50 text-emerald-600">
+              <i data-lucide="package-check" class="w-9 h-9"></i>
+            </span>
+            <p class="mt-7 text-xs font-bold uppercase tracking-[.18em] text-brand-blue">Order Confirmed</p>
+            <h1 class="mt-3 text-3xl font-heading font-extrabold tracking-tight text-brand-navy sm:text-4xl">
+              Thank you, ${firstName}.
+            </h1>
+            <p class="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-slate-600">
+              Your equipment order has been placed. A Techashi solutions specialist will verify availability, delivery timeline, and arrange payment options directly with you.
+            </p>
+            
+            <div class="mt-8 border-y border-slate-200 py-5 text-left space-y-3">
+              <div class="flex justify-between items-center text-sm">
+                <span class="text-slate-500 font-medium">Order Reference</span>
+                <strong class="font-heading font-extrabold text-brand-blue bg-blue-50 px-3 py-1 rounded-lg border border-blue-200">
+                  ${placedOrder.orderNumber}
+                </strong>
+              </div>
+              <div class="flex justify-between items-center text-sm">
+                <span class="text-slate-500 font-medium">Items Total</span>
+                <strong class="font-heading font-extrabold text-base text-slate-900">${money(placedOrder.total)}</strong>
+              </div>
+              <div class="flex justify-between items-center text-sm">
+                <span class="text-slate-500 font-medium">Fulfillment</span>
+                <span class="font-semibold text-slate-800 capitalize">${fulfillment === 'delivery' ? 'Delivery to Location' : 'Collection at Chaka Place Nairobi'}</span>
+              </div>
+              <p class="pt-2 text-xs leading-relaxed text-slate-500 border-t border-slate-100">
+                Delivery fee is confirmed separately before dispatch. Payment is settled directly with Techashi Solutions via official Paybill, EFT, or Company Cheque upon verification.
+              </p>
+            </div>
+
+            <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a href="/products" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-brand-navy px-8 py-4 text-sm font-bold text-white transition hover:bg-brand-blue shadow-md">
+                <span>Continue Browsing Catalog</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </a>
+              <a href="https://wa.me/254700357022?text=${encodeURIComponent(`Hello Techashi Solutions, I just submitted Order ${placedOrder.orderNumber} (${money(placedOrder.total)}).`)}" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-emerald-600 px-6 py-4 text-sm font-bold text-white transition hover:bg-emerald-700 shadow-sm">
+                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                <span>Confirm on WhatsApp</span>
+              </a>
+            </div>
+          </div>
+        `;
+        if (window.lucide) lucide.createIcons();
+        return;
+      }
+
+      // --- STATE: EMPTY BAG ---
+      if (!lines.length) {
+        pageTitle.textContent = 'Your bag.';
+        bagCountText.textContent = '0 items';
+        stepIndicator.classList.remove('hidden');
+        stepBag.className = 'flex items-center gap-2 text-brand-blue';
+        stepCheckout.className = 'flex items-center gap-2 text-slate-400';
+
+        container.innerHTML = `
+          <div class="mt-12 rounded-3xl bg-white px-6 py-16 text-center border border-slate-200 shadow-sm max-w-2xl mx-auto">
+            <span class="mx-auto grid h-16 w-16 place-items-center rounded-full bg-blue-50 text-brand-blue">
+              <i data-lucide="shopping-bag" class="w-8 h-8"></i>
+            </span>
+            <h2 class="mt-5 text-2xl font-heading font-extrabold text-brand-navy">
+              Your bag is ready for something good.
+            </h2>
+            <p class="mt-2 text-sm text-slate-500 max-w-sm mx-auto">
+              Explore our verified in-stock laptops, servers, CCTV surveillance, and fuel automation systems.
+            </p>
+            <a href="/products" class="mt-7 inline-flex items-center gap-2 rounded-full bg-brand-blue px-7 py-3.5 text-sm font-bold text-white hover:bg-brand-blue-dark shadow-sm transition">
+              <span>Explore Equipment Catalog</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        `;
+        if (window.lucide) lucide.createIcons();
+        return;
+      }
+
+      // --- STATE: STEP 1 (CART / BAG) ---
+      if (currentStep === 'cart') {
+        pageTitle.textContent = 'Your bag.';
+        bagCountText.textContent = `${totalCount} ${totalCount === 1 ? 'item' : 'items'}`;
+        stepIndicator.classList.remove('hidden');
+        stepBag.className = 'flex items-center gap-2 text-brand-blue font-bold';
+        stepBag.querySelector('span:first-child').className = 'grid h-6 w-6 place-items-center rounded-full bg-brand-blue text-white text-[11px] font-bold';
+        stepCheckout.className = 'flex items-center gap-2 text-slate-400';
+        stepCheckout.querySelector('span:first-child').className = 'grid h-6 w-6 place-items-center rounded-full bg-slate-200 text-slate-500 text-[11px] font-bold';
+
+        const linesHtml = lines.map(({ product, productId, quantity }) => {
+          if (!product) {
+            return `
+              <div class="flex items-center justify-between gap-4 py-6 border-b border-slate-200">
+                <div>
+                  <p class="font-bold text-brand-navy">This product is currently unavailable.</p>
+                  <p class="text-xs text-slate-500 mt-0.5">Remove it from your bag to proceed.</p>
+                </div>
+                <button onclick="TechashiCart.removeItem('${productId}'); renderView();" class="text-xs font-bold text-red-600 hover:underline">Remove</button>
+              </div>
+            `;
+          }
+
+          const imgSrc = (product.images && product.images[0]?.src) || 'https://placehold.co/400x300?text=Techashi';
+          const unitPrice = getUnitPrice(product);
+          const lineTotal = unitPrice * quantity;
+          const hasOffer = product.offer_price != null && Number(product.offer_price) > 0 && Number(product.offer_price) < Number(product.price);
+
+          return `
+            <article class="grid grid-cols-[88px_minmax(0,1fr)] gap-4 py-5 sm:grid-cols-[120px_minmax(0,1fr)_auto] sm:gap-6 sm:py-6 border-b border-slate-200 last:border-b-0">
+              <!-- Thumbnail -->
+              <div class="relative grid h-24 sm:h-28 place-items-center overflow-hidden rounded-2xl bg-slate-50 border border-slate-200/70 p-2">
+                <img src="${imgSrc}" alt="${product.name}" class="h-full w-full object-contain drop-shadow-xs" onerror="this.src='https://placehold.co/400x300?text=Techashi';">
+              </div>
+
+              <!-- Product Details -->
+              <div class="min-w-0">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-brand-blue bg-blue-50 px-2 py-0.5 rounded border border-blue-100">
+                  ${product.category || 'Hardware'}
+                </span>
+                <h3 class="mt-1 font-heading text-base font-bold text-brand-navy hover:text-brand-blue sm:text-lg">
+                  ${product.name}
+                </h3>
+                <p class="mt-1 line-clamp-2 text-xs leading-relaxed text-slate-500">${product.description || ''}</p>
+                ${product.stock != null ? `
+                  <p class="mt-2 text-xs font-semibold ${product.stock > 0 ? 'text-emerald-700' : 'text-red-600'}">
+                    ${product.stock > 0 ? `✓ ${product.stock} in stock` : 'Out of stock'}
+                  </p>
+                ` : ''}
+
+                <!-- Mobile Quantity & Delete -->
+                <div class="mt-3 flex items-center gap-3 sm:hidden">
+                  <div class="inline-flex h-8 items-center rounded-full border border-slate-200 bg-white shadow-2xs">
+                    <button onclick="TechashiCart.setQuantity('${productId}', ${quantity - 1}); renderView();" class="grid h-8 w-8 place-items-center rounded-full text-slate-500 hover:bg-slate-100">
+                      <i data-lucide="minus" class="w-3.5 h-3.5"></i>
+                    </button>
+                    <span class="min-w-6 text-center text-xs font-bold text-brand-navy">${quantity}</span>
+                    <button onclick="TechashiCart.setQuantity('${productId}', ${quantity + 1}); renderView();" class="grid h-8 w-8 place-items-center rounded-full text-slate-500 hover:bg-slate-100">
+                      <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+                    </button>
+                  </div>
+                  <button onclick="TechashiCart.removeItem('${productId}'); renderView();" class="rounded-full p-2 text-slate-400 hover:bg-red-50 hover:text-red-600">
+                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Desktop Price & Controls -->
+              <div class="hidden sm:flex sm:flex-col sm:items-end sm:justify-between py-1">
+                <div class="text-right">
+                  ${hasOffer ? `<span class="text-xs text-slate-400 line-through block">${money(Number(product.price) * quantity)}</span>` : ''}
+                  <strong class="font-heading text-base font-bold text-brand-navy">${money(lineTotal)}</strong>
+                  <span class="block text-[11px] text-slate-400 mt-0.5">${money(unitPrice)} each</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="inline-flex h-9 items-center rounded-full border border-slate-200 bg-white shadow-2xs">
+                    <button onclick="TechashiCart.setQuantity('${productId}', ${quantity - 1}); renderView();" class="grid h-9 w-9 place-items-center rounded-full text-slate-500 hover:bg-slate-100">
+                      <i data-lucide="minus" class="w-3.5 h-3.5"></i>
+                    </button>
+                    <span class="min-w-6 text-center text-xs font-bold text-brand-navy">${quantity}</span>
+                    <button onclick="TechashiCart.setQuantity('${productId}', ${quantity + 1}); renderView();" class="grid h-9 w-9 place-items-center rounded-full text-slate-500 hover:bg-slate-100">
+                      <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+                    </button>
+                  </div>
+                  <button onclick="TechashiCart.removeItem('${productId}'); renderView();" title="Remove item" class="rounded-full p-2 text-slate-400 hover:bg-red-50 hover:text-red-600 transition">
+                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                  </button>
+                </div>
+              </div>
+            </article>
+          `;
+        }).join('');
+
+        container.innerHTML = `
+          <div class="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_380px] lg:items-start">
+            
+            <!-- Items Column -->
+            <div class="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200 shadow-sm divide-y divide-slate-200">
+              ${linesHtml}
+            </div>
+
+            <!-- Sticky Order Summary Column -->
+            <aside class="rounded-3xl bg-white p-6 shadow-sm border border-slate-200 lg:sticky lg:top-28 space-y-5">
+              <h2 class="font-heading text-xl font-bold text-brand-navy">Order Summary</h2>
+              
+              <div class="space-y-3 border-y border-slate-200 py-4 text-sm">
+                <div class="flex justify-between items-center text-slate-600">
+                  <span>Items Subtotal (${totalCount} units)</span>
+                  <strong class="font-heading font-bold text-slate-900">${money(subtotal)}</strong>
+                </div>
+                <div class="flex justify-between items-center text-slate-600">
+                  <span>Delivery Fee</span>
+                  <span class="text-right text-xs text-slate-500 font-medium">Confirmed before dispatch</span>
+                </div>
+              </div>
+
+              <div class="flex justify-between items-center">
+                <span class="font-bold text-base text-brand-navy">Items Total</span>
+                <strong class="font-heading text-2xl font-extrabold text-brand-blue">${money(subtotal)}</strong>
+              </div>
+
+              <p class="text-xs leading-relaxed text-slate-500">
+                Delivery cost is confirmed with you before dispatch based on location. The total covers equipment only.
+              </p>
+
+              <button onclick="setStep('checkout')" class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-navy px-6 py-4 text-sm font-bold text-white transition hover:bg-brand-blue shadow-lg shadow-brand-navy/15">
+                <span>Continue to Checkout</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </button>
+
+              <p class="flex items-center justify-center gap-2 text-xs text-slate-500 pt-2">
+                <i data-lucide="shield-check" class="w-4 h-4 text-emerald-600"></i>
+                <span>Direct procurement with verified invoice</span>
+              </p>
+            </aside>
+
+          </div>
+        `;
+        if (window.lucide) lucide.createIcons();
+        return;
+      }
+
+      // --- STATE: STEP 2 (CHECKOUT) ---
+      if (currentStep === 'checkout') {
+        pageTitle.textContent = 'Your details.';
+        bagCountText.textContent = `${totalCount} ${totalCount === 1 ? 'item' : 'items'}`;
+        stepIndicator.classList.remove('hidden');
+        stepBag.className = 'flex items-center gap-2 text-emerald-700 font-bold';
+        stepBag.querySelector('span:first-child').className = 'grid h-6 w-6 place-items-center rounded-full bg-emerald-600 text-white text-[11px] font-bold';
+        stepBag.querySelector('span:first-child').innerHTML = '✓';
+        stepCheckout.className = 'flex items-center gap-2 text-brand-blue font-bold';
+        stepCheckout.querySelector('span:first-child').className = 'grid h-6 w-6 place-items-center rounded-full bg-brand-blue text-white text-[11px] font-bold';
+
+        const linesSummaryHtml = lines.map(({ product, quantity }) => {
+          if (!product) return '';
+          const unitPrice = getUnitPrice(product);
+          return `
+            <div class="flex justify-between items-center text-xs py-2 border-b border-slate-100 last:border-b-0">
+              <span class="line-clamp-1 text-slate-700 pr-2">${quantity} × ${product.name}</span>
+              <strong class="font-heading text-slate-900 shrink-0">${money(unitPrice * quantity)}</strong>
+            </div>
+          `;
+        }).join('');
+
+        container.innerHTML = `
+          <form onsubmit="handlePlaceOrder(event)" class="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_380px] lg:items-start">
+            
+            <!-- Form Details -->
+            <div class="space-y-6 rounded-3xl bg-white p-6 sm:p-8 border border-slate-200 shadow-sm">
+              <div>
+                <h2 class="text-xl font-heading font-bold text-brand-navy">Contact & Delivery Information</h2>
+                <p class="mt-1 text-xs text-slate-500">We will use these details to coordinate equipment dispatch and send your official invoice.</p>
+              </div>
+
+              <div class="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label class="block text-xs font-semibold text-slate-700 mb-1">Full Name / Organization *</label>
+                  <input required name="name" value="${orderForm.name || ''}" placeholder="e.g. John Doe or Acacia Logistics Ltd" class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/15">
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-slate-700 mb-1">Email Address *</label>
+                  <input required type="email" name="email" value="${orderForm.email || ''}" placeholder="name@company.com" class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/15">
+                </div>
+                <div class="sm:col-span-2">
+                  <label class="block text-xs font-semibold text-slate-700 mb-1">Phone / WhatsApp Number *</label>
+                  <input required type="tel" name="phone" value="${orderForm.phone || ''}" placeholder="+254 7XX XXX XXX" class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/15">
+                </div>
+              </div>
+
+              <!-- Fulfillment Selection -->
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-2">How should we fulfill your equipment?</label>
+                <div class="grid gap-3 sm:grid-cols-2">
+                  <button type="button" onclick="setFulfillmentOption('delivery')" class="flex items-start gap-3 rounded-2xl border p-4 text-left transition ${
+                    fulfillment === 'delivery' ? 'border-brand-blue bg-blue-50/70 ring-2 ring-brand-blue/20' : 'border-slate-200 hover:border-slate-300'
+                  }">
+                    <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl ${fulfillment === 'delivery' ? 'bg-brand-blue text-white' : 'bg-slate-100 text-slate-600'}">
+                      <i data-lucide="truck" class="w-5 h-5"></i>
+                    </span>
+                    <div class="flex-1 min-w-0">
+                      <strong class="block text-sm text-brand-navy">Deliver to me</strong>
+                      <span class="mt-0.5 block text-xs text-slate-500">Delivery address & dispatch fee confirmed with you.</span>
+                    </div>
+                  </button>
+
+                  <button type="button" onclick="setFulfillmentOption('pickup')" class="flex items-start gap-3 rounded-2xl border p-4 text-left transition ${
+                    fulfillment === 'pickup' ? 'border-brand-blue bg-blue-50/70 ring-2 ring-brand-blue/20' : 'border-slate-200 hover:border-slate-300'
+                  }">
+                    <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl ${fulfillment === 'pickup' ? 'bg-brand-blue text-white' : 'bg-slate-100 text-slate-600'}">
+                      <i data-lucide="map-pin" class="w-5 h-5"></i>
+                    </span>
+                    <div class="flex-1 min-w-0">
+                      <strong class="block text-sm text-brand-navy">I’ll collect (Office Pickup)</strong>
+                      <span class="mt-0.5 block text-xs text-slate-500">Chaka Place, 3rd Floor, Nairobi.</span>
+                    </div>
+                  </button>
+                </div>
+              </div>
+
+              ${fulfillment === 'delivery' ? `
+                <div>
+                  <label class="block text-xs font-semibold text-slate-700 mb-1">Delivery Address / Destination *</label>
+                  <textarea required rows="2" name="address" placeholder="Town, neighbourhood, building name, floor, or delivery instructions..." class="w-full resize-y rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none placeholder:text-slate-400 focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/15">${orderForm.address || ''}</textarea>
+                </div>
+              ` : ''}
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Order Notes <span class="font-normal text-slate-400">(optional)</span></label>
+                <textarea rows="2" name="notes" placeholder="Any specific requirements, software setup, or timeline instructions?" class="w-full resize-y rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none placeholder:text-slate-400 focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/15">${orderForm.notes || ''}</textarea>
+              </div>
+
+              <div class="flex items-start gap-3 rounded-2xl bg-blue-50/80 p-4 text-xs leading-relaxed text-slate-600 border border-blue-100">
+                <i data-lucide="shield-check" class="w-5 h-5 text-brand-blue shrink-0 mt-0.5"></i>
+                <p>
+                  <strong class="text-brand-navy">Payment arranged directly.</strong> We will verify equipment stock and confirm payment options (KRA ETR Invoicing, MPesa Paybill, EFT, or Company Cheque) with you. No online card details are collected here.
+                </p>
+              </div>
+
+              <div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <button type="button" onclick="setStep('cart')" class="flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-brand-blue">
+                  <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+                  <span>Back to bag</span>
+                </button>
+
+                <button type="submit" id="submit-order-btn" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-brand-navy px-8 py-4 text-sm font-bold text-white shadow-lg shadow-brand-navy/15 transition hover:bg-brand-blue">
+                  <span>Place Order</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+              </div>
+
+            </div>
+
+            <!-- Summary Column -->
+            <aside class="rounded-3xl bg-white p-6 shadow-sm border border-slate-200 lg:sticky lg:top-28 space-y-5">
+              <h2 class="font-heading text-lg font-bold text-brand-navy">Items in Order</h2>
+              
+              <div class="divide-y divide-slate-100 border-y border-slate-200 py-2 max-h-60 overflow-y-auto">
+                ${linesSummaryHtml}
+              </div>
+
+              <div class="flex justify-between items-center pt-2">
+                <span class="font-bold text-slate-700">Subtotal</span>
+                <strong class="font-heading text-xl font-extrabold text-brand-blue">${money(subtotal)}</strong>
+              </div>
+
+              <div class="text-[11px] text-slate-500 bg-slate-50 p-3 rounded-xl border border-slate-200/60 leading-relaxed">
+                Fulfillment method: <strong class="text-slate-800 capitalize">${fulfillment}</strong>.<br>
+                Official sales receipt and dispatch coordinate will follow by email and phone.
+              </div>
+            </aside>
+
+          </form>
+        `;
+        if (window.lucide) lucide.createIcons();
+        return;
+      }
+    }
+
+    async function handlePlaceOrder(e) {
+      e.preventDefault();
+      if (isSubmitting) return;
+
+      const formEl = e.target;
+      const submitBtn = document.getElementById('submit-order-btn');
+      const lines = getPopulatedLines();
+      const subtotal = calculateSubtotal(lines);
+
+      orderForm.name = formEl.elements['name']?.value || '';
+      orderForm.email = formEl.elements['email']?.value || '';
+      orderForm.phone = formEl.elements['phone']?.value || '';
+      orderForm.address = formEl.elements['address']?.value || '';
+      orderForm.notes = formEl.elements['notes']?.value || '';
+
+      const itemsPayload = lines.map(line => ({
+        productId: line.productId,
+        name: line.product?.name || 'Equipment',
+        category: line.product?.category || '',
+        sku: line.product?.sku || '',
+        unitPrice: getUnitPrice(line.product),
+        quantity: line.quantity
+      }));
+
+      const payload = {
+        idempotencyKey: makeRequestKey(),
+        customer: {
+          name: orderForm.name,
+          email: orderForm.email,
+          phone: orderForm.phone,
+          address: fulfillment === 'delivery' ? orderForm.address : '',
+          notes: orderForm.notes
+        },
+        fulfillment: fulfillment,
+        expectedSubtotal: subtotal,
+        total: subtotal,
+        items: itemsPayload
+      };
+
+      try {
+        isSubmitting = true;
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = `
+            <span class="inline-flex items-center gap-2">
+              <svg class="animate-spin h-4 w-4 text-white" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+              <span>Submitting Order...</span>
+            </span>
+          `;
+        }
+
+        const res = await fetch('/api/orders', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await res.json();
+        if (res.ok && data.ok) {
+          placedOrder = data.order || { orderNumber: 'TA-' + Date.now().toString().slice(-6), total: subtotal };
+          TechashiCart.clearCart();
+          setStep('complete');
+          showToast({
+            title: 'Order Placed Successfully!',
+            message: `Your order <strong>${placedOrder.orderNumber}</strong> has been received. Check your email for confirmation!`,
+            type: 'success',
+            duration: 6000
+          });
+        } else {
+          throw new Error(data.error || 'Failed to place order.');
+        }
+      } catch (err) {
+        console.error('Order submission error:', err);
+        showToast({
+          title: 'Order Submission Issue',
+          message: err.message || 'We could not submit your order. Please retry.',
+          type: 'error',
+          duration: 5000
+        });
+      } finally {
+        isSubmitting = false;
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = `<span>Place Order</span> <i data-lucide="arrow-right" class="w-4 h-4"></i>`;
+        }
+      }
+    }
+
+    // Listen for cart changes across components
+    window.addEventListener('techashi-cart-updated', () => {
+      if (currentStep !== 'complete') {
+        renderView();
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadCatalogAndRender();
+    });
+  </script>
+</body>
+</html>

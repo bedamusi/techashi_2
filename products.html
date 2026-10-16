@@ -104,20 +104,35 @@
         </nav>
 
         <!-- Right Side Contact & Action -->
-        <div class="hidden sm:flex items-center gap-5">
+        <div class="hidden sm:flex items-center gap-4">
           <a href="tel:+254700357022" onclick="handlePhoneClick(event)" class="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-brand-blue cursor-pointer" title="Call or WhatsApp Techashi">
             <span class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-brand-blue">
               <i data-lucide="phone" class="w-4 h-4"></i>
             </span>
             <span>+254 700 357 022</span>
           </a>
+
+          <!-- Shopping Bag Button -->
+          <a href="/cart" class="relative grid h-10 w-10 place-items-center rounded-full text-slate-700 hover:bg-slate-100 hover:text-brand-blue transition" title="Shopping Bag">
+            <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+            <span class="cart-count-badge absolute -top-0.5 -right-0.5 grid h-[18px] min-w-[18px] place-items-center rounded-full bg-brand-blue px-1 text-[10px] font-bold text-white hidden">
+              0
+            </span>
+          </a>
+
           <button onclick="openQuoteModal('Hardware Procurement')" class="px-5 py-2.5 rounded-full text-sm font-bold text-white bg-brand-blue hover:bg-brand-blue-dark transition-all shadow-sm flex items-center gap-2">
             <span>Get a Quote</span>
           </button>
         </div>
 
-        <!-- Mobile Menu Toggle -->
-        <div class="flex lg:hidden">
+        <!-- Mobile Actions -->
+        <div class="flex lg:hidden items-center gap-2">
+          <a href="/cart" class="relative grid h-9 w-9 place-items-center rounded-full text-slate-700 hover:bg-slate-100" title="Shopping Bag">
+            <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+            <span class="cart-count-badge absolute -top-0.5 -right-0.5 grid h-4 min-w-[16px] place-items-center rounded-full bg-brand-blue px-1 text-[9px] font-bold text-white hidden">
+              0
+            </span>
+          </a>
           <button id="mobile-toggle" class="p-2 text-slate-700 focus:outline-none">
             <i data-lucide="menu" class="w-7 h-7"></i>
           </button>
@@ -128,6 +143,13 @@
 
     <!-- Mobile Drawer -->
     <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-100 bg-white px-5 py-4 space-y-3">
+      <a href="/cart" class="py-2.5 px-3 rounded-xl bg-blue-50 text-brand-blue font-bold text-sm flex items-center justify-between">
+        <span class="flex items-center gap-2">
+          <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+          <span>My Shopping Bag</span>
+        </span>
+        <span class="cart-count-badge px-2 py-0.5 text-xs rounded-full bg-brand-blue text-white hidden">0</span>
+      </a>
       <a href="/" class="block py-2 text-sm font-medium text-slate-700">Home</a>
       <a href="/#services-hub" class="block py-2 text-sm font-medium text-slate-700">Our Services</a>
       <a href="/products" class="block py-2 text-sm font-bold text-brand-blue">🛒 Hardware & Equipment Catalog</a>
@@ -920,6 +942,10 @@
                 </div>
 
                 <div class="flex items-center gap-1.5">
+                  <button onclick="handleCatalogAddToCart('${p.id}')" class="px-3 py-2 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-brand-blue hover:text-white transition flex items-center gap-1 shadow-2xs" title="Add to Shopping Bag">
+                    <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i>
+                    <span>Bag</span>
+                  </button>
                   <a href="https://wa.me/254700357022?text=${waText}" target="_blank" class="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-600 hover:bg-emerald-600 hover:text-white border border-emerald-200 transition flex items-center justify-center shrink-0" title="Chat on WhatsApp about this item">
                     <i data-lucide="message-circle" class="w-4 h-4"></i>
                   </a>
@@ -937,10 +963,18 @@
       if (window.lucide) lucide.createIcons();
     }
 
+    function handleCatalogAddToCart(productId) {
+      const product = catalogProducts.find(p => p.id === productId);
+      if (product && window.TechashiCart) {
+        TechashiCart.addItem(product, 1);
+      }
+    }
+
     // Initialize on page load
     document.addEventListener('DOMContentLoaded', () => {
       loadCatalog();
     });
   </script>
+  <script src="cart.js"></script>
 </body>
 </html>

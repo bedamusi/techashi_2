@@ -509,7 +509,11 @@ function createServer(port) {
           const customer = body.customer || {};
           const items = body.items || [];
           const fulfillment = body.fulfillment || 'pickup';
-          const total = Number(body.total || body.expectedSubtotal || 0);
+          let total = Number(body.total || body.expectedSubtotal || 0);
+
+          if (!total && items.length) {
+            total = items.reduce((sum, it) => sum + (Number(it.unitPrice || it.price || 0) * Number(it.quantity || 1)), 0);
+          }
 
           const orderId = crypto.randomUUID();
           const orderNumber = 'TA-' + new Date().toISOString().slice(2, 10).replace(/-/g, '') + '-' + crypto.randomBytes(2).toString('hex').toUpperCase();
@@ -863,6 +867,8 @@ function createServer(port) {
       targetFile = '/company-profile.html';
     } else if (pathname === '/products' || pathname === '/catalog' || pathname === '/equipment') {
       targetFile = '/products.html';
+    } else if (pathname === '/cart' || pathname === '/bag' || pathname === '/checkout') {
+      targetFile = '/cart.html';
     }
 
     const filePath = path.join(__dirname, targetFile);
