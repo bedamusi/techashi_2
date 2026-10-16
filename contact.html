@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Techashi Solutions | Discuss Your Technology Infrastructure</title>
+  <meta name="description" content="Talk to Techashi Solutions about enterprise laptops, structured networking, CCTV security, Microsoft 365 cloud, and managed IT services in Kenya.">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              blue: '#075293',
+              'blue-dark': '#053d6d',
+              'blue-deep': '#03213D',
+              'blue-light': '#E8F1F8',
+              green: '#8EC640',
+              'green-dark': '#79a835',
+              'green-deep': '#5a8222',
+              'green-light': '#F2F8EC',
+              charcoal: '#1E293B',
+              surface: '#F8FAFC'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --color-blue: #075293;
+      --color-blue-strong: #053d6d;
+      --color-green: #8EC640;
+      --color-navy: #03213D;
+      --ink: #0f172a;
+      --slate: #475569;
+      --slate-light: #94a3b8;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--ink);
+      background-color: #ffffff;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Tovnia-identical Contact Page Layout */
+    .contact-page {
+      background: radial-gradient(40% 50% at 100% 100%, rgba(7, 82, 147, 0.08) 0%, rgba(7, 82, 147, 0) 70%), #f8fafc;
+      padding: 40px 0 100px;
+      min-height: calc(100vh - 80px);
+    }
+
+    .shell {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 clamp(16px, 4vw, 48px);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 540px);
+      align-items: start;
+      gap: 64px;
+    }
+
+    @media (max-width: 1024px) {
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 48px;
+      }
+    }
+
+    /* Left Column: Intro */
+    .contact-intro {
+      padding-top: 16px;
+    }
+
+    .breadcrumbs {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: #64748b;
+      margin-bottom: 24px;
+    }
+    .breadcrumbs a {
+      color: #64748b;
+      transition: color 0.2s;
+    }
+    .breadcrumbs a:hover {
+      color: var(--color-blue);
+    }
+    .breadcrumbs .sep {
+      color: #cbd5e1;
+    }
+    .breadcrumbs .current {
+      color: #0f172a;
+      font-weight: 600;
+    }
+
+    .contact-intro h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(2.25rem, calc(1.8rem + 1.8vw), 3.25rem);
+      letter-spacing: -0.035em;
+      color: #0a1b38;
+      font-weight: 700;
+      line-height: 1.06;
+      max-width: 16em;
+    }
+
+    .contact-intro h1 em {
+      color: transparent;
+      background: linear-gradient(90deg, #8EC640 0%, #075293 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      font-style: normal;
+    }
+
+    .contact-lead {
+      max-width: 36em;
+      font-size: 1.0625rem;
+      color: #334155;
+      margin-top: 20px;
+      line-height: 1.6;
+    }
+
+    .contact-expect-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.1875rem;
+      color: #0f172a;
+      margin-top: 36px;
+      font-weight: 700;
+    }
+
+    .contact-expect {
+      gap: 14px;
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+    }
+
+    .contact-expect li {
+      max-width: 38em;
+      font-size: 0.9375rem;
+      color: #334155;
+      grid-template-columns: 24px minmax(0, 1fr);
+      align-items: start;
+      gap: 14px;
+      line-height: 1.55;
+      display: grid;
+    }
+
+    .contact-expect svg {
+      box-sizing: content-box;
+      width: 13px;
+      height: 13px;
+      color: var(--color-blue);
+      background: #e8f1f8;
+      border-radius: 50%;
+      padding: 5px;
+      flex-shrink: 0;
+    }
+
+    /* Direct Contact Line Box */
+    .contact-direct {
+      border-top: 1px solid #e2e8f0;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin: 40px 0 0;
+      padding: 0;
+      display: grid;
+    }
+
+    @media (max-width: 640px) {
+      .contact-direct {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .contact-line {
+      border-bottom: 1px solid #eef2f6;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+      padding: 16px 20px 16px 0;
+      display: flex;
+    }
+
+    .contact-line:nth-child(2n) {
+      border-left: 1px solid #eef2f6;
+      padding-left: 24px;
+      padding-right: 0;
+    }
+
+    @media (max-width: 640px) {
+      .contact-line:nth-child(2n) {
+        border-left: 0;
+        padding-left: 0;
+      }
+    }
+
+    .contact-line:nth-last-child(-n+2) {
+      border-bottom: 0;
+    }
+
+    .contact-line-mark {
+      width: 36px;
+      height: 36px;
+      color: var(--color-blue);
+      background: #eaf2fa;
+      border-radius: 10px;
+      flex: none;
+      place-items: center;
+      display: grid;
+    }
+
+    .contact-line > div {
+      min-width: 0;
+    }
+
+    .contact-direct dt {
+      font-size: 0.6875rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #64748b;
+      font-weight: 600;
+    }
+
+    .contact-direct dd {
+      margin: 3px 0 0;
+      font-size: 0.9375rem;
+      color: #0f172a;
+      font-weight: 600;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .contact-direct a {
+      color: #0f172a;
+      transition: color 0.2s;
+    }
+
+    .contact-direct a:hover {
+      color: var(--color-blue);
+    }
+
+    .contact-presence {
+      font-size: 0.875rem;
+      color: #64748b;
+      margin-top: 24px;
+      line-height: 1.5;
+    }
+
+    /* Client / Partner Logo Marquee */
+    .contact-logos {
+      margin-top: 40px;
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+    }
+
+    .contact-logos ul {
+      width: max-content;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      animation: 32s linear infinite techashi-brands-drift;
+      display: flex;
+      align-items: center;
+    }
+
+    .contact-logos:hover ul {
+      animation-play-state: paused;
+    }
+
+    .contact-logos li {
+      flex: none;
+      place-items: center;
+      height: 40px;
+      padding: 0 20px;
+      display: grid;
+    }
+
+    .contact-logos span.brand-badge {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: #64748b;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      transition: all 0.2s;
+    }
+
+    .contact-logos span.brand-badge:hover {
+      color: var(--color-blue);
+      border-color: var(--color-blue);
+      box-shadow: 0 4px 12px rgba(7, 82, 147, 0.08);
+    }
+
+    @keyframes techashi-brands-drift {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Right Column: Contact Card */
+    .contact-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 44px 38px 36px;
+      box-shadow: 0 0 0 1px rgba(13, 27, 54, 0.07), 0 24px 60px -25px rgba(7, 82, 147, 0.16);
+    }
+
+    @media (max-width: 640px) {
+      .contact-card {
+        padding: 28px 20px 24px;
+      }
+    }
+
+    .contact-card > h2 {
+      text-align: center;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.625rem;
+      letter-spacing: -0.02em;
+      color: #0f172a;
+      font-weight: 700;
+    }
+
+    .contact-card-lead {
+      text-align: center;
+      max-width: 32em;
+      font-size: 0.875rem;
+      color: #475569;
+      margin: 8px auto 28px;
+      line-height: 1.5;
+    }
+
+    /* Enquiry Form Styling */
+    .enquiry-form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .enquiry-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    @media (max-width: 640px) {
+      .enquiry-row {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .enquiry-field {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .enquiry-label {
+      font-size: 0.8125rem;
+      color: #1e293b;
+      margin-bottom: 7px;
+      font-weight: 600;
+      display: block;
+    }
+
+    .enquiry-required {
+      color: #e11d48;
+      margin-left: 2px;
+    }
+
+    .enquiry-optional {
+      color: #94a3b8;
+      margin-left: 6px;
+      font-weight: 400;
+    }
+
+    .enquiry-input {
+      width: 100%;
+      height: 48px;
+      font-size: 0.875rem;
+      color: #0f172a;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 9999px;
+      padding: 0 18px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      display: block;
+      outline: none;
+    }
+
+    .enquiry-input::placeholder {
+      color: #94a3b8;
+    }
+
+    .enquiry-input:hover {
+      border-color: #94a3b8;
+    }
+
+    .enquiry-input:focus {
+      border-color: var(--color-blue);
+      box-shadow: 0 0 0 4px rgba(7, 82, 147, 0.14);
+    }
+
+    .enquiry-input.is-select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23475569' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+      background-position: right 18px center;
+      background-repeat: no-repeat;
+      background-size: 16px;
+      padding-right: 44px;
+    }
+
+    .enquiry-input.is-multiline {
+      resize: vertical;
+      border-radius: 16px;
+      height: auto;
+      min-height: 110px;
+      padding: 14px 18px;
+      line-height: 1.55;
+    }
+
+    .enquiry-hint {
+      font-size: 0.75rem;
+      color: #64748b;
+      margin-top: 6px;
+      line-height: 1.4;
+    }
+
+    .enquiry-submit {
+      background: var(--color-blue);
+      color: #ffffff;
+      width: 100%;
+      height: 52px;
+      font-size: 0.9375rem;
+      border-radius: 9999px;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-top: 6px;
+      font-weight: 600;
+      transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      display: inline-flex;
+      cursor: pointer;
+      border: none;
+    }
+
+    .enquiry-submit:hover {
+      background: var(--color-blue-strong);
+      box-shadow: 0 14px 28px -12px rgba(7, 82, 147, 0.7);
+      transform: translateY(-1px);
+    }
+
+    .enquiry-submit:active {
+      transform: translateY(1px);
+    }
+
+    .enquiry-submit:disabled {
+      cursor: progress;
+      opacity: 0.7;
+      transform: none;
+    }
+
+    /* WhatsApp Handoff Bar matching Tovnia's chat-handoff */
+    .chat-handoff {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      height: 48px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #166534;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: all 0.2s;
+      margin-top: 4px;
+    }
+
+    .chat-handoff:hover {
+      background: #dcfce7;
+      border-color: #86efac;
+      color: #14532d;
+      transform: translateY(-1px);
+    }
+
+    .enquiry-foot {
+      text-align: center;
+      font-size: 0.75rem;
+      color: #64748b;
+      margin-top: 4px;
+    }
+
+    /* Success Screen */
+    .enquiry-done {
+      text-align: center;
+      padding: 12px 6px 6px;
+    }
+
+    .enquiry-done-icon {
+      color: #15803d;
+      background: #dcfce7;
+      border-radius: 50%;
+      place-items: center;
+      width: 60px;
+      height: 60px;
+      display: inline-grid;
+      margin-bottom: 16px;
+    }
+
+    .enquiry-done-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: -0.02em;
+      color: #0f172a;
+      font-weight: 700;
+    }
+
+    .enquiry-done-body {
+      max-width: 32em;
+      font-size: 0.9375rem;
+      color: #475569;
+      margin: 10px auto 0;
+      line-height: 1.6;
+    }
+
+    .enquiry-next {
+      text-align: left;
+      gap: 10px;
+      margin: 28px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+    }
+
+    .enquiry-next li {
+      font-size: 0.875rem;
+      color: #0f172a;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      gap: 14px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+    }
+
+    .enquiry-next span.step-no {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--color-blue);
+      background: #e8f1f8;
+      border-radius: 6px;
+      padding: 2px 7px;
+    }
+
+    .enquiry-done-links {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px 24px;
+      margin-top: 26px;
+      display: flex;
+    }
+
+    .enquiry-done-links a,
+    .enquiry-done-links button {
+      font-size: 0.875rem;
+      color: var(--color-blue);
+      font-weight: 600;
+      transition: color 0.2s;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .enquiry-done-links a:hover,
+    .enquiry-done-links button:hover {
+      color: var(--color-green-deep);
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body class="font-sans text-brand-charcoal bg-white antialiased">
+
+  <!-- ================= TOP UTILITY ANNOUNCEMENT BAR ================= -->
+  <div class="bg-brand-blue-deep text-slate-300 text-xs py-2 px-4 sm:px-6 lg:px-8 border-b border-slate-800 hidden md:block">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-6">
+        <span class="flex items-center gap-2">
+          <i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-green"></i>
+          <span>Chaka Place Building, 3rd Floor, Argwings Kodhek Rd, Nairobi</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <i data-lucide="clock" class="w-3.5 h-3.5 text-brand-green"></i>
+          <span>Mon – Sat: 8:00 AM – 6:00 PM EAT</span>
+        </span>
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="mailto:info@techashisolutions.com" class="flex items-center gap-1.5 hover:text-white transition-colors">
+          <i data-lucide="mail" class="w-3.5 h-3.5 text-brand-blue-light"></i>
+          <span>info@techashisolutions.com</span>
+        </a>
+        <a href="tel:+254700357022" class="flex items-center gap-1.5 text-brand-green font-semibold hover:text-white transition-colors">
+          <i data-lucide="phone" class="w-3.5 h-3.5"></i>
+          <span>+254 700 357 022</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= HEADER & NAVIGATION ================= -->
+  <header class="sticky top-0 z-50 bg-white border-b border-slate-100 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Brand Logo -->
+        <a href="/" class="flex items-center gap-3">
+          <img src="assets/logo.png" alt="Techashi Solutions Ltd." class="h-11 sm:h-12 w-auto object-contain">
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center gap-8 text-[15px] font-medium text-slate-700">
+          <a href="/" class="hover:text-brand-blue transition-colors">Home</a>
+          <a href="/products" class="hover:text-brand-blue transition-colors font-semibold">Hardware & Equipment</a>
+          <a href="/#services-hub" class="hover:text-brand-blue transition-colors">Our Services</a>
+          <a href="/company-profile" class="hover:text-brand-blue transition-colors">Company Profile</a>
+          <a href="/#showcase" class="hover:text-brand-blue transition-colors">Projects</a>
+          <a href="/contact" class="text-brand-blue font-bold border-b-2 border-brand-blue pb-0.5">Contact</a>
+        </nav>
+
+        <!-- Right Side Contact & Action -->
+        <div class="hidden sm:flex items-center gap-4">
+          <a href="tel:+254700357022" class="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-brand-blue cursor-pointer" title="Call or WhatsApp Techashi">
+            <span class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-brand-blue shrink-0">
+              <i data-lucide="phone" class="w-4 h-4"></i>
+            </span>
+            <span>+254 700 357 022</span>
+          </a>
+
+          <!-- Shopping Bag Button -->
+          <a href="/cart" class="relative grid h-10 w-10 place-items-center rounded-full text-slate-700 hover:bg-slate-100 hover:text-brand-blue transition" title="Shopping Bag">
+            <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+            <span class="cart-count-badge absolute -top-0.5 -right-0.5 grid h-[18px] min-w-[18px] place-items-center rounded-full bg-brand-blue px-1 text-[10px] font-bold text-white hidden">
+              0
+            </span>
+          </a>
+
+          <a href="#contact-enquiry-form" class="px-5 py-2.5 rounded-full text-sm font-bold text-white bg-brand-blue hover:bg-brand-blue-dark transition-all shadow-sm flex items-center gap-2">
+            <span>Talk to Us</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+
+        <!-- Mobile Actions -->
+        <div class="flex lg:hidden items-center gap-2">
+          <a href="/cart" class="relative grid h-9 w-9 place-items-center rounded-full text-slate-700 hover:bg-slate-100" title="Shopping Bag">
+            <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+            <span class="cart-count-badge absolute -top-0.5 -right-0.5 grid h-4 min-w-[16px] place-items-center rounded-full bg-brand-blue px-1 text-[9px] font-bold text-white hidden">
+              0
+            </span>
+          </a>
+          <button id="mobile-toggle" class="p-2 text-slate-700 focus:outline-none">
+            <i data-lucide="menu" class="w-7 h-7"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-100 bg-white px-5 pt-3 pb-6 space-y-2 relative z-40 shadow-xl">
+      <a href="/cart" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-slate-50 hover:bg-blue-50/70 border border-slate-200/80 text-brand-blue font-bold text-sm transition-colors">
+        <span class="flex items-center gap-2.5">
+          <i data-lucide="shopping-bag" class="w-4 h-4 text-brand-blue"></i>
+          <span>My Shopping Bag</span>
+        </span>
+        <span class="cart-count-badge px-2 py-0.5 text-xs font-extrabold rounded-full bg-brand-blue text-white hidden">0</span>
+      </a>
+
+      <nav class="space-y-1">
+        <a href="/" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:text-brand-blue hover:bg-slate-50 transition-colors">
+          <span>Home</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-300"></i>
+        </a>
+        <a href="/products" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:text-brand-blue hover:bg-slate-50 transition-colors">
+          <span>Hardware & Equipment</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-300"></i>
+        </a>
+        <a href="/#services-hub" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:text-brand-blue hover:bg-slate-50 transition-colors">
+          <span>Our Services</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-300"></i>
+        </a>
+        <a href="/company-profile" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:text-brand-blue hover:bg-slate-50 transition-colors">
+          <span>Company Profile</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-300"></i>
+        </a>
+        <a href="/#showcase" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:text-brand-blue hover:bg-slate-50 transition-colors">
+          <span>Projects</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-300"></i>
+        </a>
+        <a href="/contact" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-bold text-brand-blue bg-blue-50/70">
+          <span>Contact Us</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-brand-blue"></i>
+        </a>
+      </nav>
+
+      <div class="pt-3 border-t border-slate-100 space-y-2">
+        <a href="tel:+254700357022" class="w-full py-2.5 px-4 rounded-xl text-xs font-semibold text-slate-700 bg-slate-50 flex items-center justify-between">
+          <span class="flex items-center gap-2">
+            <i data-lucide="phone" class="w-3.5 h-3.5 text-brand-blue"></i>
+            <span>Hotline Line 1</span>
+          </span>
+          <span class="font-bold text-slate-900">+254 700 357 022</span>
+        </a>
+        <a href="tel:+254780220702" class="w-full py-2.5 px-4 rounded-xl text-xs font-semibold text-slate-700 bg-slate-50 flex items-center justify-between">
+          <span class="flex items-center gap-2">
+            <i data-lucide="phone" class="w-3.5 h-3.5 text-brand-green-deep"></i>
+            <span>Hotline Line 2</span>
+          </span>
+          <span class="font-bold text-slate-900">+254 780 220 702</span>
+        </a>
+        <a href="https://wa.me/254700357022?text=Hello%20Techashi%20Solutions,%20I%20would%20like%20to%20inquire%20about%20your%20services" target="_blank" class="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-brand-blue-deep bg-brand-green hover:bg-brand-green-dark transition flex items-center justify-center gap-2 shadow-sm">
+          <i data-lucide="message-circle" class="w-4 h-4"></i>
+          <span>Chat on WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= MAIN DEDICATED TOVNIA-STYLE CONTACT SECTION ================= -->
+  <main class="contact-page">
+    <div class="shell contact-grid">
+      
+      <!-- ================= LEFT COLUMN: INTRO, NEXT STEPS & DIRECT INFO ================= -->
+      <div class="contact-intro">
+        
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span class="sep">/</span>
+          <span class="current">Contact</span>
+        </nav>
+
+        <!-- Main Heading with Gradient Accent -->
+        <h1>Tell us what your business <em>needs</em></h1>
+
+        <!-- Lead Paragraph -->
+        <p class="contact-lead">
+          Whether you are procuring enterprise laptops, architecting structured networking, securing premises with 4K CCTV, or migrating to Microsoft 365 cloud, start with the requirement. We will work with you to engineer the right solution.
+        </p>
+
+        <!-- What Happens Next -->
+        <h2 class="contact-expect-title">What happens next</h2>
+        <ul class="contact-expect">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path d="M5 12.5l4.5 4.5L19 7.5"></path>
+            </svg>
+            <span>A qualified systems engineer reviews your submission — not an automated ticket queue.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path d="M5 12.5l4.5 4.5L19 7.5"></path>
+            </svg>
+            <span>We reply within one working day with an honest view of feasibility, budget scope, and fit.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path d="M5 12.5l4.5 4.5L19 7.5"></path>
+            </svg>
+            <span>If it fits, we furnish a comprehensive itemized quotation or arrange a complimentary site survey in Nairobi.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path d="M5 12.5l4.5 4.5L19 7.5"></path>
+            </svg>
+            <span>If we are not the right match for your specific scope, we say so upfront and point you to a proven partner.</span>
+          </li>
+        </ul>
+
+        <!-- Direct Contact Line Details -->
+        <dl class="contact-direct">
+          
+          <!-- Line 1: Official Email -->
+          <div class="contact-line">
+            <span class="contact-line-mark" aria-hidden="true">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2.6" y="5" width="18.8" height="14" rx="2.4"></rect>
+                <path d="m3.9 7.4 7.2 5.2a1.5 1.5 0 0 0 1.8 0l7.2-5.2"></path>
+              </svg>
+            </span>
+            <div>
+              <dt>Email</dt>
+              <dd>
+                <a href="mailto:info@techashisolutions.com" title="Email Techashi Solutions">info@techashisolutions.com</a>
+              </dd>
+            </div>
+          </div>
+
+          <!-- Line 2: Primary Phone / WhatsApp -->
+          <div class="contact-line">
+            <span class="contact-line-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M8.5 3h7A1.5 1.5 0 0 1 17 4.5v15a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 7 19.5v-15A1.5 1.5 0 0 1 8.5 3zM11 17.5h2"></path>
+              </svg>
+            </span>
+            <div>
+              <dt>Primary Phone / WhatsApp</dt>
+              <dd>
+                <a href="tel:+254700357022">+254 700 357 022</a>
+              </dd>
+            </div>
+          </div>
+
+          <!-- Line 3: Additional Hotline -->
+          <div class="contact-line">
+            <span class="contact-line-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M8.5 3h7A1.5 1.5 0 0 1 17 4.5v15a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 7 19.5v-15A1.5 1.5 0 0 1 8.5 3zM11 17.5h2"></path>
+              </svg>
+            </span>
+            <div>
+              <dt>Hotline Line 2</dt>
+              <dd>
+                <a href="tel:+254780220702">+254 780 220 702</a>
+              </dd>
+            </div>
+          </div>
+
+          <!-- Line 4: Head Office Location -->
+          <div class="contact-line">
+            <span class="contact-line-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 21c3.6-3.4 6.3-6.7 6.3-10.2a6.3 6.3 0 1 0-12.6 0C5.7 14.3 8.4 17.6 12 21Z"></path>
+                <circle cx="12" cy="10.4" r="2.5"></circle>
+              </svg>
+            </span>
+            <div>
+              <dt>Head Office</dt>
+              <dd title="Chaka Place Building, 3rd Floor, Argwings Kodhek Rd, Nairobi">
+                <span>Chaka Place, 3rd Floor, Nairobi</span>
+              </dd>
+            </div>
+          </div>
+
+        </dl>
+
+        <!-- Geographic Presence Statement -->
+        <p class="contact-presence">
+          We serve corporate businesses, government agencies, non-profits, healthcare, retail facilities, and SMEs across Nairobi, Mombasa, Kisumu, Nakuru, Eldoret, and countrywide in Kenya.
+        </p>
+
+        <!-- Partner Brand Marquee Rail -->
+        <div class="contact-logos" aria-label="Hardware & technology partners we work with">
+          <ul>
+            <li><span class="brand-badge">HP Enterprise</span></li>
+            <li><span class="brand-badge">Dell Technologies</span></li>
+            <li><span class="brand-badge">Lenovo ThinkPad</span></li>
+            <li><span class="brand-badge">Cisco Systems</span></li>
+            <li><span class="brand-badge">Ubiquiti UniFi</span></li>
+            <li><span class="brand-badge">Hikvision</span></li>
+            <li><span class="brand-badge">Dahua Security</span></li>
+            <li><span class="brand-badge">Microsoft 365</span></li>
+            <li><span class="brand-badge">APC Schneider</span></li>
+            <li><span class="brand-badge">Epson WorkForce</span></li>
+            <!-- Loop Duplicate -->
+            <li aria-hidden="true"><span class="brand-badge">HP Enterprise</span></li>
+            <li aria-hidden="true"><span class="brand-badge">Dell Technologies</span></li>
+            <li aria-hidden="true"><span class="brand-badge">Lenovo ThinkPad</span></li>
+            <li aria-hidden="true"><span class="brand-badge">Cisco Systems</span></li>
+            <li aria-hidden="true"><span class="brand-badge">Ubiquiti UniFi</span></li>
+            <li aria-hidden="true"><span class="brand-badge">Hikvision</span></li>
+            <li aria-hidden="true"><span class="brand-badge">Dahua Security</span></li>
+            <li aria-hidden="true"><span class="brand-badge">Microsoft 365</span></li>
+            <li aria-hidden="true"><span class="brand-badge">APC Schneider</span></li>
+            <li aria-hidden="true"><span class="brand-badge">Epson WorkForce</span></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- ================= RIGHT COLUMN: ELEVATED WHITE CONTACT CARD ================= -->
+      <div class="contact-card">
+        
+        <!-- INITIAL STATE: REQUIREMENT INQUIRY FORM -->
+        <div id="contact-form-container">
+          <h2>Let’s discuss the requirement</h2>
+          <p class="contact-card-lead">
+            Tell us what you want to improve, build, or deploy, and your existing setup.
+          </p>
+
+          <form id="contact-enquiry-form" onsubmit="handleContactPageSubmit(event)" class="enquiry-form">
+            
+            <!-- Full Name -->
+            <div class="enquiry-field">
+              <label class="enquiry-label" for="contact-name">
+                Full Name <span class="enquiry-required">*</span>
+              </label>
+              <input type="text" id="contact-name" name="name" required placeholder="e.g. John Kamau" class="enquiry-input">
+            </div>
+
+            <!-- Organisation (Optional) -->
+            <div class="enquiry-field">
+              <label class="enquiry-label" for="contact-org">
+                Company / Organisation <span class="enquiry-optional">(optional)</span>
+              </label>
+              <input type="text" id="contact-org" name="organisation" placeholder="e.g. Apex Consulting Ltd" class="enquiry-input">
+            </div>
+
+            <!-- Email & Phone Grid -->
+            <div class="enquiry-row">
+              <div class="enquiry-field">
+                <label class="enquiry-label" for="contact-email">
+                  Business Email <span class="enquiry-required">*</span>
+                </label>
+                <input type="email" id="contact-email" name="email" required placeholder="name@company.co.ke" class="enquiry-input">
+              </div>
+
+              <div class="enquiry-field">
+                <label class="enquiry-label" for="contact-phone">
+                  Phone Number <span class="enquiry-required">*</span>
+                </label>
+                <input type="tel" id="contact-phone" name="phone" required placeholder="0700 357 022" class="enquiry-input">
+              </div>
+            </div>
+
+            <!-- Service Requirement Category -->
+            <div class="enquiry-field">
+              <label class="enquiry-label" for="contact-service">
+                Primary Requirement <span class="enquiry-required">*</span>
+              </label>
+              <select id="contact-service" name="service" required class="enquiry-input is-select">
+                <option value="Hardware Procurement (Laptops, Desktops, Servers, Printers)">Hardware Procurement (Laptops, Desktops, Servers, Printers)</option>
+                <option value="Structured Cabling & Office Networking (LAN, Wi-Fi, Fiber)">Structured Cabling & Office Networking (LAN, Wi-Fi, Fiber)</option>
+                <option value="CCTV Surveillance & Biometric Access Control">CCTV Surveillance & Biometric Access Control</option>
+                <option value="Microsoft 365 Cloud Setup & Email Migration">Microsoft 365 Cloud Setup & Email Migration</option>
+                <option value="Managed IT Support & Maintenance SLA">Managed IT Support & Maintenance SLA</option>
+                <option value="Forecourt Fuel Automation & Point of Sale">Forecourt Fuel Automation & Point of Sale</option>
+                <option value="Hardware Diagnostics & Board Repair">Hardware Diagnostics & Board Repair</option>
+                <option value="General Corporate Inquiry">General Corporate Inquiry</option>
+              </select>
+            </div>
+
+            <!-- Detailed Requirement Message -->
+            <div class="enquiry-field">
+              <label class="enquiry-label" for="contact-message">
+                Tell us about your requirement <span class="enquiry-required">*</span>
+              </label>
+              <textarea id="contact-message" name="message" required rows="4" placeholder="Describe the equipment, number of workstations, cabling points, security coverage, or IT challenges you are addressing..." class="enquiry-input is-multiline"></textarea>
+              <p class="enquiry-hint">
+                Include quantities, existing systems, or target implementation dates if available.
+              </p>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" id="contact-submit-btn" class="enquiry-submit">
+              <span>Submit Requirement</span>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M13 6l6 6-6 6"></path>
+              </svg>
+            </button>
+
+            <!-- Direct WhatsApp Handoff Bar -->
+            <a class="chat-handoff" href="https://wa.me/254700357022?text=Hello%20Techashi%20Solutions%2C%20I%20have%20an%20inquiry%20regarding%20your%20services." target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.16c-.25.69-1.45 1.32-2 1.36-.51.05-1.16.07-1.87-.12a17.3 17.3 0 0 1-1.7-.63c-2.99-1.29-4.94-4.3-5.09-4.5-.15-.2-1.22-1.62-1.22-3.09 0-1.47.77-2.19 1.04-2.49.27-.3.59-.37.79-.37h.57c.18 0 .43-.07.67.51.25.6.84 2.07.91 2.22.07.15.12.32.02.52-.1.2-.15.32-.3.5l-.45.52c-.15.15-.3.31-.13.61.17.3.77 1.27 1.65 2.06 1.14 1.01 2.1 1.33 2.4 1.48.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.72.81 2.02.96.3.15.5.22.57.35.07.12.07.72-.18 1.41Z"></path>
+              </svg>
+              <span>Or Continue Directly on WhatsApp (+254 700 357 022)</span>
+            </a>
+
+            <!-- Footnote Reassurance -->
+            <div class="enquiry-foot">
+              We respect your privacy. No spam — your details are exclusively used to answer your inquiry.
+            </div>
+
+          </form>
+        </div>
+
+        <!-- SUCCESS STATE: SUBMISSION CONFIRMED (Tovnia-identical .enquiry-done) -->
+        <div id="contact-success-container" class="enquiry-done hidden">
+          <div class="enquiry-done-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 13l4 4L19 7"></path>
+            </svg>
+          </div>
+          
+          <h3 class="enquiry-done-title">Requirement Received</h3>
+          <p class="enquiry-done-body">
+            Thank you, <strong id="done-client-name" class="text-slate-900">Valued Partner</strong>! Your requirement has been forwarded directly to Techashi Solutions' technical engineering team.
+          </p>
+
+          <ul class="enquiry-next">
+            <li>
+              <span class="step-no">01</span>
+              <span>An enterprise IT engineer examines your scope and technical specifications.</span>
+            </li>
+            <li>
+              <span class="step-no">02</span>
+              <span>We reach out to you via <strong id="done-client-phone" class="text-slate-900">your phone</strong> or email within one working day.</span>
+            </li>
+            <li>
+              <span class="step-no">03</span>
+              <span>We provide a transparent quotation or arrange a complimentary site assessment.</span>
+            </li>
+          </ul>
+
+          <div class="enquiry-done-links">
+            <a href="/products">Explore Hardware Catalog →</a>
+            <a href="/company-profile">Company Profile →</a>
+            <button type="button" onclick="resetContactForm()">Submit Another Requirement</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ================= CORPORATE FOOTER ================= -->
+  <footer class="bg-brand-blue-deep text-slate-300 pt-16 pb-12 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-12 border-b border-slate-800">
+        
+        <!-- Col 1: Brand & Bio -->
+        <div class="space-y-4">
+          <img src="assets/logo-dark.png" alt="Techashi Solutions Ltd." class="h-12 w-auto object-contain">
+          <p class="text-slate-400 leading-relaxed pr-4">
+            Techashi Solutions Ltd. is a premier Kenyan IT solutions provider combining hardware sales, structured networking, CCTV security, and cloud services in Kenya.
+          </p>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div class="space-y-3">
+          <h4 class="text-white font-bold text-sm">Quick Links</h4>
+          <ul class="space-y-2">
+            <li><a href="/" class="hover:text-brand-green transition-colors">Home</a></li>
+            <li><a href="/products" class="hover:text-brand-green transition-colors">Hardware & Equipment</a></li>
+            <li><a href="/company-profile" class="hover:text-brand-green transition-colors">Company Profile</a></li>
+            <li><a href="/#services-hub" class="hover:text-brand-green transition-colors">Our Services</a></li>
+            <li><a href="/#showcase" class="hover:text-brand-green transition-colors">Projects</a></li>
+            <li><a href="/contact" class="text-brand-green font-semibold">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Services -->
+        <div class="space-y-3">
+          <h4 class="text-white font-bold text-sm">Key Services</h4>
+          <ul class="space-y-2">
+            <li><a href="/#services-hub" class="hover:text-brand-green transition-colors">PCs & Laptops</a></li>
+            <li><a href="/#services-hub" class="hover:text-brand-green transition-colors">Structured Cabling</a></li>
+            <li><a href="/#services-hub" class="hover:text-brand-green transition-colors">CCTV & Security</a></li>
+            <li><a href="/#services-hub" class="hover:text-brand-green transition-colors">Forecourt Fuel Systems</a></li>
+            <li><a href="/#services-hub" class="hover:text-brand-green transition-colors">Microsoft 365 Cloud</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Contacts & Office -->
+        <div class="space-y-3">
+          <h4 class="text-white font-bold text-sm">Direct Contacts</h4>
+          <ul class="space-y-2.5">
+            <li class="flex items-start gap-2.5">
+              <i data-lucide="map-pin" class="w-4 h-4 text-brand-green shrink-0 mt-0.5"></i>
+              <span class="text-slate-300">Chaka Place Building, 3rd Floor, Argwings Kodhek Rd, Nairobi</span>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <i data-lucide="phone" class="w-4 h-4 text-brand-green shrink-0"></i>
+              <a href="tel:+254700357022" class="hover:text-white transition-colors">+254 700 357 022</a>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <i data-lucide="phone" class="w-4 h-4 text-brand-green shrink-0"></i>
+              <a href="tel:+254780220702" class="hover:text-white transition-colors">+254 780 220 702</a>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <i data-lucide="mail" class="w-4 h-4 text-brand-green shrink-0"></i>
+              <a href="mailto:info@techashisolutions.com" class="hover:text-white transition-colors">info@techashisolutions.com</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-500">
+        <div>
+          &copy; 2026 Techashi Solutions Ltd. All rights reserved.
+        </div>
+        <div class="flex items-center gap-6">
+          <a href="/company-profile" class="hover:text-slate-400 transition-colors">Company Profile</a>
+          <a href="/products" class="hover:text-slate-400 transition-colors">Equipment Catalog</a>
+          <a href="/contact" class="hover:text-slate-400 transition-colors">Contact Support</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="fixed top-5 right-5 z-[9999] flex flex-col gap-3 max-w-md w-full pointer-events-none px-4 sm:px-0"></div>
+
+  <!-- Cart Engine Script -->
+  <script src="cart.js"></script>
+
+  <!-- Contact Form Logic -->
+  <script>
+    lucide.createIcons();
+
+    // Mobile Drawer Toggle
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileToggle && mobileMenu) {
+      mobileToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+        });
+      });
+    }
+
+    // Toast System
+    function showToast({ title, message, type = 'success', duration = 5500 }) {
+      const container = document.getElementById('toast-container');
+      if (!container) return;
+
+      const toast = document.createElement('div');
+      toast.className = 'pointer-events-auto bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-slate-100 p-4 relative overflow-hidden transition-all duration-300 transform translate-y-[-20px] opacity-0 scale-95 flex items-start gap-3.5';
+
+      let iconColor = type === 'success' ? 'bg-emerald-500' : 'bg-brand-blue';
+      toast.innerHTML = `
+        <div class="w-10 h-10 rounded-xl ${iconColor} text-white flex items-center justify-center shrink-0 shadow-md">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <div class="flex-1 pr-6">
+          <div class="flex items-center gap-2">
+            <span class="text-[10px] font-extrabold uppercase tracking-wider text-brand-blue bg-blue-50 px-2 py-0.5 rounded-full border border-blue-200">Techashi Solutions</span>
+            <span class="text-[11px] text-slate-400">Just now</span>
+          </div>
+          <h4 class="text-sm font-bold text-slate-900 mt-1">${title}</h4>
+          <div class="text-xs text-slate-600 mt-1 leading-relaxed">${message}</div>
+        </div>
+      `;
+
+      container.appendChild(toast);
+      requestAnimationFrame(() => {
+        toast.classList.remove('translate-y-[-20px]', 'opacity-0', 'scale-95');
+        toast.classList.add('translate-y-0', 'opacity-100', 'scale-100');
+      });
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100', 'scale-100');
+        toast.classList.add('translate-x-full', 'opacity-0');
+        setTimeout(() => toast.remove(), 300);
+      }, duration);
+    }
+
+    // Contact Form Submission
+    async function handleContactPageSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const submitBtn = document.getElementById('contact-submit-btn');
+      const origHtml = submitBtn.innerHTML;
+
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `
+        <span class="inline-flex items-center gap-2">
+          <svg class="animate-spin h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          Submitting Requirement...
+        </span>
+      `;
+
+      const name = document.getElementById('contact-name').value.trim();
+      const organisation = document.getElementById('contact-org').value.trim();
+      const email = document.getElementById('contact-email').value.trim();
+      const phone = document.getElementById('contact-phone').value.trim();
+      const service = document.getElementById('contact-service').value;
+      const message = document.getElementById('contact-message').value.trim();
+
+      const fullMessage = organisation 
+        ? `[Company: ${organisation}]\n${message}`
+        : message;
+
+      try {
+        const res = await fetch('/api/inquiries', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name,
+            email,
+            phone,
+            service,
+            message: fullMessage
+          })
+        });
+
+        const data = await res.json();
+        console.log('Inquiry submitted:', data);
+      } catch (err) {
+        console.warn('Inquiry submit network notice:', err);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = origHtml;
+      }
+
+      // Populate success card
+      document.getElementById('done-client-name').textContent = name;
+      document.getElementById('done-client-phone').textContent = phone;
+
+      // Switch to success card
+      document.getElementById('contact-form-container').classList.add('hidden');
+      document.getElementById('contact-success-container').classList.remove('hidden');
+
+      showToast({
+        title: 'Requirement Registered!',
+        message: `Thank you, <strong>${name}</strong>. Our IT team will contact you shortly on <strong>${phone}</strong>.`,
+        type: 'success',
+        duration: 6000
+      });
+
+      // Smooth scroll to top of card if needed
+      document.querySelector('.contact-card').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function resetContactForm() {
+      const form = document.getElementById('contact-enquiry-form');
+      if (form) form.reset();
+      document.getElementById('contact-success-container').classList.add('hidden');
+      document.getElementById('contact-form-container').classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>

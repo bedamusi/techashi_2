@@ -871,6 +871,8 @@ function createServer(port) {
       targetFile = '/products.html';
     } else if (cleanPath === '/cart' || cleanPath === '/bag' || cleanPath === '/checkout' || cleanPath === '/cart.html') {
       targetFile = '/cart.html';
+    } else if (cleanPath === '/contact' || cleanPath === '/contact.html') {
+      targetFile = '/contact.html';
     } else if (!path.extname(cleanPath) && fs.existsSync(path.join(__dirname, cleanPath + '.html'))) {
       targetFile = cleanPath + '.html';
     }
