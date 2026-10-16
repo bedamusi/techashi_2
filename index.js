@@ -655,7 +655,7 @@ function createServer(port) {
                     </tfoot>
                   </table>
                   <p style="font-size: 13px; color: #64748b;">
-                    Need immediate assistance? Contact us at <strong>+254 700 357 022</strong> or visit us at Chaka Place Building, 3rd Floor, Argwings Kodhek Rd, Nairobi.
+                    Need immediate assistance? Contact us at <strong>+254 700 357 022 / +254 780 220 702</strong> or visit us at Chaka Place Building, 3rd Floor, Argwings Kodhek Rd, Nairobi.
                   </p>
                 </div>
               `,
@@ -842,13 +842,13 @@ function createServer(port) {
                   <p>Our technology team has received your request and an engineer or specialist will review your requirements and get in touch with you shortly.</p>
                   <div style="margin: 20px 0; padding: 15px; background-color: #f8fafc; border-radius: 8px; border: 1px solid #e2e8f0; font-size: 13px;">
                     <p style="margin: 0 0 5px;"><strong>Need urgent assistance?</strong></p>
-                    <p style="margin: 0;">Call or WhatsApp us directly at: <a href="tel:+254700357022" style="color: #075293; font-weight: bold;">+254 700 357 022</a></p>
+                    <p style="margin: 0;">Call or WhatsApp us directly at: <a href="tel:+254700357022" style="color: #075293; font-weight: bold;">+254 700 357 022</a> / <a href="tel:+254780220702" style="color: #075293; font-weight: bold;">+254 780 220 702</a></p>
                     <p style="margin: 5px 0 0;">Office: Chaka Place Building, 3rd Floor, Argwings Kodhek Rd, Nairobi, Kenya</p>
                   </div>
                   <p style="font-size: 12px; color: #94a3b8;">Techashi Solutions Ltd · Technology that keeps your business moving.</p>
                 </div>
               `,
-              text: `Hi ${newLead.name}, thank you for contacting Techashi Solutions Ltd regarding ${newLead.service}. Our team will contact you shortly. Need urgent assistance? Call +254 700 357 022.`
+              text: `Hi ${newLead.name}, thank you for contacting Techashi Solutions Ltd regarding ${newLead.service}. Our team will contact you shortly. Need urgent assistance? Call +254 700 357 022 or +254 780 220 702.`
             });
           }
 

@@ -382,11 +382,11 @@
 
         <!-- Right Side Contact & Action -->
         <div class="hidden sm:flex items-center gap-4">
-          <a href="tel:+254700357022" onclick="handlePhoneClick(event)" class="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-brand-blue cursor-pointer" title="Call or WhatsApp Techashi">
-            <span class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-brand-blue">
+          <a href="tel:+254700357022" onclick="handlePhoneClick(event)" class="flex items-center gap-2 text-xs md:text-sm font-semibold text-slate-700 hover:text-brand-blue cursor-pointer" title="Call or WhatsApp Techashi">
+            <span class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-brand-blue shrink-0">
               <i data-lucide="phone" class="w-4 h-4"></i>
             </span>
-            <span>+254 700 357 022</span>
+            <span>+254 700 357 022 / +254 780 220 702</span>
           </a>
 
           <!-- Shopping Bag Button -->
@@ -1645,7 +1645,7 @@
                 </div>
                 <div>
                   <div class="text-[11px] font-semibold text-slate-400 uppercase">Call / WhatsApp Us</div>
-                  <div class="text-sm font-bold text-slate-900 group-hover:text-brand-blue transition-colors">+254 700 357 022</div>
+                  <div class="text-sm font-bold text-slate-900 group-hover:text-brand-blue transition-colors">+254 700 357 022 / +254 780 220 702</div>
                 </div>
               </div>
               <span class="text-xs font-semibold text-brand-blue bg-blue-50 px-2.5 py-1 rounded-lg border border-blue-100 flex items-center gap-1 group-hover:bg-brand-blue group-hover:text-white transition">
@@ -1798,7 +1798,7 @@
           <h4 class="text-white font-bold text-sm">Quick Links</h4>
           <ul class="space-y-2">
             <li><a href="#about" class="hover:text-brand-green transition-colors">About Us</a></li>
-            <li><a href="/company-profile" class="hover:text-brand-green transition-colors flex items-center gap-1.5"><i data-lucide="file-text" class="w-3.5 h-3.5 text-brand-green"></i> View Company Profile</a></li>
+            <li><a href="/company-profile" class="hover:text-brand-green transition-colors">Company Profile</a></li>
             <li><a href="#services-hub" class="hover:text-brand-green transition-colors">Our Services</a></li>
             <li><a href="#showcase" class="hover:text-brand-green transition-colors">Projects</a></li>
             <li><a href="#contact" class="hover:text-brand-green transition-colors">Contact Us</a></li>
@@ -1823,7 +1823,10 @@
           <h4 class="text-white font-bold text-sm">Contact Us</h4>
           <div class="space-y-2 text-slate-400">
             <p class="font-medium text-slate-300">Chaka Place Building, 3rd Floor<br>Argwings Kodhek Rd, Nairobi</p>
-            <p><a href="tel:+254700357022" onclick="handlePhoneClick(event)" class="hover:text-brand-green font-semibold text-white flex items-center gap-1 cursor-pointer" title="Call or WhatsApp">+254 700 357 022</a></p>
+            <p class="space-y-1">
+              <a href="tel:+254700357022" onclick="handlePhoneClick(event)" class="hover:text-brand-green font-semibold text-white flex items-center gap-1 cursor-pointer" title="Call or WhatsApp">+254 700 357 022</a>
+              <a href="tel:+254780220702" onclick="handlePhoneClick(event)" class="hover:text-brand-green font-semibold text-white flex items-center gap-1 cursor-pointer" title="Call or WhatsApp">+254 780 220 702</a>
+            </p>
             <p><a href="mailto:info@techashisolutions.com" class="hover:text-white">info@techashisolutions.com</a></p>
             <p>Mon – Sat: 8:00 AM – 6:00 PM</p>
           </div>
@@ -1933,14 +1936,14 @@
           <i data-lucide="arrow-right" class="w-4 h-4 text-emerald-200 group-hover:translate-x-1 transition-transform"></i>
         </a>
 
-        <!-- Option 2: Direct Hotline with Instant Copy -->
+        <!-- Option 2: Direct Hotline 1 with Instant Copy -->
         <div class="flex items-center justify-between p-3.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100/70 transition">
           <div class="flex items-center gap-3">
-            <span class="w-8 h-8 rounded-lg bg-brand-blue/10 text-brand-blue flex items-center justify-center">
+            <span class="w-8 h-8 rounded-lg bg-brand-blue/10 text-brand-blue flex items-center justify-center shrink-0">
               <i data-lucide="phone-call" class="w-4 h-4"></i>
             </span>
             <div>
-              <div class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Direct Hotline</div>
+              <div class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Hotline Line 1</div>
               <div class="text-sm font-bold text-slate-900">+254 700 357 022</div>
             </div>
           </div>
@@ -1949,7 +1952,29 @@
               <i data-lucide="copy" class="w-3.5 h-3.5"></i>
               <span>Copy</span>
             </button>
-            <a href="tel:+254700357022" class="p-1.5 text-xs font-semibold rounded-lg bg-white border border-slate-200 text-slate-700 hover:text-brand-blue hover:border-brand-blue transition" title="Dial via system app">
+            <a href="tel:+254700357022" class="p-1.5 text-xs font-semibold rounded-lg bg-white border border-slate-200 text-slate-700 hover:text-brand-blue hover:border-brand-blue transition" title="Dial Line 1">
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Option 2b: Direct Hotline 2 with Instant Copy -->
+        <div class="flex items-center justify-between p-3.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100/70 transition">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-brand-green/20 text-brand-green-deep flex items-center justify-center shrink-0">
+              <i data-lucide="phone" class="w-4 h-4"></i>
+            </span>
+            <div>
+              <div class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Hotline Line 2</div>
+              <div class="text-sm font-bold text-slate-900">+254 780 220 702</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <button onclick="copyToClipboard('+254780220702', 'Phone number copied!')" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-white border border-slate-200 text-slate-700 hover:text-brand-blue hover:border-brand-blue transition flex items-center gap-1 shadow-2xs" title="Copy Number">
+              <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+              <span>Copy</span>
+            </button>
+            <a href="tel:+254780220702" class="p-1.5 text-xs font-semibold rounded-lg bg-white border border-slate-200 text-slate-700 hover:text-brand-blue hover:border-brand-blue transition" title="Dial Line 2">
               <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
             </a>
           </div>
