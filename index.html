@@ -53,21 +53,21 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
-    /* Refined, balanced dark slate hero background with subtle cool undertone */
+    /* Tovnia-inspired high-contrast radial overlay preserving original background image */
     .hero-techashi {
-      background-color: #0B131E;
+      background-color: #07101E;
       background-image: 
-        linear-gradient(to right, rgba(11, 19, 30, 0.96) 0%, rgba(13, 27, 44, 0.82) 48%, rgba(11, 19, 30, 0.35) 100%),
+        radial-gradient(ellipse 95% 85% at 50% 35%, rgba(7, 16, 30, 0.88) 0%, rgba(7, 16, 30, 0.96) 65%, #07101E 100%),
         url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600&q=80');
       background-size: cover;
-      background-position: right center;
+      background-position: center;
       background-repeat: no-repeat;
     }
 
     @media (max-width: 768px) {
       .hero-techashi {
         background-image: 
-          linear-gradient(to bottom, rgba(11, 19, 30, 0.94) 0%, rgba(11, 19, 30, 0.98) 100%),
+          radial-gradient(ellipse 100% 85% at 50% 30%, rgba(7, 16, 30, 0.92) 0%, rgba(7, 16, 30, 0.98) 75%, #07101E 100%),
           url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1000&q=80');
       }
     }
@@ -100,6 +100,169 @@
       background: rgba(56, 189, 248, 0.12);
       color: #38BDF8;
       border: 1px solid rgba(56, 189, 248, 0.35);
+    }
+
+    /* Tovnia-inspired Hero Section System */
+    .hx-hero {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: calc(85vh - 80px);
+      padding: 5rem 1.25rem 6.5rem;
+      text-align: center;
+      color: #fff;
+    }
+
+    .hx-grid-layer {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background-image: 
+        linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+        linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+      background-size: 72px 72px;
+      background-position: 50% 0;
+      -webkit-mask-image: radial-gradient(120% 90% at 50% 20%, #000 40%, transparent 85%);
+      mask-image: radial-gradient(120% 90% at 50% 20%, #000 40%, transparent 85%);
+    }
+
+    .hx-beam-light {
+      position: absolute;
+      top: -16%;
+      left: -10%;
+      width: 60%;
+      aspect-ratio: 1.6;
+      border-radius: 50%;
+      filter: blur(48px);
+      background: radial-gradient(closest-side, rgba(235, 245, 255, 0.22) 0%, rgba(120, 190, 240, 0.15) 30%, rgba(7, 82, 147, 0.08) 58%, transparent 100%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .hx-ember-light {
+      position: absolute;
+      bottom: -6%;
+      right: -10%;
+      width: 48%;
+      aspect-ratio: 1.4;
+      border-radius: 50%;
+      filter: blur(48px);
+      background: radial-gradient(closest-side, rgba(142, 198, 64, 0.14), transparent);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .hx-tag-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: #dbe5f3;
+      background: rgba(255, 255, 255, 0.07);
+      border-radius: 9999px;
+      padding: 7px 18px;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .hx-display-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(2.75rem, calc(1.6rem + 3.8vw), 5.25rem);
+      letter-spacing: -0.035em;
+      line-height: 1.02;
+      font-weight: 700;
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hx-display-title em {
+      font-style: normal;
+      background: linear-gradient(90deg, #4aa3e0 0%, #9fd0f5 45%, #8EC640 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hx-lead-text {
+      max-width: 58ch;
+      font-size: clamp(1.0625rem, calc(0.95rem + 0.375vw), 1.25rem);
+      color: #c8d4e6;
+      margin-top: 24px;
+      line-height: 1.58;
+      font-weight: 400;
+    }
+
+    .hx-cta-btn {
+      height: 52px;
+      font-size: 1rem;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 8px 0 24px;
+      font-weight: 600;
+      background-color: #075293;
+      color: #fff;
+      box-shadow: 0 14px 30px -14px rgba(7, 82, 147, 0.9);
+      transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+      cursor: pointer;
+    }
+    .hx-cta-btn:hover {
+      background-color: #043a6b;
+      transform: translateY(-2px);
+      box-shadow: 0 20px 40px -12px rgba(7, 82, 147, 1);
+    }
+    .hx-cta-icon-disc {
+      width: 36px;
+      height: 36px;
+      background: #fff;
+      color: #075293;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .hx-cta-btn:hover .hx-cta-icon-disc {
+      transform: translateX(3px);
+    }
+
+    .hx-alt-btn {
+      height: 52px;
+      font-size: 1rem;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 24px;
+      font-weight: 500;
+      color: #dce6f4;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+    .hx-alt-btn:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.14);
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+    .hx-alt-btn svg, .hx-alt-btn i {
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .hx-alt-btn:hover svg, .hx-alt-btn:hover i {
+      transform: translateX(3px);
     }
 
     /* Testimonials Marquee: Part 1 moving right, Part 2 moving left */
@@ -273,47 +436,56 @@
     </div>
   </header>
 
-  <!-- ================= 2. HERO SECTION (TECHASHI BLUE & VIBRANT GREEN + IT HARDWARE SPECIALIST) ================= -->
-  <!-- Features IT Specialist in server infrastructure & hardware environment, exact brand blue #075293 canvas & brand green #8EC640 -->
-  <section id="home" class="hero-techashi text-white py-20 sm:py-28 lg:py-32 relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="max-w-2xl space-y-6">
-        
-        <!-- Brand Pill Badge -->
-        <div>
-          <span class="pill-badge-dark">
-            Certified IT Hardware & Infrastructure Partner
-          </span>
-        </div>
+  <!-- ================= 2. HERO SECTION (TOVNIA-STYLED TYPOGRAPHY & TEXT PLACEMENT) ================= -->
+  <section id="home" class="hero-techashi hx-hero relative text-white">
+    <!-- Tovnia-style Ambient Grid -->
+    <div class="hx-grid-layer" aria-hidden="true"></div>
 
-        <!-- H1 Headline (Dual-tone: White + Techashi Electric Blue Theme) -->
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-display leading-[1.12] tracking-tight">
-          Smart Tech.<br>
-          <span class="text-sky-400 bg-gradient-to-r from-sky-400 via-sky-300 to-blue-400 bg-clip-text text-transparent">Reliable Solutions.</span>
-        </h1>
+    <!-- Tovnia-style Soft Light Beams -->
+    <div class="hx-beam-light" aria-hidden="true"></div>
+    <div class="hx-ember-light" aria-hidden="true"></div>
 
-        <!-- Subtitle -->
-        <p class="text-base sm:text-lg text-slate-200 font-normal leading-relaxed max-w-xl">
-          Your trusted one-stop IT provider in Kenya. Certified brand-new & tested refurbished PCs, high-speed structured networking, 4K CCTV surveillance, and Microsoft 365 cloud setup with guaranteed warranty.
-        </p>
-
-        <!-- Dual CTA Buttons (Techashi Vibrant Green Pill + Outlined White Pill) -->
-        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
-          <button onclick="openQuoteModal()" class="px-8 py-3.5 rounded-full font-bold text-sm text-brand-blue-deep bg-brand-green hover:bg-brand-green-dark transition-all shadow-md text-center">
-            Request a Quote
-          </button>
-          <a href="#services-hub" class="px-8 py-3.5 rounded-full font-semibold text-sm text-white bg-white/10 hover:bg-white/20 border border-white/30 backdrop-blur-sm transition-all text-center">
-            Explore Hardware & Services
-          </a>
-        </div>
-
-        <!-- Bottom Trust Statement -->
-        <div class="pt-6 text-xs text-slate-300 flex items-center gap-2">
-          <span class="text-sky-400 font-bold">★ ★ ★ ★ ★</span>
-          <span>Trusted by over <strong>250+ Kenyan businesses</strong>, schools & professionals</span>
-        </div>
-
+    <!-- Centered Content Shell -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col items-center text-center">
+      
+      <!-- Brand Pill Badge (Tovnia Tag) -->
+      <div class="hx-tag-pill">
+        <span class="w-2 h-2 rounded-full bg-brand-green animate-pulse"></span>
+        <span>Certified IT Hardware & Infrastructure Partner</span>
       </div>
+
+      <!-- H1 Display Title (Tovnia Sizing & Gradient Em) -->
+      <h1 class="hx-display-title">
+        <span class="block">Smart Tech.</span>
+        <span class="block"><em>Reliable Solutions.</em></span>
+      </h1>
+
+      <!-- Subtitle / Lead Paragraph (Tovnia Sizing & max-w-56ch) -->
+      <p class="hx-lead-text">
+        Your trusted one-stop IT provider in Kenya. Certified brand-new & tested refurbished PCs, high-speed structured networking, 4K CCTV surveillance, and Microsoft 365 cloud setup with guaranteed warranty.
+      </p>
+
+      <!-- Action Buttons (Tovnia Primary CTA with Icon Disc + Secondary Outline Glass) -->
+      <div class="mt-9 flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+        <button onclick="openQuoteModal()" class="hx-cta-btn">
+          <span>Request a Quote</span>
+          <span class="hx-cta-icon-disc">
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </span>
+        </button>
+
+        <a href="#services-hub" class="hx-alt-btn">
+          <span>Explore Hardware & Services</span>
+          <i data-lucide="chevron-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+
+      <!-- Bottom Trust Statement Centered -->
+      <div class="mt-8 flex items-center justify-center gap-2 text-xs sm:text-sm text-slate-300">
+        <span class="text-sky-400 font-bold tracking-wider">★ ★ ★ ★ ★</span>
+        <span>Trusted by over <strong class="text-white font-semibold">250+ Kenyan businesses</strong>, schools & professionals</span>
+      </div>
+
     </div>
   </section>
 
