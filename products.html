@@ -98,7 +98,7 @@
         <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-700">
           <a href="/#services-hub" class="hover:text-brand-blue transition-colors">Our Services</a>
           <a href="/products" class="text-brand-blue font-bold flex items-center gap-1.5 border-b-2 border-brand-blue pb-0.5">
-            <span>Hardware Catalog</span>
+            <span>Hardware & Equipment</span>
             <span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-brand-blue text-white" id="nav-count-badge">8</span>
           </a>
           <a href="/#about" class="hover:text-brand-blue transition-colors">About Us</a>
@@ -145,22 +145,58 @@
     </div>
 
     <!-- Mobile Drawer -->
-    <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-100 bg-white px-5 py-4 space-y-3">
-      <a href="/cart" class="py-2.5 px-3 rounded-xl bg-blue-50 text-brand-blue font-bold text-sm flex items-center justify-between">
-        <span class="flex items-center gap-2">
-          <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-100 bg-white px-5 pt-3 pb-6 space-y-2 relative z-40 shadow-xl">
+      <!-- Shopping Bag Quick Access -->
+      <a href="/cart" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-slate-50 hover:bg-blue-50/70 border border-slate-200/80 text-brand-blue font-bold text-sm transition-colors">
+        <span class="flex items-center gap-2.5">
+          <i data-lucide="shopping-bag" class="w-4 h-4 text-brand-blue"></i>
           <span>My Shopping Bag</span>
         </span>
-        <span class="cart-count-badge px-2 py-0.5 text-xs rounded-full bg-brand-blue text-white hidden">0</span>
+        <span class="cart-count-badge px-2 py-0.5 text-xs font-extrabold rounded-full bg-brand-blue text-white hidden">0</span>
       </a>
-      <a href="/" class="block py-2 text-sm font-medium text-slate-700">Home</a>
-      <a href="/#services-hub" class="block py-2 text-sm font-medium text-slate-700">Our Services</a>
-      <a href="/products" class="block py-2 text-sm font-bold text-brand-blue">🛒 Hardware & Equipment Catalog</a>
-      <a href="/#about" class="block py-2 text-sm font-medium text-slate-700">About Us</a>
-      <a href="/#contact" class="block py-2 text-sm font-medium text-slate-700">Contact Us</a>
-      <button onclick="openQuoteModal()" class="w-full mt-2 py-3 rounded-full text-sm font-bold text-white bg-brand-blue text-center">
-        Request a Free Quote
-      </button>
+
+      <!-- Navigation Links -->
+      <nav class="space-y-1">
+        <a href="/" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:text-brand-blue hover:bg-slate-50 transition-colors">
+          <span>Home</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-300"></i>
+        </a>
+        <a href="/products" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-bold text-brand-blue bg-blue-50/70">
+          <span>Hardware & Equipment</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-brand-blue"></i>
+        </a>
+        <a href="/#services-hub" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:text-brand-blue hover:bg-slate-50 transition-colors">
+          <span>Our Services</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-300"></i>
+        </a>
+        <a href="/#about" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:text-brand-blue hover:bg-slate-50 transition-colors">
+          <span>About Us</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-300"></i>
+        </a>
+        <a href="/#showcase" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:text-brand-blue hover:bg-slate-50 transition-colors">
+          <span>Projects</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-300"></i>
+        </a>
+        <a href="/#testimonials" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:text-brand-blue hover:bg-slate-50 transition-colors">
+          <span>Testimonials</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-300"></i>
+        </a>
+        <a href="/#contact" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:text-brand-blue hover:bg-slate-50 transition-colors">
+          <span>Contact Us</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-300"></i>
+        </a>
+      </nav>
+
+      <!-- Action & Hotline -->
+      <div class="pt-2 border-t border-slate-100 space-y-2">
+        <a href="tel:+254700357022" class="flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-slate-50 border border-slate-200 text-xs font-bold text-slate-700">
+          <i data-lucide="phone" class="w-3.5 h-3.5 text-brand-blue"></i>
+          <span>Hotline: +254 700 357 022</span>
+        </a>
+        <button onclick="openQuoteModal()" class="w-full py-3 rounded-xl text-sm font-bold text-white bg-brand-blue hover:bg-brand-blue-dark transition shadow-sm">
+          Request a Free Quote
+        </button>
+      </div>
     </div>
   </header>
 
@@ -339,7 +375,7 @@
           <h4 class="text-white font-bold text-sm">Quick Navigation</h4>
           <ul class="space-y-2">
             <li><a href="/" class="hover:text-brand-green transition-colors">Home Page</a></li>
-            <li><a href="/products" class="text-brand-green font-semibold hover:underline">Equipment Catalog</a></li>
+            <li><a href="/products" class="text-brand-green font-semibold hover:underline">Hardware & Equipment</a></li>
             <li><a href="/company-profile" class="hover:text-brand-green transition-colors">Company Profile</a></li>
             <li><a href="/#services-hub" class="hover:text-brand-green transition-colors">Our Services</a></li>
             <li><a href="/#showcase" class="hover:text-brand-green transition-colors">Projects & Showcase</a></li>
@@ -560,6 +596,13 @@
     mobileToggle.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
     });
+    if (mobileMenu) {
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+        });
+      });
+    }
 
     const quoteModal = document.getElementById('quote-modal');
     const modalServiceInput = document.getElementById('modal-service-input');
