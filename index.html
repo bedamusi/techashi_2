@@ -129,142 +129,123 @@
     .marquee-container:hover .animate-marquee-left {
       animation-play-state: paused;
     }
+
+    /* Hide native outdated OS scrollbars across all browsers */
+    .scrollbar-none::-webkit-scrollbar,
+    .no-scrollbar::-webkit-scrollbar {
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+    }
+    .scrollbar-none,
+    .no-scrollbar {
+      -ms-overflow-style: none !important;
+      scrollbar-width: none !important;
+    }
+
+    /* Modern Minimalist Global Scrollbar for overall document */
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
   </style>
 </head>
 <body class="font-sans text-brand-charcoal bg-white antialiased selection:bg-brand-green selection:text-brand-blue-deep">
 
   <!-- ================= 1. HEADER & NAVIGATION ================= -->
-  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-xs transition-all duration-300">
+  <header class="sticky top-0 z-50 bg-white border-b border-slate-100 shadow-sm transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-20">
         
         <!-- Brand Logo -->
-        <a href="/" class="flex items-center gap-3 shrink-0 select-none group">
-          <img src="assets/logo.png" alt="Techashi Solutions Ltd." class="h-10 sm:h-11 w-auto object-contain transition-transform group-hover:scale-102">
+        <a href="#" class="flex items-center gap-3">
+          <img src="assets/logo.png" alt="Techashi Solutions Ltd." class="h-11 sm:h-12 w-auto object-contain">
         </a>
 
         <!-- Desktop Navigation Links -->
-        <nav class="hidden lg:flex items-center gap-1 xl:gap-2 text-sm font-medium text-slate-700">
-          <a href="/" class="px-3 py-2 rounded-xl text-brand-blue font-bold hover:bg-slate-50 transition-colors">Home</a>
-
-          <!-- Services Dropdown -->
+        <nav class="hidden lg:flex items-center gap-8 text-[15px] font-medium text-slate-700">
           <div class="relative group">
-            <button class="flex items-center gap-1.5 px-3 py-2 rounded-xl hover:text-brand-blue hover:bg-slate-50 transition-colors focus:outline-none">
+            <button class="flex items-center gap-1 hover:text-brand-blue transition-colors py-2">
               <span>Our Services</span>
               <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-hover:text-brand-blue transition-transform group-hover:rotate-180"></i>
             </button>
-            <div class="absolute top-full left-0 w-80 bg-white rounded-2xl shadow-xl border border-slate-100 p-2.5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-              <a href="#services-hub" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-brand-blue-light transition-colors">
-                <span class="w-8 h-8 rounded-lg bg-blue-50 text-brand-blue flex items-center justify-center shrink-0">
-                  <i data-lucide="network" class="w-4 h-4"></i>
-                </span>
-                <div>
-                  <strong class="text-xs font-bold text-slate-800 block">Networking & Cabling</strong>
-                  <span class="text-[11px] text-slate-500">Structured Cat6 & Fiber Optics</span>
-                </div>
+            <div class="absolute top-full left-0 w-72 bg-white rounded-xl shadow-xl border border-slate-100 p-2.5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+              <a href="#services-hub" class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-brand-blue-light transition-colors">
+                <i data-lucide="network" class="w-4 h-4 text-brand-blue"></i>
+                <span class="text-sm font-semibold text-slate-800">Networking & Cabling</span>
               </a>
-              <a href="#services-hub" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-brand-blue-light transition-colors">
-                <span class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
-                  <i data-lucide="camera" class="w-4 h-4"></i>
-                </span>
-                <div>
-                  <strong class="text-xs font-bold text-slate-800 block">CCTV & Surveillance</strong>
-                  <span class="text-[11px] text-slate-500">4K Security, NVRs & Mobile Access</span>
-                </div>
+              <a href="#services-hub" class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-brand-blue-light transition-colors">
+                <i data-lucide="camera" class="w-4 h-4 text-brand-green"></i>
+                <span class="text-sm font-semibold text-slate-800">CCTV & Surveillance</span>
               </a>
-              <a href="#services-hub" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-brand-blue-light transition-colors">
-                <span class="w-8 h-8 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center shrink-0">
-                  <i data-lucide="laptop" class="w-4 h-4"></i>
-                </span>
-                <div>
-                  <strong class="text-xs font-bold text-slate-800 block">PCs & Laptops Sales</strong>
-                  <span class="text-[11px] text-slate-500">Brand-New & Tested Workstations</span>
-                </div>
+              <a href="#services-hub" class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-brand-blue-light transition-colors">
+                <i data-lucide="laptop" class="w-4 h-4 text-brand-blue"></i>
+                <span class="text-sm font-semibold text-slate-800">PCs & Laptops Sales</span>
               </a>
-              <a href="#services-hub" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-brand-blue-light transition-colors">
-                <span class="w-8 h-8 rounded-lg bg-blue-50 text-brand-blue flex items-center justify-center shrink-0">
-                  <i data-lucide="cloud" class="w-4 h-4"></i>
-                </span>
-                <div>
-                  <strong class="text-xs font-bold text-slate-800 block">Microsoft 365 Cloud</strong>
-                  <span class="text-[11px] text-slate-500">Business Email, OneDrive & Teams</span>
-                </div>
+              <a href="#services-hub" class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-brand-blue-light transition-colors">
+                <i data-lucide="cloud" class="w-4 h-4 text-brand-blue"></i>
+                <span class="text-sm font-semibold text-slate-800">Microsoft 365 Cloud</span>
               </a>
-              <a href="#services-hub" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-brand-blue-light transition-colors">
-                <span class="w-8 h-8 rounded-lg bg-emerald-50 text-brand-green-deep flex items-center justify-center shrink-0">
-                  <i data-lucide="wrench" class="w-4 h-4"></i>
-                </span>
-                <div>
-                  <strong class="text-xs font-bold text-slate-800 block">PC Repairs & Servicing</strong>
-                  <span class="text-[11px] text-slate-500">Hardware Diagnostics & Maintenance</span>
-                </div>
+              <a href="#services-hub" class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-brand-blue-light transition-colors">
+                <i data-lucide="wrench" class="w-4 h-4 text-brand-green"></i>
+                <span class="text-sm font-semibold text-slate-800">PC Repairs & Servicing</span>
               </a>
-              <a href="#services-hub" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-amber-50 transition-colors">
-                <span class="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
-                  <i data-lucide="fuel" class="w-4 h-4"></i>
-                </span>
-                <div>
-                  <strong class="text-xs font-bold text-slate-800 block">Forecourt Fuel Systems</strong>
-                  <span class="text-[11px] text-slate-500">Digital Automation & POS Controllers</span>
-                </div>
+              <a href="#services-hub" class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-amber-50 transition-colors">
+                <i data-lucide="fuel" class="w-4 h-4 text-amber-600"></i>
+                <span class="text-sm font-semibold text-slate-800">Forecourt Fuel Systems</span>
               </a>
             </div>
           </div>
 
-          <!-- Hardware Catalog Link with Badge -->
-          <a href="/products" class="px-3 py-2 rounded-xl hover:text-brand-blue hover:bg-slate-50 transition-colors flex items-center gap-2">
-            <span>Hardware Catalog</span>
-            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-brand-blue border border-blue-200">Store</span>
-          </a>
-
-          <a href="#showcase" class="px-3 py-2 rounded-xl hover:text-brand-blue hover:bg-slate-50 transition-colors">Projects</a>
-          <a href="#about" class="px-3 py-2 rounded-xl hover:text-brand-blue hover:bg-slate-50 transition-colors">About Us</a>
-          <a href="#contact" class="px-3 py-2 rounded-xl hover:text-brand-blue hover:bg-slate-50 transition-colors">Contact</a>
+          <a href="#products-catalog" class="hover:text-brand-blue transition-colors font-semibold">Products</a>
+          <a href="#about" class="hover:text-brand-blue transition-colors">About Us</a>
+          <a href="#showcase" class="hover:text-brand-blue transition-colors">Projects</a>
+          <a href="#testimonials" class="hover:text-brand-blue transition-colors">Testimonials</a>
+          <a href="#contact" class="hover:text-brand-blue transition-colors">Contact</a>
         </nav>
 
-        <!-- Right Side Desktop Actions (lg:flex) -->
-        <div class="hidden lg:flex items-center gap-3">
-          <!-- Hotline Phone -->
-          <a href="tel:+254700357022" onclick="handlePhoneClick(event)" class="flex items-center gap-2 text-xs xl:text-sm font-semibold text-slate-700 hover:text-brand-blue px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors" title="Call or WhatsApp Techashi">
-            <span class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-brand-blue shrink-0">
+        <!-- Right Side Contact & Action -->
+        <div class="hidden sm:flex items-center gap-4">
+          <a href="tel:+254700357022" onclick="handlePhoneClick(event)" class="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-brand-blue cursor-pointer" title="Call or WhatsApp Techashi">
+            <span class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-brand-blue">
               <i data-lucide="phone" class="w-4 h-4"></i>
             </span>
-            <span class="hidden xl:inline">+254 700 357 022</span>
+            <span>+254 700 357 022</span>
           </a>
 
           <!-- Shopping Bag Button -->
-          <a href="/cart" class="relative grid h-10 w-10 place-items-center rounded-xl text-slate-700 hover:bg-slate-100 hover:text-brand-blue transition" title="View your shopping bag">
+          <a href="/cart" class="relative grid h-10 w-10 place-items-center rounded-full text-slate-700 hover:bg-slate-100 hover:text-brand-blue transition" title="Shopping Bag">
             <i data-lucide="shopping-bag" class="w-5 h-5"></i>
-            <span class="cart-count-badge absolute -top-1 -right-1 grid h-5 min-w-[20px] place-items-center rounded-full bg-brand-blue px-1 text-[10px] font-bold text-white shadow-xs hidden">
+            <span class="cart-count-badge absolute -top-0.5 -right-0.5 grid h-[18px] min-w-[18px] place-items-center rounded-full bg-brand-blue px-1 text-[10px] font-bold text-white hidden">
               0
             </span>
           </a>
 
-          <!-- CTA Get a Quote Button -->
-          <button onclick="openQuoteModal()" class="px-5 py-2.5 rounded-full text-xs xl:text-sm font-bold text-white bg-brand-blue hover:bg-brand-blue-dark transition-all shadow-sm hover:shadow-md flex items-center gap-2">
+          <button onclick="openQuoteModal()" class="px-5 py-2.5 rounded-full text-sm font-bold text-white bg-brand-blue hover:bg-brand-blue-dark transition-all shadow-sm flex items-center gap-2">
             <span>Get a Quote</span>
-            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
           </button>
         </div>
 
-        <!-- Mobile Header Actions (lg:hidden) -->
+        <!-- Mobile Actions -->
         <div class="flex lg:hidden items-center gap-2">
-          <!-- Quick Call -->
-          <a href="tel:+254700357022" onclick="handlePhoneClick(event)" class="w-9 h-9 rounded-xl bg-slate-100 text-slate-700 hover:text-brand-blue flex items-center justify-center" title="Call Techashi">
-            <i data-lucide="phone" class="w-4 h-4"></i>
-          </a>
-
-          <!-- Shopping Bag -->
-          <a href="/cart" class="relative w-9 h-9 rounded-xl bg-slate-100 text-slate-700 hover:text-brand-blue flex items-center justify-center" title="Shopping Bag">
-            <i data-lucide="shopping-bag" class="w-4 h-4"></i>
-            <span class="cart-count-badge absolute -top-1 -right-1 grid h-4 min-w-[16px] place-items-center rounded-full bg-brand-blue px-1 text-[9px] font-bold text-white hidden">
+          <a href="/cart" class="relative grid h-9 w-9 place-items-center rounded-full text-slate-700 hover:bg-slate-100" title="Shopping Bag">
+            <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+            <span class="cart-count-badge absolute -top-0.5 -right-0.5 grid h-4 min-w-[16px] place-items-center rounded-full bg-brand-blue px-1 text-[9px] font-bold text-white hidden">
               0
             </span>
           </a>
-
-          <!-- Mobile Menu Hamburger -->
-          <button id="mobile-toggle" class="w-9 h-9 rounded-xl bg-slate-100 text-slate-700 hover:text-brand-blue flex items-center justify-center focus:outline-none" aria-label="Toggle navigation menu">
-            <i data-lucide="menu" class="w-5 h-5"></i>
+          <button id="mobile-toggle" class="p-2 text-slate-700 focus:outline-none">
+            <i data-lucide="menu" class="w-7 h-7"></i>
           </button>
         </div>
 
@@ -272,54 +253,23 @@
     </div>
 
     <!-- Mobile Drawer -->
-    <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-100 bg-white px-5 py-5 space-y-3 shadow-lg">
-      <a href="/cart" class="py-2.5 px-3.5 rounded-xl bg-blue-50 text-brand-blue font-bold text-sm flex items-center justify-between border border-blue-100">
-        <span class="flex items-center gap-2.5">
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-100 bg-white px-5 py-4 space-y-3">
+      <a href="/cart" class="py-2.5 px-3 rounded-xl bg-blue-50 text-brand-blue font-bold text-sm flex items-center justify-between">
+        <span class="flex items-center gap-2">
           <i data-lucide="shopping-bag" class="w-4 h-4"></i>
           <span>My Shopping Bag</span>
         </span>
         <span class="cart-count-badge px-2 py-0.5 text-xs rounded-full bg-brand-blue text-white hidden">0</span>
       </a>
-
-      <div class="space-y-1 pt-1">
-        <a href="/" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-brand-blue bg-slate-50">
-          <i data-lucide="home" class="w-4 h-4"></i>
-          <span>Home</span>
-        </a>
-        <a href="/products" class="flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:text-brand-blue">
-          <span class="flex items-center gap-3">
-            <i data-lucide="package" class="w-4 h-4 text-brand-blue"></i>
-            <span>Hardware & Equipment Catalog</span>
-          </span>
-          <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">In-Stock</span>
-        </a>
-        <a href="#services-hub" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:text-brand-blue">
-          <i data-lucide="cpu" class="w-4 h-4 text-slate-400"></i>
-          <span>Our Services</span>
-        </a>
-        <a href="#showcase" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:text-brand-blue">
-          <i data-lucide="folder-kanban" class="w-4 h-4 text-slate-400"></i>
-          <span>Projects & Showcase</span>
-        </a>
-        <a href="#about" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:text-brand-blue">
-          <i data-lucide="info" class="w-4 h-4 text-slate-400"></i>
-          <span>About Us</span>
-        </a>
-        <a href="#contact" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:text-brand-blue">
-          <i data-lucide="map-pin" class="w-4 h-4 text-slate-400"></i>
-          <span>Contact & Location</span>
-        </a>
-      </div>
-
-      <div class="pt-3 border-t border-slate-100 flex flex-col gap-2">
-        <a href="tel:+254700357022" onclick="handlePhoneClick(event)" class="w-full py-2.5 rounded-xl text-xs font-semibold text-slate-700 bg-slate-50 hover:bg-slate-100 text-center flex items-center justify-center gap-2">
-          <i data-lucide="phone" class="w-3.5 h-3.5 text-brand-blue"></i>
-          <span>Call +254 700 357 022</span>
-        </a>
-        <button onclick="openQuoteModal()" class="w-full py-3 rounded-full text-xs font-bold text-white bg-brand-blue hover:bg-brand-blue-dark transition text-center shadow-xs">
-          Request a Free Quote
-        </button>
-      </div>
+      <a href="#services-hub" class="block py-2 text-sm font-medium text-slate-700">Our Services</a>
+      <a href="/products" class="block py-2 text-sm font-semibold text-brand-blue">🛒 Products & Hardware</a>
+      <a href="#about" class="block py-2 text-sm font-medium text-slate-700">About Us</a>
+      <a href="#showcase" class="block py-2 text-sm font-medium text-slate-700">Projects</a>
+      <a href="#testimonials" class="block py-2 text-sm font-medium text-slate-700">Testimonials</a>
+      <a href="#contact" class="block py-2 text-sm font-medium text-slate-700">Contact Us</a>
+      <button onclick="openQuoteModal()" class="w-full mt-2 py-3 rounded-full text-sm font-bold text-white bg-brand-blue text-center">
+        Request a Free Quote
+      </button>
     </div>
   </header>
 
@@ -398,7 +348,7 @@
       </div>
 
       <!-- Filter Category Switcher Pills -->
-      <div class="flex items-center justify-center gap-2 overflow-x-auto pb-4 mb-10">
+      <div class="flex flex-wrap items-center justify-center gap-2 mb-10">
         <button onclick="filterCards('all')" class="filter-tab active px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all bg-brand-blue text-white shadow-sm" data-category="all">
           All Services
         </button>
@@ -633,9 +583,30 @@
         </div>
       </div>
 
-      <!-- Live Category Filter Switcher -->
-      <div id="home-product-categories" class="flex items-center gap-2 overflow-x-auto pb-4 mb-8">
-        <!-- Rendered via JS -->
+      <!-- Live Category Filter Switcher (Modern Interactive Slider) -->
+      <div class="relative group/cats mb-8">
+        <!-- Floating Left Arrow -->
+        <button type="button" onclick="scrollCategoryBar('home-product-categories', -220)" aria-label="Scroll left" class="absolute -left-2 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-md text-slate-700 hover:text-brand-blue hover:scale-105 active:scale-95 transition flex items-center justify-center opacity-0 group-hover/cats:opacity-100 sm:opacity-90">
+          <i data-lucide="chevron-left" class="w-4 h-4"></i>
+        </button>
+
+        <!-- Category Pills Track (No Native Scrollbar) -->
+        <div id="home-product-categories" class="flex items-center gap-2 overflow-x-auto scrollbar-none scroll-smooth py-1 px-1 sm:px-4">
+          <!-- Rendered via JS -->
+        </div>
+
+        <!-- Floating Right Arrow -->
+        <button type="button" onclick="scrollCategoryBar('home-product-categories', 220)" aria-label="Scroll right" class="absolute -right-2 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-md text-slate-700 hover:text-brand-blue hover:scale-105 active:scale-95 transition flex items-center justify-center opacity-0 group-hover/cats:opacity-100 sm:opacity-90">
+          <i data-lucide="chevron-right" class="w-4 h-4"></i>
+        </button>
+
+        <!-- Unique Sleek Progress Indicator -->
+        <div class="mt-2.5 flex items-center justify-center gap-2">
+          <div class="w-20 h-1 bg-slate-200/70 rounded-full overflow-hidden">
+            <div id="home-cat-progress" class="h-full bg-gradient-to-r from-brand-blue to-brand-green rounded-full transition-all duration-150" style="width: 35%; transform: translateX(0%);"></div>
+          </div>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Slide to explore</span>
+        </div>
       </div>
 
       <!-- Live Products Grid (Dynamically Populated from /api/products) -->
@@ -2173,9 +2144,41 @@
       }
     }
 
+    function scrollCategoryBar(containerId, offset) {
+      const container = document.getElementById(containerId);
+      if (container) {
+        container.scrollBy({ left: offset, behavior: 'smooth' });
+      }
+    }
+
+    function setupCategoryScrollProgress(containerId, progressId) {
+      const container = document.getElementById(containerId);
+      const progress = document.getElementById(progressId);
+      if (!container || !progress) return;
+
+      function update() {
+        const maxScroll = container.scrollWidth - container.clientWidth;
+        if (maxScroll <= 4) {
+          progress.parentElement.parentElement.classList.add('hidden');
+          return;
+        }
+        progress.parentElement.parentElement.classList.remove('hidden');
+        const pct = Math.min(Math.max(container.scrollLeft / maxScroll, 0), 1);
+        const thumbWidth = 35; // %
+        const maxTranslate = 100 - thumbWidth;
+        progress.style.width = `${thumbWidth}%`;
+        progress.style.transform = `translateX(${pct * (maxTranslate / thumbWidth) * 100}%)`;
+      }
+
+      container.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update, { passive: true });
+      setTimeout(update, 250);
+    }
+
     // Call loadHomeProducts on load
     document.addEventListener('DOMContentLoaded', () => {
       loadHomeProducts();
+      setupCategoryScrollProgress('home-product-categories', 'home-cat-progress');
     });
   </script>
   <script src="cart.js"></script>
