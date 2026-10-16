@@ -547,6 +547,11 @@
         <!-- Rendered via JS -->
       </div>
 
+      <!-- View All / Show Less Toggle Button -->
+      <div id="home-products-toggle-wrap" class="mt-8 text-center">
+        <!-- Rendered dynamically via JS -->
+      </div>
+
       <!-- Bottom Inquire Banner -->
       <div class="mt-12 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-brand-blue to-brand-blue-dark text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-md">
         <div class="flex items-center gap-4">
@@ -1873,6 +1878,8 @@
     // --- LIVE HOMEPAGE PRODUCTS CATALOG ---
     let homeProducts = [];
     let homeCurrentCategory = 'all';
+    let homeShowAllProducts = false;
+    const HOME_INITIAL_LIMIT = 4;
 
     const HOME_CATEGORIES = [
       { id: 'all', name: 'All In-Stock' },
@@ -1918,12 +1925,23 @@
 
     function setHomeCategory(catId) {
       homeCurrentCategory = catId;
+      homeShowAllProducts = false;
       renderHomeCategories();
       renderHomeProducts();
     }
 
+    function toggleHomeProductsExpand() {
+      homeShowAllProducts = !homeShowAllProducts;
+      renderHomeProducts();
+      if (!homeShowAllProducts) {
+        const section = document.getElementById('products-catalog');
+        if (section) section.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
     function renderHomeProducts() {
       const grid = document.getElementById('home-products-grid');
+      const toggleWrap = document.getElementById('home-products-toggle-wrap');
       if (!grid) return;
       const search = (document.getElementById('home-product-search')?.value || '').trim().toLowerCase();
 
@@ -1941,11 +1959,16 @@
             <p class="text-xs text-slate-400 mt-1">Try another category or search term.</p>
           </div>
         `;
+        if (toggleWrap) toggleWrap.innerHTML = '';
         if (window.lucide) lucide.createIcons();
         return;
       }
 
-      grid.innerHTML = filtered.map(p => {
+      // If user is actively searching, display all matches; otherwise show initial 4 unless expanded
+      const shouldLimit = !homeShowAllProducts && !search && filtered.length > HOME_INITIAL_LIMIT;
+      const displayProducts = shouldLimit ? filtered.slice(0, HOME_INITIAL_LIMIT) : filtered;
+
+      grid.innerHTML = displayProducts.map(p => {
         const imgSrc = (p.images && p.images[0]?.src) || 'https://placehold.co/400x300?text=Techashi';
         const hasOffer = p.offer_price != null && Number(p.offer_price) > 0 && Number(p.offer_price) < Number(p.price);
         const specsList = Array.isArray(p.specs) ? p.specs : (String(p.specs || '').split(/[|\n]/).filter(Boolean));
@@ -2020,6 +2043,35 @@
           </article>
         `;
       }).join('');
+
+      // Render View All / Show Less button
+      if (toggleWrap) {
+        if (!search && filtered.length > HOME_INITIAL_LIMIT) {
+          if (!homeShowAllProducts) {
+            toggleWrap.innerHTML = `
+              <div class="flex flex-col items-center gap-2">
+                <button type="button" onclick="toggleHomeProductsExpand()" class="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full font-bold text-sm text-brand-blue bg-white hover:bg-brand-blue hover:text-white border-2 border-brand-blue/30 hover:border-brand-blue shadow-sm hover:shadow-md transition-all duration-300 group cursor-pointer">
+                  <span>View All In-Stock Equipment (${filtered.length} Items)</span>
+                  <i data-lucide="chevron-down" class="w-4 h-4 text-brand-blue group-hover:text-white group-hover:translate-y-0.5 transition-all"></i>
+                </button>
+                <p class="text-xs text-slate-400">Showing 4 featured items &bull; Click to view full inventory</p>
+              </div>
+            `;
+          } else {
+            toggleWrap.innerHTML = `
+              <div class="flex flex-col items-center gap-2">
+                <button type="button" onclick="toggleHomeProductsExpand()" class="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full font-bold text-sm text-slate-700 bg-white hover:bg-slate-100 border border-slate-300 shadow-sm transition-all duration-300 group cursor-pointer">
+                  <span>Show Less (Show 4 Featured)</span>
+                  <i data-lucide="chevron-up" class="w-4 h-4 text-slate-500 group-hover:-translate-y-0.5 transition-all"></i>
+                </button>
+                <p class="text-xs text-slate-400">Showing all ${filtered.length} products</p>
+              </div>
+            `;
+          }
+        } else {
+          toggleWrap.innerHTML = '';
+        }
+      }
 
       if (window.lucide) lucide.createIcons();
     }
