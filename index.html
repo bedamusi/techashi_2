@@ -1,0 +1,1755 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Techashi Solutions Ltd. | Smart Tech. Reliable Solutions. Nairobi, Kenya</title>
+  <meta name="description" content="Techashi Solutions Ltd is Kenya's premier IT partner for certified new & refurbished PCs, enterprise structured networking, 4K CCTV surveillance, and Microsoft 365 cloud setup.">
+  <link rel="icon" type="image/png" href="assets/logo-emblem.png">
+
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              // EXACT Techashi Colors sampled directly from official logo assets:
+              blue: '#075293',
+              'blue-dark': '#043A6B',
+              'blue-deep': '#03213D',
+              'blue-light': '#EBF4FC',
+              green: '#8EC640',
+              'green-dark': '#74A72E',
+              'green-deep': '#4C7317',
+              'green-light': '#F3F9EA',
+              charcoal: '#0F172A',
+              muted: '#64748B',
+              surface: '#F8FAFC',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          boxShadow: {
+            'card': '0 2px 10px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02)',
+            'card-hover': '0 12px 25px -4px rgba(7, 82, 147, 0.12), 0 4px 10px -2px rgba(142, 198, 64, 0.08)',
+            'pill': '0 2px 8px rgba(0, 0, 0, 0.06)',
+            'glow-green': '0 0 25px rgba(142, 198, 64, 0.4)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* Refined, balanced dark slate hero background with subtle cool undertone */
+    .hero-techashi {
+      background-color: #0B131E;
+      background-image: 
+        linear-gradient(to right, rgba(11, 19, 30, 0.96) 0%, rgba(13, 27, 44, 0.82) 48%, rgba(11, 19, 30, 0.35) 100%),
+        url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: right center;
+      background-repeat: no-repeat;
+    }
+
+    @media (max-width: 768px) {
+      .hero-techashi {
+        background-image: 
+          linear-gradient(to bottom, rgba(11, 19, 30, 0.94) 0%, rgba(11, 19, 30, 0.98) 100%),
+          url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1000&q=80');
+      }
+    }
+
+    .pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background-color: #F3F9EA;
+      color: #4C7317;
+      border: 1px solid #D6EBB4;
+    }
+
+    .pill-badge-dark {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: rgba(56, 189, 248, 0.12);
+      color: #38BDF8;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+    }
+
+    /* Testimonials Marquee: Part 1 moving right, Part 2 moving left */
+    @keyframes marqueeRight {
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(0%); }
+    }
+
+    @keyframes marqueeLeft {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .animate-marquee-right {
+      display: flex;
+      width: max-content;
+      animation: marqueeRight 40s linear infinite;
+    }
+
+    .animate-marquee-left {
+      display: flex;
+      width: max-content;
+      animation: marqueeLeft 40s linear infinite;
+    }
+
+    .marquee-container:hover .animate-marquee-right,
+    .marquee-container:hover .animate-marquee-left {
+      animation-play-state: paused;
+    }
+  </style>
+</head>
+<body class="font-sans text-brand-charcoal bg-white antialiased selection:bg-brand-green selection:text-brand-blue-deep">
+
+  <!-- ================= 1. HEADER & NAVIGATION ================= -->
+  <header class="sticky top-0 z-50 bg-white border-b border-slate-100 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Brand Logo -->
+        <a href="#" class="flex items-center gap-3">
+          <img src="assets/logo.png" alt="Techashi Solutions Ltd." class="h-11 sm:h-12 w-auto object-contain">
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center gap-8 text-[15px] font-medium text-slate-700">
+          <div class="relative group">
+            <button class="flex items-center gap-1 hover:text-brand-blue transition-colors py-2">
+              <span>Our Services</span>
+              <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-hover:text-brand-blue transition-transform group-hover:rotate-180"></i>
+            </button>
+            <div class="absolute top-full left-0 w-72 bg-white rounded-xl shadow-xl border border-slate-100 p-2.5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+              <a href="#services-hub" class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-brand-blue-light transition-colors">
+                <i data-lucide="network" class="w-4 h-4 text-brand-blue"></i>
+                <span class="text-sm font-semibold text-slate-800">Networking & Cabling</span>
+              </a>
+              <a href="#services-hub" class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-brand-blue-light transition-colors">
+                <i data-lucide="camera" class="w-4 h-4 text-brand-green"></i>
+                <span class="text-sm font-semibold text-slate-800">CCTV & Surveillance</span>
+              </a>
+              <a href="#services-hub" class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-brand-blue-light transition-colors">
+                <i data-lucide="laptop" class="w-4 h-4 text-brand-blue"></i>
+                <span class="text-sm font-semibold text-slate-800">PCs & Laptops Sales</span>
+              </a>
+              <a href="#services-hub" class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-brand-blue-light transition-colors">
+                <i data-lucide="cloud" class="w-4 h-4 text-brand-blue"></i>
+                <span class="text-sm font-semibold text-slate-800">Microsoft 365 Cloud</span>
+              </a>
+              <a href="#services-hub" class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-brand-blue-light transition-colors">
+                <i data-lucide="wrench" class="w-4 h-4 text-brand-green"></i>
+                <span class="text-sm font-semibold text-slate-800">PC Repairs & Servicing</span>
+              </a>
+              <a href="#services-hub" class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-amber-50 transition-colors">
+                <i data-lucide="fuel" class="w-4 h-4 text-amber-600"></i>
+                <span class="text-sm font-semibold text-slate-800">Forecourt Fuel Systems</span>
+              </a>
+            </div>
+          </div>
+
+          <a href="#products-catalog" class="hover:text-brand-blue transition-colors font-semibold">Products</a>
+          <a href="#about" class="hover:text-brand-blue transition-colors">About Us</a>
+          <a href="#showcase" class="hover:text-brand-blue transition-colors">Projects</a>
+          <a href="#testimonials" class="hover:text-brand-blue transition-colors">Testimonials</a>
+          <a href="/company-profile" class="text-brand-blue font-bold hover:text-brand-blue-dark transition-colors flex items-center gap-1.5">
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-brand-green-light text-brand-green-deep border border-brand-green/30">2026</span>
+            <span>Profile</span>
+          </a>
+          <a href="#contact" class="hover:text-brand-blue transition-colors">Contact</a>
+        </nav>
+
+        <!-- Right Side Contact & Action -->
+        <div class="hidden sm:flex items-center gap-5">
+          <a href="tel:+254700357022" class="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-brand-blue">
+            <span class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-brand-blue">
+              <i data-lucide="phone" class="w-4 h-4"></i>
+            </span>
+            <span>+254 700 357 022</span>
+          </a>
+          <button onclick="openQuoteModal()" class="px-5 py-2.5 rounded-full text-sm font-bold text-white bg-brand-blue hover:bg-brand-blue-dark transition-all shadow-sm flex items-center gap-2">
+            <span>Get a Quote</span>
+          </button>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <div class="flex lg:hidden">
+          <button id="mobile-toggle" class="p-2 text-slate-700 focus:outline-none">
+            <i data-lucide="menu" class="w-7 h-7"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-100 bg-white px-5 py-4 space-y-3">
+      <a href="#services-hub" class="block py-2 text-sm font-medium text-slate-700">Our Services</a>
+      <a href="#products-catalog" class="block py-2 text-sm font-semibold text-brand-blue">🛒 Products & Hardware</a>
+      <a href="/company-profile" class="block py-2 text-sm font-bold text-brand-green-deep">📄 View Company Profile (PDF)</a>
+      <a href="#about" class="block py-2 text-sm font-medium text-slate-700">About Us</a>
+      <a href="#showcase" class="block py-2 text-sm font-medium text-slate-700">Projects</a>
+      <a href="#testimonials" class="block py-2 text-sm font-medium text-slate-700">Testimonials</a>
+      <a href="#contact" class="block py-2 text-sm font-medium text-slate-700">Contact Us</a>
+      <a href="/admin" class="block py-2 text-sm font-semibold text-brand-blue">🛡️ Admin Studio</a>
+      <button onclick="openQuoteModal()" class="w-full mt-2 py-3 rounded-full text-sm font-bold text-white bg-brand-blue text-center">
+        Request a Free Quote
+      </button>
+    </div>
+  </header>
+
+  <!-- ================= 2. HERO SECTION (TECHASHI BLUE & VIBRANT GREEN + IT HARDWARE SPECIALIST) ================= -->
+  <!-- Features IT Specialist in server infrastructure & hardware environment, exact brand blue #075293 canvas & brand green #8EC640 -->
+  <section id="home" class="hero-techashi text-white py-20 sm:py-28 lg:py-32 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="max-w-2xl space-y-6">
+        
+        <!-- Brand Pill Badge -->
+        <div>
+          <span class="pill-badge-dark">
+            Certified IT Hardware & Infrastructure Partner
+          </span>
+        </div>
+
+        <!-- H1 Headline (Dual-tone: White + Techashi Electric Blue Theme) -->
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-display leading-[1.12] tracking-tight">
+          Smart Tech.<br>
+          <span class="text-sky-400 bg-gradient-to-r from-sky-400 via-sky-300 to-blue-400 bg-clip-text text-transparent">Reliable Solutions.</span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="text-base sm:text-lg text-slate-200 font-normal leading-relaxed max-w-xl">
+          Your trusted one-stop IT provider in Kenya. Certified brand-new & tested refurbished PCs, high-speed structured networking, 4K CCTV surveillance, and Microsoft 365 cloud setup with guaranteed warranty.
+        </p>
+
+        <!-- Dual CTA Buttons (Techashi Vibrant Green Pill + Outlined White Pill) -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+          <button onclick="openQuoteModal()" class="px-8 py-3.5 rounded-full font-bold text-sm text-brand-blue-deep bg-brand-green hover:bg-brand-green-dark transition-all shadow-md text-center">
+            Request a Quote
+          </button>
+          <a href="#services-hub" class="px-8 py-3.5 rounded-full font-semibold text-sm text-white bg-white/10 hover:bg-white/20 border border-white/30 backdrop-blur-sm transition-all text-center">
+            Explore Hardware & Services
+          </a>
+        </div>
+
+        <!-- Bottom Trust Statement -->
+        <div class="pt-6 text-xs text-slate-300 flex items-center gap-2">
+          <span class="text-sky-400 font-bold">★ ★ ★ ★ ★</span>
+          <span>Trusted by over <strong>250+ Kenyan businesses</strong>, schools & professionals</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 3. "EVERYTHING YOU NEED, ONE PLACE" ================= -->
+  <!-- Replicates Cybertech's section header, Techashi Blue announcement banner, and category switcher pills -->
+  <section id="services-hub" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <span class="pill-badge">OUR SERVICES</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-slate-900 mt-3">Everything You Need, One Place</h2>
+        <p class="text-slate-500 text-sm sm:text-base mt-2">
+          Comprehensive hardware sales, network infrastructure, and cloud IT services under one trusted roof.
+        </p>
+      </div>
+
+      <!-- Distinct Brand Blue Banner Card with Vibrant Green CTA (Matching Cybertech's structure with Techashi Palette) -->
+      <div class="bg-gradient-to-r from-brand-blue to-brand-blue-dark rounded-2xl p-6 sm:p-7 text-white shadow-md mb-8 flex flex-col sm:flex-row items-center justify-between gap-6 border border-brand-blue">
+        <div class="flex items-center gap-4 text-center sm:text-left">
+          <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-brand-green shrink-0 mx-auto sm:mx-0">
+            <i data-lucide="shield-check" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <h3 class="text-base sm:text-lg font-bold text-white">Genuine Hardware Warranties & Rapid On-Site Setup</h3>
+            <p class="text-xs sm:text-sm text-blue-100 mt-0.5">Tested Grade-A laptops, genuine CCTV cameras, and certified networking engineers across Kenya.</p>
+          </div>
+        </div>
+        <button onclick="openQuoteModal()" class="shrink-0 px-6 py-2.5 rounded-full font-bold text-xs sm:text-sm text-brand-blue-deep bg-brand-green hover:bg-brand-green-dark transition-colors shadow-sm">
+          Get Started
+        </button>
+      </div>
+
+      <!-- Filter Category Switcher Pills -->
+      <div class="flex items-center justify-center gap-2 overflow-x-auto pb-4 mb-10">
+        <button onclick="filterCards('all')" class="filter-tab active px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all bg-brand-blue text-white shadow-sm" data-category="all">
+          All Services
+        </button>
+        <button onclick="filterCards('laptops')" class="filter-tab px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition-all bg-white hover:bg-slate-100 text-slate-700 border border-slate-200" data-category="laptops">
+          PCs & Laptops
+        </button>
+        <button onclick="filterCards('networking')" class="filter-tab px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition-all bg-white hover:bg-slate-100 text-slate-700 border border-slate-200" data-category="networking">
+          Networking & Cabling
+        </button>
+        <button onclick="filterCards('cctv')" class="filter-tab px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition-all bg-white hover:bg-slate-100 text-slate-700 border border-slate-200" data-category="cctv">
+          CCTV & Security
+        </button>
+        <button onclick="filterCards('cloud')" class="filter-tab px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition-all bg-white hover:bg-slate-100 text-slate-700 border border-slate-200" data-category="cloud">
+          Microsoft 365 Cloud
+        </button>
+        <button onclick="filterCards('repairs')" class="filter-tab px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition-all bg-white hover:bg-slate-100 text-slate-700 border border-slate-200" data-category="repairs">
+          PC Repairs & Servicing
+        </button>
+        <button onclick="filterCards('forecourt')" class="filter-tab px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition-all bg-white hover:bg-slate-100 text-slate-700 border border-slate-200" data-category="forecourt">
+          Fuel Forecourt Systems
+        </button>
+      </div>
+
+      <!-- Services Cards Grid -->
+      <div id="service-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Card 1 -->
+        <div class="service-card group bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300" data-category="laptops">
+          <div class="h-48 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=800&q=80" alt="PCs and Laptops" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute top-3 right-3 bg-white/95 px-2.5 py-1 rounded-full text-[11px] font-bold text-brand-green-deep shadow-sm">
+              Warranty Guaranteed
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="text-xs font-semibold text-brand-blue uppercase">Hardware Sales</div>
+            <h3 class="text-lg font-bold text-slate-900 mt-1 group-hover:text-brand-blue transition-colors">
+              Business Laptops & Desktops
+            </h3>
+            <p class="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed">
+              Tested Grade-A refurbished and brand-new corporate machines (HP EliteBook, Dell Latitude, Lenovo ThinkPad) with full warranty.
+            </p>
+            <div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between">
+              <span class="text-xs text-slate-500 font-medium">Starting from <strong class="text-slate-900">KES 22,000</strong></span>
+              <button onclick="openQuoteModal('Laptops & Desktops')" class="text-xs font-bold text-brand-blue hover:text-brand-blue-dark flex items-center gap-1">
+                Request Quote <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="service-card group bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300" data-category="networking">
+          <div class="h-48 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80" alt="Networking" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute top-3 right-3 bg-brand-blue text-white px-2.5 py-1 rounded-full text-[11px] font-bold shadow-sm">
+              Certified Engineers
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="text-xs font-semibold text-brand-blue uppercase">Infrastructure</div>
+            <h3 class="text-lg font-bold text-slate-900 mt-1 group-hover:text-brand-blue transition-colors">
+              Structured Cabling & Office WiFi
+            </h3>
+            <p class="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed">
+              Cat6/Cat6A cabling, server rack cable management, Ubiquiti mesh WiFi access points, managed switches, and zero dead zones.
+            </p>
+            <div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between">
+              <span class="text-xs text-brand-green-deep font-semibold">Free Site Survey</span>
+              <button onclick="openQuoteModal('Structured Cabling')" class="text-xs font-bold text-brand-blue hover:text-brand-blue-dark flex items-center gap-1">
+                Book Survey <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="service-card group bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300" data-category="cctv">
+          <div class="h-48 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=800&q=80" alt="CCTV" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute top-3 right-3 bg-brand-blue text-white px-2.5 py-1 rounded-full text-[11px] font-bold shadow-sm">
+              Hikvision / Dahua
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="text-xs font-semibold text-brand-blue uppercase">Security</div>
+            <h3 class="text-lg font-bold text-slate-900 mt-1 group-hover:text-brand-blue transition-colors">
+              4K CCTV & Biometric Door Access
+            </h3>
+            <p class="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed">
+              High-definition IP cameras, NVR storage, night vision, mobile remote live viewing, and fingerprint door access control.
+            </p>
+            <div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between">
+              <span class="text-xs text-slate-500 font-medium">Packages from <strong class="text-slate-900">KES 35,000</strong></span>
+              <button onclick="openQuoteModal('CCTV Installation')" class="text-xs font-bold text-brand-blue hover:text-brand-blue-dark flex items-center gap-1">
+                Get Packages <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="service-card group bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300" data-category="cloud">
+          <div class="h-48 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Microsoft 365" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute top-3 right-3 bg-brand-blue text-white px-2.5 py-1 rounded-full text-[11px] font-bold shadow-sm">
+              Official Cloud
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="text-xs font-semibold text-brand-blue uppercase">Cloud Solutions</div>
+            <h3 class="text-lg font-bold text-slate-900 mt-1 group-hover:text-brand-blue transition-colors">
+              Microsoft 365 & Business Email
+            </h3>
+            <p class="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed">
+              Exchange Online custom email (`you@company.co.ke`), Teams collaboration, SharePoint document setup, and anti-spam security.
+            </p>
+            <div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between">
+              <span class="text-xs text-slate-500 font-medium">Zero Email Downtime</span>
+              <button onclick="openQuoteModal('Microsoft 365')" class="text-xs font-bold text-brand-blue hover:text-brand-blue-dark flex items-center gap-1">
+                Inquire Setup <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="service-card group bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300" data-category="repairs">
+          <div class="h-48 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=800&q=80" alt="PC Repair" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute top-3 right-3 bg-brand-green text-brand-blue-deep px-2.5 py-1 rounded-full text-[11px] font-bold shadow-sm">
+              Fast Turnaround
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="text-xs font-semibold text-brand-blue uppercase">Technical Repair</div>
+            <h3 class="text-lg font-bold text-slate-900 mt-1 group-hover:text-brand-blue transition-colors">
+              PC Diagnostics & Upgrades
+            </h3>
+            <p class="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed">
+              Motherboard chip-level repair, screen replacements, thermal servicing, SSD speed upgrades, and annual maintenance contracts.
+            </p>
+            <div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between">
+              <span class="text-xs text-slate-500 font-medium">Free Initial Assessment</span>
+              <button onclick="openQuoteModal('PC Repairs')" class="text-xs font-bold text-brand-blue hover:text-brand-blue-dark flex items-center gap-1">
+                Book Repair <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="service-card group bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300" data-category="cloud">
+          <div class="h-48 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="Web Development" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute top-3 right-3 bg-brand-blue text-white px-2.5 py-1 rounded-full text-[11px] font-bold shadow-sm">
+              SEO Ready
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="text-xs font-semibold text-brand-blue uppercase">Digital Branding</div>
+            <h3 class="text-lg font-bold text-slate-900 mt-1 group-hover:text-brand-blue transition-colors">
+              Website Design & Development
+            </h3>
+            <p class="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed">
+              Mobile-first responsive corporate websites, high-converting landing pages, logo branding, and reliable cloud web hosting.
+            </p>
+            <div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between">
+              <span class="text-xs text-slate-500 font-medium">Domain & SSL Included</span>
+              <button onclick="openQuoteModal('Website Design')" class="text-xs font-bold text-brand-blue hover:text-brand-blue-dark flex items-center gap-1">
+                Start Project <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 7: Forecourt Management System (from Company Profile PDF Page 6) -->
+        <div class="service-card group bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300" data-category="forecourt">
+          <div class="h-48 overflow-hidden relative">
+            <img src="/assets/forecourt-fuel-automation.jpg" alt="Forecourt Management Fuel Automation & Petrol Station Dispenser" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute top-3 right-3 bg-amber-500 text-white px-2.5 py-1 rounded-full text-[11px] font-bold shadow-sm">
+              Fuel Retail
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="text-xs font-semibold text-brand-blue uppercase">Flagship Automation</div>
+            <h3 class="text-lg font-bold text-slate-900 mt-1 group-hover:text-brand-blue transition-colors">
+              Forecourt Management Systems
+            </h3>
+            <p class="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed">
+              Complete fuel station automation: pump & dispenser control, automatic tank gauging, shift attendant reconciliation, cashless payments, and KRA eTIMS integration.
+            </p>
+            <div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between">
+              <span class="text-xs text-amber-700 font-semibold">Single or Multi-Station</span>
+              <button onclick="openQuoteModal('Forecourt Fuel Automation')" class="text-xs font-bold text-brand-blue hover:text-brand-blue-dark flex items-center gap-1">
+                Request Demo <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 3B. HARDWARE & SYSTEMS CATALOG (LIVE DYNAMIC PRODUCTS) ================= -->
+  <!-- Connected directly to /api/products so any products and images uploaded in Admin appear live on the homepage -->
+  <section id="products-catalog" class="py-24 bg-white relative border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+        <div class="max-w-3xl">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-brand-soft-blue text-brand-blue border border-blue-100 mb-3">
+            <i data-lucide="package" class="w-3.5 h-3.5 text-brand-blue"></i>
+            <span>IN-STOCK EQUIPMENT & HARDWARE</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-slate-900 tracking-tight">
+            Explore In-Stock Technology & Equipment
+          </h2>
+          <p class="text-slate-600 text-sm sm:text-base mt-3 leading-relaxed">
+            Grade-A refurbished laptops, brand-new desktops, enterprise servers, CCTV surveillance kits, managed networking, and fuel forecourt automation.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <div class="relative w-full sm:w-64">
+            <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+            <input type="text" id="home-product-search" oninput="renderHomeProducts()" placeholder="Search laptops, CCTV, servers..." class="w-full pl-10 pr-4 py-2.5 text-xs sm:text-sm rounded-xl border border-slate-200 outline-none focus:border-brand-blue bg-slate-50/70">
+          </div>
+          <a href="/admin/products" class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-600 hover:text-brand-blue hover:bg-slate-100 transition border border-slate-200" title="Admin Studio">
+            <i data-lucide="shield" class="w-3.5 h-3.5 text-brand-blue"></i>
+            <span>Admin</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Live Category Filter Switcher -->
+      <div id="home-product-categories" class="flex items-center gap-2 overflow-x-auto pb-4 mb-8">
+        <!-- Rendered via JS -->
+      </div>
+
+      <!-- Live Products Grid (Dynamically Populated from /api/products) -->
+      <div id="home-products-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <!-- Rendered via JS -->
+      </div>
+
+      <!-- Bottom Inquire Banner -->
+      <div class="mt-12 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-brand-blue to-brand-blue-dark text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-md">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center shrink-0">
+            <i data-lucide="badge-percent" class="w-6 h-6 text-brand-green"></i>
+          </div>
+          <div>
+            <h4 class="text-base font-bold">Need bulk corporate supply or specialized specs?</h4>
+            <p class="text-xs sm:text-sm text-blue-100 mt-0.5">We provide corporate tender pricing, tax-compliant ETR receipts, and manufacturer warranty backing.</p>
+          </div>
+        </div>
+        <button onclick="openQuoteModal('Bulk Hardware Procurement')" class="shrink-0 px-6 py-3 rounded-full font-bold text-xs sm:text-sm text-brand-blue-deep bg-brand-green hover:bg-brand-green-dark transition-all shadow-sm flex items-center gap-2">
+          <span>Request Bulk Quote</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 4. "SIMPLE, FAST & RELIABLE" ================= -->
+  <!-- 4-step horizontal process bar connected by Techashi Blue & Green line -->
+  <section class="py-20 bg-brand-surface border-t border-b border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="pill-badge">HOW IT WORKS</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-slate-900 mt-3">Simple, Fast & Reliable</h2>
+        <p class="text-slate-500 text-sm sm:text-base mt-2">
+          Your path to modern IT infrastructure in four straightforward steps.
+        </p>
+      </div>
+
+      <!-- Process Steps Container -->
+      <div class="relative">
+        
+        <!-- Connecting Line in Techashi Green -->
+        <div class="hidden lg:block absolute top-10 left-24 right-24 h-0.5 bg-brand-green/40 z-0"></div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10 text-center">
+          
+          <!-- Step 1 -->
+          <div>
+            <div class="w-20 h-20 rounded-full bg-white border-2 border-brand-blue shadow-sm flex items-center justify-center mx-auto mb-4 text-brand-blue">
+              <i data-lucide="message-square" class="w-8 h-8"></i>
+            </div>
+            <h4 class="text-base font-bold text-slate-900">1. Consult & Assess</h4>
+            <p class="text-xs text-slate-500 mt-2 leading-relaxed px-4">
+              Share your business hardware needs or schedule a free on-site survey with our certified engineers.
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div>
+            <div class="w-20 h-20 rounded-full bg-white border-2 border-brand-green shadow-sm flex items-center justify-center mx-auto mb-4 text-brand-green-deep">
+              <i data-lucide="file-text" class="w-8 h-8"></i>
+            </div>
+            <h4 class="text-base font-bold text-slate-900">2. Clear Quotation</h4>
+            <p class="text-xs text-slate-500 mt-2 leading-relaxed px-4">
+              Get an itemized quotation with transparent pricing, genuine specs, and written warranty terms.
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div>
+            <div class="w-20 h-20 rounded-full bg-white border-2 border-brand-blue shadow-sm flex items-center justify-center mx-auto mb-4 text-brand-blue">
+              <i data-lucide="truck" class="w-8 h-8"></i>
+            </div>
+            <h4 class="text-base font-bold text-slate-900">3. Fast Deployment</h4>
+            <p class="text-xs text-slate-500 mt-2 leading-relaxed px-4">
+              Speedy hardware dispatch across Kenya or clean, professional on-site installation and cabling.
+            </p>
+          </div>
+
+          <!-- Step 4 -->
+          <div>
+            <div class="w-20 h-20 rounded-full bg-white border-2 border-brand-green shadow-sm flex items-center justify-center mx-auto mb-4 text-brand-green-deep">
+              <i data-lucide="shield-check" class="w-8 h-8"></i>
+            </div>
+            <h4 class="text-base font-bold text-slate-900">4. Support & Warranty</h4>
+            <p class="text-xs text-slate-500 mt-2 leading-relaxed px-4">
+              Enjoy continuous peace of mind with replacement warranties, SLA support, and dedicated helpdesk care.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 5. "YOUR TRUSTED DIGITAL PARTNER IN KENYA" ================= -->
+  <!-- Split layout: Story + Brand Blue "Learn More" button + 2x2 Stats Grid on Left | Datacenter / Server Rack Photo on Right -->
+  <section id="about" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Side: Story & 4 Stats Cards -->
+        <div class="lg:col-span-6 space-y-6">
+          <span class="pill-badge">ABOUT US</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-slate-900 leading-tight">
+            Your Trusted Digital Partner in Kenya
+          </h2>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Techashi Solutions Ltd. is a dedicated technology solutions company delivering hardware, infrastructure, and IT consultancy to corporate entities, SMEs, and individuals.
+          </p>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            We eliminate the hassle of managing multiple vendors by providing an all-in-one ecosystem: from sourcing reliable business machines to executing structured networking and enterprise cloud security.
+          </p>
+
+          <div class="pt-1">
+            <button onclick="openQuoteModal('Consultation')" class="px-6 py-2.5 rounded-full font-bold text-sm text-white bg-brand-blue hover:bg-brand-blue-dark transition-colors shadow-sm inline-flex items-center gap-2">
+              <span>Learn More About Us</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+
+          <!-- 2x2 Stats Grid (Techashi Blue & Green Highlights) -->
+          <div class="grid grid-cols-2 gap-4 pt-4">
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80">
+              <div class="text-3xl font-extrabold font-display text-brand-blue">500+</div>
+              <div class="text-xs font-medium text-slate-600 mt-1">Projects Completed</div>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80">
+              <div class="text-3xl font-extrabold font-display text-brand-green-deep">99%</div>
+              <div class="text-xs font-medium text-slate-600 mt-1">Client Satisfaction</div>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80">
+              <div class="text-3xl font-extrabold font-display text-brand-blue">1000+</div>
+              <div class="text-xs font-medium text-slate-600 mt-1">Devices Supplied</div>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80">
+              <div class="text-3xl font-extrabold font-display text-brand-green-deep">24/7</div>
+              <div class="text-xs font-medium text-slate-600 mt-1">Dedicated IT Support</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Side: Real Datacenter / Server Room Photo -->
+        <div class="lg:col-span-6">
+          <div class="rounded-2xl overflow-hidden shadow-lg border border-slate-200">
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1000&q=80" alt="Techashi Server Infrastructure" class="w-full h-[430px] object-cover">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 6. "GALLERY & SHOWCASE" ================= -->
+  <!-- 4-column photo grid matching Cybertech's showcase -->
+  <section id="showcase" class="py-20 bg-brand-surface border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="pill-badge">OUR WORK</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-slate-900 mt-3">Gallery & Showcase</h2>
+        <p class="text-slate-500 text-sm sm:text-base mt-2">
+          Take a look at our recent installations, cabling jobs, and workstation setups.
+        </p>
+      </div>
+
+      <!-- 4 Photo Grid with African Tech Professionals & Informative Badges -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Photo 1: African Female Tech Specialist -->
+        <div class="rounded-2xl overflow-hidden shadow-sm h-80 border border-slate-200/80 group relative">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=700&q=80" alt="Techashi Client Consultation & IT Strategy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-blue-deep/90 via-brand-blue-deep/30 to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>
+          <div class="absolute bottom-4 left-4 right-4 text-white">
+            <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-brand-green text-brand-blue-deep uppercase mb-1">
+              IT Advisory & Planning
+            </span>
+            <h4 class="text-sm font-bold leading-tight">Corporate Tech Consultation & Strategic Audits</h4>
+          </div>
+        </div>
+
+        <!-- Photo 2: African Tech Team in Modern Workstation Session -->
+        <div class="rounded-2xl overflow-hidden shadow-sm h-80 border border-slate-200/80 group relative">
+          <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=700&q=80" alt="Corporate Workstation Deployment" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-blue-deep/90 via-brand-blue-deep/30 to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>
+          <div class="absolute bottom-4 left-4 right-4 text-white">
+            <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-brand-blue-light text-brand-blue uppercase mb-1">
+              Hardware Deployment
+            </span>
+            <h4 class="text-sm font-bold leading-tight">Multi-Seat Laptops & M365 Staff Training</h4>
+          </div>
+        </div>
+
+        <!-- Photo 3: African IT Engineer Working on Infrastructure & Hardware -->
+        <div class="rounded-2xl overflow-hidden shadow-sm h-80 border border-slate-200/80 group relative">
+          <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=700&q=80" alt="Structured Server Cabling" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-blue-deep/90 via-brand-blue-deep/30 to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>
+          <div class="absolute bottom-4 left-4 right-4 text-white">
+            <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-brand-green text-brand-blue-deep uppercase mb-1">
+              Infrastructure Setup
+            </span>
+            <h4 class="text-sm font-bold leading-tight">Server Racks & High-Speed Cat6 Cabling</h4>
+          </div>
+        </div>
+
+        <!-- Photo 4: Fuel Forecourt Station Automation & Security -->
+        <div class="rounded-2xl overflow-hidden shadow-sm h-80 border border-slate-200/80 group relative">
+          <img src="/assets/forecourt-digital-pump.jpg" alt="Forecourt Fuel Automation & Digital Meter Controller" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-blue-deep/90 via-brand-blue-deep/30 to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>
+          <div class="absolute bottom-4 left-4 right-4 text-white">
+            <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-amber-400 text-slate-900 uppercase mb-1">
+              Fuel Retail & Security
+            </span>
+            <h4 class="text-sm font-bold leading-tight">Forecourt Fuel Automation & 4K CCTV</h4>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 7. "WHAT OUR CLIENTS SAY" (ANIMATED DOUBLE MARQUEE) ================= -->
+  <!-- Part 1 moves to the right, Part 2 moves to the left -->
+  <section id="testimonials" class="py-20 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="pill-badge">TESTIMONIALS</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-slate-900 mt-3">What Our Clients Say</h2>
+        <p class="text-slate-500 text-sm sm:text-base mt-2">
+          Read real reviews from businesses and individuals who trust Techashi Solutions.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Double Marquee Container with edge gradients -->
+    <div class="relative w-full marquee-container space-y-6">
+      
+      <!-- Left & Right Gradient Fades -->
+      <div class="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-white via-white/80 to-transparent z-20"></div>
+      <div class="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-white via-white/80 to-transparent z-20"></div>
+
+      <!-- PART 1: MOVING TO THE RIGHT -->
+      <div class="overflow-hidden w-full flex">
+        <div class="animate-marquee-right flex gap-6">
+          
+          <!-- Card 1 -->
+          <div class="w-[340px] sm:w-[400px] shrink-0 bg-white p-6 rounded-2xl border border-slate-200/90 shadow-card hover:border-brand-blue/50 hover:shadow-card-hover transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex text-brand-green text-sm gap-0.5">
+                  ★ ★ ★ ★ ★
+                </div>
+                <i data-lucide="quote" class="w-5 h-5 text-slate-300"></i>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed italic">
+                "Techashi installed our office Cat6 network and UniFi WiFi in Westlands. The cable dressing in our server cabinet is pure art. Zero dead zones since day one."
+              </p>
+            </div>
+            <div class="flex items-center gap-3 mt-6 pt-4 border-t border-slate-100">
+              <div class="w-9 h-9 rounded-full bg-brand-blue-light text-brand-blue font-bold flex items-center justify-center text-xs">
+                DK
+              </div>
+              <div>
+                <div class="text-xs font-bold text-slate-900">David Kamau</div>
+                <div class="text-[11px] text-slate-500">Operations Manager, Westlands</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="w-[340px] sm:w-[400px] shrink-0 bg-white p-6 rounded-2xl border border-slate-200/90 shadow-card hover:border-brand-blue/50 hover:shadow-card-hover transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex text-brand-green text-sm gap-0.5">
+                  ★ ★ ★ ★ ★
+                </div>
+                <i data-lucide="quote" class="w-5 h-5 text-slate-300"></i>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed italic">
+                "We bought 8 refurbished ThinkPads for our staff. Each laptop came tested with a 6-month warranty. Outstanding quality and great customer care."
+              </p>
+            </div>
+            <div class="flex items-center gap-3 mt-6 pt-4 border-t border-slate-100">
+              <div class="w-9 h-9 rounded-full bg-brand-blue-light text-brand-blue font-bold flex items-center justify-center text-xs">
+                SM
+              </div>
+              <div>
+                <div class="text-xs font-bold text-slate-900">Sarah Muthoni</div>
+                <div class="text-[11px] text-slate-500">Managing Director, Alpha Consulting</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="w-[340px] sm:w-[400px] shrink-0 bg-white p-6 rounded-2xl border border-slate-200/90 shadow-card hover:border-brand-blue/50 hover:shadow-card-hover transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex text-brand-green text-sm gap-0.5">
+                  ★ ★ ★ ★ ★
+                </div>
+                <i data-lucide="quote" class="w-5 h-5 text-slate-300"></i>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed italic">
+                "Migrating our emails and SharePoint to Microsoft 365 felt overwhelming until Techashi stepped in. Zero downtime and great training for our staff."
+              </p>
+            </div>
+            <div class="flex items-center gap-3 mt-6 pt-4 border-t border-slate-100">
+              <div class="w-9 h-9 rounded-full bg-brand-blue-light text-brand-blue font-bold flex items-center justify-center text-xs">
+                BO
+              </div>
+              <div>
+                <div class="text-xs font-bold text-slate-900">Brian Ochieng</div>
+                <div class="text-[11px] text-slate-500">IT Director, Apex Media</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DUPLICATE SET 1 FOR SEAMLESS RIGHT LOOP -->
+          <div class="w-[340px] sm:w-[400px] shrink-0 bg-white p-6 rounded-2xl border border-slate-200/90 shadow-card hover:border-brand-blue/50 hover:shadow-card-hover transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex text-brand-green text-sm gap-0.5">
+                  ★ ★ ★ ★ ★
+                </div>
+                <i data-lucide="quote" class="w-5 h-5 text-slate-300"></i>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed italic">
+                "Techashi installed our office Cat6 network and UniFi WiFi in Westlands. The cable dressing in our server cabinet is pure art. Zero dead zones since day one."
+              </p>
+            </div>
+            <div class="flex items-center gap-3 mt-6 pt-4 border-t border-slate-100">
+              <div class="w-9 h-9 rounded-full bg-brand-blue-light text-brand-blue font-bold flex items-center justify-center text-xs">
+                DK
+              </div>
+              <div>
+                <div class="text-xs font-bold text-slate-900">David Kamau</div>
+                <div class="text-[11px] text-slate-500">Operations Manager, Westlands</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="w-[340px] sm:w-[400px] shrink-0 bg-white p-6 rounded-2xl border border-slate-200/90 shadow-card hover:border-brand-blue/50 hover:shadow-card-hover transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex text-brand-green text-sm gap-0.5">
+                  ★ ★ ★ ★ ★
+                </div>
+                <i data-lucide="quote" class="w-5 h-5 text-slate-300"></i>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed italic">
+                "We bought 8 refurbished ThinkPads for our staff. Each laptop came tested with a 6-month warranty. Outstanding quality and great customer care."
+              </p>
+            </div>
+            <div class="flex items-center gap-3 mt-6 pt-4 border-t border-slate-100">
+              <div class="w-9 h-9 rounded-full bg-brand-blue-light text-brand-blue font-bold flex items-center justify-center text-xs">
+                SM
+              </div>
+              <div>
+                <div class="text-xs font-bold text-slate-900">Sarah Muthoni</div>
+                <div class="text-[11px] text-slate-500">Managing Director, Alpha Consulting</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="w-[340px] sm:w-[400px] shrink-0 bg-white p-6 rounded-2xl border border-slate-200/90 shadow-card hover:border-brand-blue/50 hover:shadow-card-hover transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex text-brand-green text-sm gap-0.5">
+                  ★ ★ ★ ★ ★
+                </div>
+                <i data-lucide="quote" class="w-5 h-5 text-slate-300"></i>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed italic">
+                "Migrating our emails and SharePoint to Microsoft 365 felt overwhelming until Techashi stepped in. Zero downtime and great training for our staff."
+              </p>
+            </div>
+            <div class="flex items-center gap-3 mt-6 pt-4 border-t border-slate-100">
+              <div class="w-9 h-9 rounded-full bg-brand-blue-light text-brand-blue font-bold flex items-center justify-center text-xs">
+                BO
+              </div>
+              <div>
+                <div class="text-xs font-bold text-slate-900">Brian Ochieng</div>
+                <div class="text-[11px] text-slate-500">IT Director, Apex Media</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- PART 2: MOVING TO THE LEFT -->
+      <div class="overflow-hidden w-full flex">
+        <div class="animate-marquee-left flex gap-6">
+          
+          <!-- Card 4 -->
+          <div class="w-[340px] sm:w-[400px] shrink-0 bg-white p-6 rounded-2xl border border-slate-200/90 shadow-card hover:border-brand-blue/50 hover:shadow-card-hover transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex text-brand-green text-sm gap-0.5">
+                  ★ ★ ★ ★ ★
+                </div>
+                <i data-lucide="quote" class="w-5 h-5 text-slate-300"></i>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed italic">
+                "Their 4K CCTV setup was seamless. I can monitor my entire warehouse in Nairobi on my phone with crystal-clear night vision. Highly recommended!"
+              </p>
+            </div>
+            <div class="flex items-center gap-3 mt-6 pt-4 border-t border-slate-100">
+              <div class="w-9 h-9 rounded-full bg-brand-blue-light text-brand-blue font-bold flex items-center justify-center text-xs">
+                JW
+              </div>
+              <div>
+                <div class="text-xs font-bold text-slate-900">Joseph Wanjau</div>
+                <div class="text-[11px] text-slate-500">Founder, Prime Logistics</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="w-[340px] sm:w-[400px] shrink-0 bg-white p-6 rounded-2xl border border-slate-200/90 shadow-card hover:border-brand-blue/50 hover:shadow-card-hover transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex text-brand-green text-sm gap-0.5">
+                  ★ ★ ★ ★ ★
+                </div>
+                <i data-lucide="quote" class="w-5 h-5 text-slate-300"></i>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed italic">
+                "Techashi diagnosed and fixed the motherboard on my Dell workstation within 36 hours. Transparent pricing and genuine replacement components."
+              </p>
+            </div>
+            <div class="flex items-center gap-3 mt-6 pt-4 border-t border-slate-100">
+              <div class="w-9 h-9 rounded-full bg-brand-blue-light text-brand-blue font-bold flex items-center justify-center text-xs">
+                FA
+              </div>
+              <div>
+                <div class="text-xs font-bold text-slate-900">Fatuma Ali</div>
+                <div class="text-[11px] text-slate-500">Lead Architectural Designer</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="w-[340px] sm:w-[400px] shrink-0 bg-white p-6 rounded-2xl border border-slate-200/90 shadow-card hover:border-brand-blue/50 hover:shadow-card-hover transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex text-brand-green text-sm gap-0.5">
+                  ★ ★ ★ ★ ★
+                </div>
+                <i data-lucide="quote" class="w-5 h-5 text-slate-300"></i>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed italic">
+                "We have an ongoing IT support contract with Techashi for our school. Whenever an issue arises, their technicians are on-site within hours."
+              </p>
+            </div>
+            <div class="flex items-center gap-3 mt-6 pt-4 border-t border-slate-100">
+              <div class="w-9 h-9 rounded-full bg-brand-blue-light text-brand-blue font-bold flex items-center justify-center text-xs">
+                GN
+              </div>
+              <div>
+                <div class="text-xs font-bold text-slate-900">Geoffrey Njoroge</div>
+                <div class="text-[11px] text-slate-500">School Administrator, Heights Academy</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DUPLICATE SET 2 FOR SEAMLESS LEFT LOOP -->
+          <div class="w-[340px] sm:w-[400px] shrink-0 bg-white p-6 rounded-2xl border border-slate-200/90 shadow-card hover:border-brand-blue/50 hover:shadow-card-hover transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex text-brand-green text-sm gap-0.5">
+                  ★ ★ ★ ★ ★
+                </div>
+                <i data-lucide="quote" class="w-5 h-5 text-slate-300"></i>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed italic">
+                "Their 4K CCTV setup was seamless. I can monitor my entire warehouse in Nairobi on my phone with crystal-clear night vision. Highly recommended!"
+              </p>
+            </div>
+            <div class="flex items-center gap-3 mt-6 pt-4 border-t border-slate-100">
+              <div class="w-9 h-9 rounded-full bg-brand-blue-light text-brand-blue font-bold flex items-center justify-center text-xs">
+                JW
+              </div>
+              <div>
+                <div class="text-xs font-bold text-slate-900">Joseph Wanjau</div>
+                <div class="text-[11px] text-slate-500">Founder, Prime Logistics</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="w-[340px] sm:w-[400px] shrink-0 bg-white p-6 rounded-2xl border border-slate-200/90 shadow-card hover:border-brand-blue/50 hover:shadow-card-hover transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex text-brand-green text-sm gap-0.5">
+                  ★ ★ ★ ★ ★
+                </div>
+                <i data-lucide="quote" class="w-5 h-5 text-slate-300"></i>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed italic">
+                "Techashi diagnosed and fixed the motherboard on my Dell workstation within 36 hours. Transparent pricing and genuine replacement components."
+              </p>
+            </div>
+            <div class="flex items-center gap-3 mt-6 pt-4 border-t border-slate-100">
+              <div class="w-9 h-9 rounded-full bg-brand-blue-light text-brand-blue font-bold flex items-center justify-center text-xs">
+                FA
+              </div>
+              <div>
+                <div class="text-xs font-bold text-slate-900">Fatuma Ali</div>
+                <div class="text-[11px] text-slate-500">Lead Architectural Designer</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="w-[340px] sm:w-[400px] shrink-0 bg-white p-6 rounded-2xl border border-slate-200/90 shadow-card hover:border-brand-blue/50 hover:shadow-card-hover transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex text-brand-green text-sm gap-0.5">
+                  ★ ★ ★ ★ ★
+                </div>
+                <i data-lucide="quote" class="w-5 h-5 text-slate-300"></i>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed italic">
+                "We have an ongoing IT support contract with Techashi for our school. Whenever an issue arises, their technicians are on-site within hours."
+              </p>
+            </div>
+            <div class="flex items-center gap-3 mt-6 pt-4 border-t border-slate-100">
+              <div class="w-9 h-9 rounded-full bg-brand-blue-light text-brand-blue font-bold flex items-center justify-center text-xs">
+                GN
+              </div>
+              <div>
+                <div class="text-xs font-bold text-slate-900">Geoffrey Njoroge</div>
+                <div class="text-[11px] text-slate-500">School Administrator, Heights Academy</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 8. "HELPFUL ARTICLES & GUIDES" ================= -->
+  <!-- Blog & knowledge articles matching Cybertech's section -->
+  <section class="py-20 bg-brand-surface border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="pill-badge">TECH TIPS</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-slate-900 mt-3">Helpful Articles & Guides</h2>
+        <p class="text-slate-500 text-sm sm:text-base mt-2">
+          Practical advice from our engineers to help you make informed IT decisions.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        
+        <article class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-all">
+          <div class="h-44 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=700&q=80" alt="Guide 1" class="w-full h-full object-cover">
+          </div>
+          <div class="p-5">
+            <div class="text-xs font-semibold text-brand-blue">Buying Guide</div>
+            <h3 class="text-base font-bold text-slate-900 mt-1">Refurbished vs. New Business Laptops: The Smart SME Choice</h3>
+            <p class="text-xs text-slate-500 mt-2 leading-relaxed">
+              How to cut IT procurement budgets by 45% without sacrificing reliability or warranty coverage.
+            </p>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-all">
+          <div class="h-44 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=700&q=80" alt="Guide 2" class="w-full h-full object-cover">
+          </div>
+          <div class="p-5">
+            <div class="text-xs font-semibold text-brand-blue">Networking & Security</div>
+            <h3 class="text-base font-bold text-slate-900 mt-1">5 Critical Security Flaws Found in Small Office Networks</h3>
+            <p class="text-xs text-slate-500 mt-2 leading-relaxed">
+              Default router passwords, unmanaged guest WiFi, and simple fixes our network audits reveal.
+            </p>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-all">
+          <div class="h-44 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=700&q=80" alt="Guide 3" class="w-full h-full object-cover">
+          </div>
+          <div class="p-5">
+            <div class="text-xs font-semibold text-brand-blue">Cloud Solutions</div>
+            <h3 class="text-base font-bold text-slate-900 mt-1">Why Kenyan Enterprises Are Moving to Microsoft 365</h3>
+            <p class="text-xs text-slate-500 mt-2 leading-relaxed">
+              Eliminate spam, missed business inquiries, and ransomware threats with official enterprise Exchange.
+            </p>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 9. "FREQUENTLY ASKED QUESTIONS" ================= -->
+  <!-- Clean accordion FAQ matching Cybertech -->
+  <section class="py-20 bg-white border-t border-slate-100">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center mb-12">
+        <span class="pill-badge">FAQS</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-slate-900 mt-3">Frequently Asked Questions</h2>
+        <p class="text-slate-500 text-sm sm:text-base mt-2">
+          Everything you need to know about our hardware, warranties, and installations.
+        </p>
+      </div>
+
+      <!-- Accordion Items -->
+      <div class="space-y-3">
+        
+        <div class="border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+          <button onclick="toggleFAQ(this)" class="w-full px-5 py-4 text-left font-semibold text-slate-900 flex justify-between items-center hover:bg-slate-50">
+            <span class="text-sm">What warranty do you offer on new and refurbished PCs?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform"></i>
+          </button>
+          <div class="faq-content hidden px-5 pb-4 text-xs text-slate-600 leading-relaxed border-t border-slate-100 pt-2 bg-slate-50/50">
+            All brand-new PCs carry the full manufacturer warranty. For our Grade-A refurbished business laptops, we provide a standard <strong>6 to 12-month written warranty</strong> covering internal hardware, motherboard, and battery with free diagnostic support.
+          </div>
+        </div>
+
+        <div class="border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+          <button onclick="toggleFAQ(this)" class="w-full px-5 py-4 text-left font-semibold text-slate-900 flex justify-between items-center hover:bg-slate-50">
+            <span class="text-sm">Do you conduct on-site surveys before networking or CCTV installation?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform"></i>
+          </button>
+          <div class="faq-content hidden px-5 pb-4 text-xs text-slate-600 leading-relaxed border-t border-slate-100 pt-2 bg-slate-50/50">
+            Yes. For offices and institutions in Nairobi and surrounding counties, our certified network engineers conduct a <strong>free site assessment</strong> to map cable routes, WiFi coverage, and camera angles before submitting an itemized quote.
+          </div>
+        </div>
+
+        <div class="border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+          <button onclick="toggleFAQ(this)" class="w-full px-5 py-4 text-left font-semibold text-slate-900 flex justify-between items-center hover:bg-slate-50">
+            <span class="text-sm">What payment methods do you accept?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform"></i>
+          </button>
+          <div class="faq-content hidden px-5 pb-4 text-xs text-slate-600 leading-relaxed border-t border-slate-100 pt-2 bg-slate-50/50">
+            We accept <strong>Lipa Na M-Pesa</strong> (Paybill / Till Number), Direct Bank EFT / RTGS for registered corporate entities, Visa & Mastercard, and flexible milestone payments for large cabling projects.
+          </div>
+        </div>
+
+        <div class="border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+          <button onclick="toggleFAQ(this)" class="w-full px-5 py-4 text-left font-semibold text-slate-900 flex justify-between items-center hover:bg-slate-50">
+            <span class="text-sm">How fast can hardware be dispatched outside Nairobi?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform"></i>
+          </button>
+          <div class="faq-content hidden px-5 pb-4 text-xs text-slate-600 leading-relaxed border-t border-slate-100 pt-2 bg-slate-50/50">
+            For Nairobi deliveries, we offer <strong>same-day delivery</strong>. For major towns across Kenya (Mombasa, Kisumu, Nakuru, Eldoret), we partner with trusted courier services for guaranteed <strong>next-day doorstep delivery</strong>.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 10. "GET IN TOUCH" ================= -->
+  <!-- Split layout: 4 info cards with brand blue icons on left + Clean form with Brand Blue submit button on right -->
+  <section id="contact" class="py-20 bg-brand-surface border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid lg:grid-cols-12 gap-12">
+        
+        <!-- Left: Contact Information -->
+        <div class="lg:col-span-5 space-y-5">
+          <div>
+            <span class="pill-badge">GET IN TOUCH</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-slate-900 mt-3">Get In Touch</h2>
+            <p class="text-slate-500 text-sm mt-2">
+              Have questions or need a custom quote? Reach out to our technical team today.
+            </p>
+          </div>
+
+          <div class="space-y-3 pt-2">
+            
+            <div class="flex items-center gap-4 p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
+              <div class="w-10 h-10 rounded-full bg-brand-blue-light text-brand-blue flex items-center justify-center shrink-0">
+                <i data-lucide="phone" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <div class="text-[11px] font-semibold text-slate-400 uppercase">Call / WhatsApp Us</div>
+                <div class="text-sm font-bold text-slate-900">+254 700 357 022</div>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-4 p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
+              <div class="w-10 h-10 rounded-full bg-brand-green-light text-brand-green-deep flex items-center justify-center shrink-0">
+                <i data-lucide="mail" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <div class="text-[11px] font-semibold text-slate-400 uppercase">Official Email</div>
+                <div class="text-sm font-bold text-slate-900">info@techashisolutions.com</div>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-4 p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
+              <div class="w-10 h-10 rounded-full bg-brand-blue-light text-brand-blue flex items-center justify-center shrink-0">
+                <i data-lucide="map-pin" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <div class="text-[11px] font-semibold text-slate-400 uppercase">Our Head Office</div>
+                <div class="text-sm font-bold text-slate-900">Chaka Place Building, 3rd Floor, Argwings Kodhek Rd, Nairobi</div>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-4 p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
+              <div class="w-10 h-10 rounded-full bg-brand-green-light text-brand-green-deep flex items-center justify-center shrink-0">
+                <i data-lucide="clock" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <div class="text-[11px] font-semibold text-slate-400 uppercase">Working Hours</div>
+                <div class="text-sm font-bold text-slate-900">Mon – Sat: 8:00 AM – 6:00 PM EAT</div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="pt-2">
+            <a href="https://wa.me/254700357022?text=Hello%20Techashi%20Solutions,%20I%20would%20like%20to%20inquire%20about%20your%20services" target="_blank" class="w-full py-3 rounded-full font-bold text-sm text-brand-blue-deep bg-brand-green hover:bg-brand-green-dark transition-colors shadow-sm flex items-center justify-center gap-2">
+              <i data-lucide="message-circle" class="w-4 h-4"></i>
+              <span>Chat on WhatsApp (+254 700 357 022)</span>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Right: Clean Contact Form -->
+        <div class="lg:col-span-7 bg-white p-7 sm:p-9 rounded-2xl border border-slate-200 shadow-sm">
+          <h3 class="text-lg font-bold font-display text-slate-900 mb-1">Send us a Message</h3>
+          <p class="text-xs text-slate-500 mb-6">Fill in your details and our team will get back to you promptly.</p>
+
+          <form onsubmit="handleFormSubmit(event)" class="space-y-4">
+            
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">First Name</label>
+                <input type="text" required placeholder="John" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 focus:border-brand-blue focus:ring-1 focus:ring-brand-blue outline-none text-xs sm:text-sm">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Last Name</label>
+                <input type="text" required placeholder="Kamau" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 focus:border-brand-blue focus:ring-1 focus:ring-brand-blue outline-none text-xs sm:text-sm">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-600 mb-1">Email</label>
+              <input type="email" required placeholder="john@company.co.ke" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 focus:border-brand-blue focus:ring-1 focus:ring-brand-blue outline-none text-xs sm:text-sm">
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-600 mb-1">Phone</label>
+              <input type="tel" required placeholder="+254 712 345 678" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 focus:border-brand-blue focus:ring-1 focus:ring-brand-blue outline-none text-xs sm:text-sm">
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-600 mb-1">Message</label>
+              <textarea rows="4" placeholder="Tell us about the service or hardware you need..." class="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 focus:border-brand-blue focus:ring-1 focus:ring-brand-blue outline-none text-xs sm:text-sm"></textarea>
+            </div>
+
+            <button type="submit" class="w-full py-3.5 rounded-lg font-bold text-sm text-white bg-brand-blue hover:bg-brand-blue-dark transition-colors shadow-sm">
+              Send Message
+            </button>
+
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 11. "READY TO GET STARTED?" FULL-WIDTH CTA BANNER ================= -->
+  <!-- Techashi Blue background with Vibrant Green button + White outline button -->
+  <section class="py-16 sm:py-20 bg-gradient-to-r from-brand-blue-deep via-brand-blue to-brand-blue-dark text-white text-center">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+      
+      <div>
+        <span class="pill-badge-dark">
+          START YOUR JOURNEY TODAY
+        </span>
+      </div>
+
+      <h2 class="text-3xl sm:text-5xl font-extrabold font-display tracking-tight text-white">
+        Ready to Get Started?
+      </h2>
+
+      <p class="text-slate-200 text-sm sm:text-base max-w-xl mx-auto font-normal leading-relaxed">
+        Join hundreds of businesses across Kenya who transformed their IT operations with Techashi Solutions.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+        <button onclick="openQuoteModal()" class="w-full sm:w-auto px-8 py-3 rounded-full font-bold text-sm text-brand-blue-deep bg-brand-green hover:bg-brand-green-dark transition-all shadow-md">
+          Request a Quote
+        </button>
+        <a href="tel:+254700000000" class="w-full sm:w-auto px-8 py-3 rounded-full font-semibold text-sm text-white bg-white/10 hover:bg-white/20 border border-white/30 transition-all">
+          Schedule a Call
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 12. CORPORATE FOOTER ================= -->
+  <!-- Deep Techashi Blue footer #03213D -->
+  <footer class="bg-brand-blue-deep text-slate-300 pt-16 pb-12 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-12 border-b border-slate-800">
+        
+        <!-- Col 1 -->
+        <div class="space-y-4">
+          <img src="assets/logo-dark.png" alt="Techashi Solutions Ltd." class="h-12 w-auto object-contain">
+          <p class="text-slate-400 leading-relaxed pr-4">
+            Techashi Solutions Ltd. is a premier IT solutions provider combining hardware sales, structured networking, CCTV security, and cloud services in Kenya.
+          </p>
+        </div>
+
+        <!-- Col 2 -->
+        <div class="space-y-3">
+          <h4 class="text-white font-bold text-sm">Quick Links</h4>
+          <ul class="space-y-2">
+            <li><a href="#home" class="hover:text-brand-green transition-colors">Home</a></li>
+            <li><a href="#about" class="hover:text-brand-green transition-colors">About Us</a></li>
+            <li><a href="/company-profile" class="text-brand-green font-semibold hover:underline flex items-center gap-1">📄 Company Profile (PDF)</a></li>
+            <li><a href="#services-hub" class="hover:text-brand-green transition-colors">Our Services</a></li>
+            <li><a href="#showcase" class="hover:text-brand-green transition-colors">Projects</a></li>
+            <li><a href="#contact" class="hover:text-brand-green transition-colors">Contact Us</a></li>
+            <li><a href="/admin" class="text-slate-400 hover:text-white flex items-center gap-1 text-[11px] pt-1">🛡️ Admin Studio</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3 -->
+        <div class="space-y-3">
+          <h4 class="text-white font-bold text-sm">Services</h4>
+          <ul class="space-y-2">
+            <li><a href="#services-hub" class="hover:text-brand-green transition-colors">PCs & Laptops</a></li>
+            <li><a href="#services-hub" class="hover:text-brand-green transition-colors">Structured Cabling</a></li>
+            <li><a href="#services-hub" class="hover:text-brand-green transition-colors">CCTV & Security</a></li>
+            <li><a href="#services-hub" class="hover:text-brand-green transition-colors">Forecourt Fuel Systems</a></li>
+            <li><a href="#services-hub" class="hover:text-brand-green transition-colors">Microsoft 365 Cloud</a></li>
+            <li><a href="#services-hub" class="hover:text-brand-green transition-colors">PC Repair & Diagnostics</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4 -->
+        <div class="space-y-3">
+          <h4 class="text-white font-bold text-sm">Contact Us</h4>
+          <div class="space-y-2 text-slate-400">
+            <p class="font-medium text-slate-300">Chaka Place Building, 3rd Floor<br>Argwings Kodhek Rd, Nairobi</p>
+            <p><a href="tel:+254700357022" class="hover:text-brand-green font-semibold text-white">+254 700 357 022</a></p>
+            <p><a href="mailto:info@techashisolutions.com" class="hover:text-white">info@techashisolutions.com</a></p>
+            <p>Mon – Sat: 8:00 AM – 6:00 PM</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-500">
+        <div>
+          © 2026 Techashi Solutions Ltd. All rights reserved. • techashisolutions.com
+        </div>
+        <div class="flex items-center gap-6">
+          <a href="/company-profile" class="hover:text-slate-300">Company Profile</a>
+          <a href="/admin" class="hover:text-slate-300">Admin Portal</a>
+          <a href="#" class="hover:text-slate-400">Privacy Policy</a>
+          <a href="#" class="hover:text-slate-400">Terms of Service</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ================= 13. FLOATING WHATSAPP CHAT BUTTON ================= -->
+  <a href="https://wa.me/254700357022?text=Hello%20Techashi%20Solutions,%20I%20would%20like%20to%20inquire%20about%20your%20IT%20services" target="_blank" class="fixed bottom-6 right-6 z-50 bg-emerald-600 hover:bg-emerald-700 text-white p-3.5 rounded-full shadow-2xl flex items-center justify-center transition-all transform hover:scale-110" title="Chat on WhatsApp">
+    <span class="absolute -top-1 -right-1 w-3 h-3 bg-red-500 border-2 border-white rounded-full"></span>
+    <i data-lucide="message-circle" class="w-6 h-6"></i>
+  </a>
+
+  <!-- ================= 14. MODAL & SCRIPTS ================= -->
+  <div id="quote-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl relative border border-slate-100">
+      <button onclick="closeQuoteModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 p-1 rounded-full">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="mb-4">
+        <span class="pill-badge">QUICK INQUIRY</span>
+        <h3 class="text-xl font-bold font-display text-slate-900 mt-2">Request a Quote</h3>
+      </div>
+
+      <form onsubmit="handleModalSubmit(event)" class="space-y-3">
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Your Name *</label>
+          <input type="text" required placeholder="John Doe" class="w-full px-3 py-2 rounded-lg border border-slate-200 text-xs sm:text-sm outline-none focus:border-brand-blue">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Phone / WhatsApp *</label>
+          <input type="tel" required placeholder="07XX XXX XXX" class="w-full px-3 py-2 rounded-lg border border-slate-200 text-xs sm:text-sm outline-none focus:border-brand-blue">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Service Needed</label>
+          <input type="text" id="modal-service-input" placeholder="e.g. Laptops or CCTV" class="w-full px-3 py-2 rounded-lg border border-slate-200 text-xs sm:text-sm outline-none focus:border-brand-blue">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Notes</label>
+          <textarea rows="3" placeholder="Tell us about your requirements..." class="w-full px-3 py-2 rounded-lg border border-slate-200 text-xs sm:text-sm outline-none focus:border-brand-blue"></textarea>
+        </div>
+        <button type="submit" class="w-full py-3 rounded-full font-bold text-white bg-brand-blue hover:bg-brand-blue-dark transition-colors shadow-sm text-sm">
+          Submit Quote Request
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    function filterCards(category) {
+      const tabs = document.querySelectorAll('.filter-tab');
+      tabs.forEach(tab => {
+        if (tab.dataset.category === category) {
+          tab.classList.add('bg-brand-blue', 'text-white', 'shadow-sm');
+          tab.classList.remove('bg-white', 'text-slate-700', 'border', 'border-slate-200');
+        } else {
+          tab.classList.remove('bg-brand-blue', 'text-white', 'shadow-sm');
+          tab.classList.add('bg-white', 'text-slate-700', 'border', 'border-slate-200');
+        }
+      });
+
+      const cards = document.querySelectorAll('.service-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    function toggleFAQ(button) {
+      const content = button.nextElementSibling;
+      const icon = button.querySelector('svg');
+      const isHidden = content.classList.contains('hidden');
+
+      document.querySelectorAll('.faq-content').forEach(item => {
+        item.classList.add('hidden');
+        if (item.previousElementSibling.querySelector('svg')) {
+          item.previousElementSibling.querySelector('svg').classList.remove('rotate-180');
+        }
+      });
+
+      if (isHidden) {
+        content.classList.remove('hidden');
+        if (icon) icon.classList.add('rotate-180');
+      }
+    }
+
+    const quoteModal = document.getElementById('quote-modal');
+    const modalServiceInput = document.getElementById('modal-service-input');
+
+    function openQuoteModal(serviceName = '') {
+      if (serviceName) modalServiceInput.value = serviceName;
+      quoteModal.classList.remove('opacity-0', 'pointer-events-none');
+    }
+
+    function closeQuoteModal() {
+      quoteModal.classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    async function handleFormSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const firstName = form.querySelector('input[placeholder="John"]').value;
+      const lastName = form.querySelector('input[placeholder="Kamau"]').value;
+      const email = form.querySelector('input[type="email"]').value;
+      const phone = form.querySelector('input[type="tel"]').value;
+      const message = form.querySelector('textarea').value;
+
+      try {
+        await fetch('/api/inquiries', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: `${firstName} ${lastName}`.trim(),
+            email,
+            phone,
+            service: 'General Website Contact',
+            message
+          })
+        });
+      } catch (err) {}
+
+      alert(`Thank you, ${firstName}! Your message has been received by Techashi Solutions. Our team will contact you on ${phone} shortly.`);
+      form.reset();
+    }
+
+    async function handleModalSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const name = form.querySelector('input[placeholder="John Doe"]').value;
+      const phone = form.querySelector('input[placeholder="07XX XXX XXX"]').value;
+      const service = document.getElementById('modal-service-input').value;
+      const notes = form.querySelector('textarea').value;
+
+      try {
+        await fetch('/api/inquiries', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name,
+            phone,
+            service: service || 'Quote Request',
+            message: notes
+          })
+        });
+      } catch (err) {}
+
+      closeQuoteModal();
+      alert(`Thank you, ${name}! Your quote request for "${service || 'IT Services'}" has been sent. Our team will contact you shortly.`);
+      form.reset();
+    }
+
+    // --- LIVE HOMEPAGE PRODUCTS CATALOG ---
+    let homeProducts = [];
+    let homeCurrentCategory = 'all';
+
+    const HOME_CATEGORIES = [
+      { id: 'all', name: 'All In-Stock' },
+      { id: 'laptops', name: 'PCs & Laptops' },
+      { id: 'networking', name: 'Networking' },
+      { id: 'cctv', name: 'CCTV Security' },
+      { id: 'servers', name: 'Servers & Storage' },
+      { id: 'forecourt', name: 'Fuel Forecourt' },
+      { id: 'desktops', name: 'Desktops' },
+      { id: 'accessories', name: 'Accessories' }
+    ];
+
+    async function loadHomeProducts() {
+      try {
+        const res = await fetch('/api/products');
+        if (res.ok) {
+          const data = await res.json();
+          homeProducts = data.products || data || [];
+          renderHomeCategories();
+          renderHomeProducts();
+        }
+      } catch (err) {
+        console.error('Error fetching home products:', err);
+      }
+    }
+
+    function renderHomeCategories() {
+      const container = document.getElementById('home-product-categories');
+      if (!container) return;
+      container.innerHTML = HOME_CATEGORIES.map(cat => {
+        const isActive = homeCurrentCategory === cat.id;
+        return `
+          <button type="button" onclick="setHomeCategory('${cat.id}')" class="shrink-0 px-4 py-2 rounded-full text-xs font-bold transition-all ${
+            isActive
+              ? 'bg-brand-blue text-white shadow-xs'
+              : 'bg-slate-50 text-slate-700 hover:bg-slate-100 border border-slate-200'
+          }">
+            ${cat.name}
+          </button>
+        `;
+      }).join('');
+    }
+
+    function setHomeCategory(catId) {
+      homeCurrentCategory = catId;
+      renderHomeCategories();
+      renderHomeProducts();
+    }
+
+    function renderHomeProducts() {
+      const grid = document.getElementById('home-products-grid');
+      if (!grid) return;
+      const search = (document.getElementById('home-product-search')?.value || '').trim().toLowerCase();
+
+      const filtered = homeProducts.filter(p => {
+        const matchCat = homeCurrentCategory === 'all' || p.category === homeCurrentCategory;
+        const matchSearch = `${p.name || ''} ${p.description || ''} ${p.sku || ''}`.toLowerCase().includes(search);
+        return matchCat && matchSearch;
+      });
+
+      if (!filtered.length) {
+        grid.innerHTML = `
+          <div class="col-span-full py-16 text-center text-slate-400">
+            <i data-lucide="package-search" class="w-10 h-10 mx-auto text-slate-300 mb-2"></i>
+            <p class="text-sm font-semibold text-slate-700">No products found matching your search</p>
+            <p class="text-xs text-slate-400 mt-1">Try another category or search term.</p>
+          </div>
+        `;
+        if (window.lucide) lucide.createIcons();
+        return;
+      }
+
+      grid.innerHTML = filtered.map(p => {
+        const imgSrc = (p.images && p.images[0]?.src) || 'https://placehold.co/400x300?text=Techashi';
+        const hasOffer = p.offer_price != null && Number(p.offer_price) > 0 && Number(p.offer_price) < Number(p.price);
+        const specsList = Array.isArray(p.specs) ? p.specs : (String(p.specs || '').split(/[|\n]/).filter(Boolean));
+        const catObj = HOME_CATEGORIES.find(c => c.id === p.category);
+        const catName = catObj ? catObj.name : (p.category || 'Hardware');
+
+        return `
+          <article class="group bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between">
+            <div>
+              <div class="h-48 overflow-hidden relative bg-slate-50 flex items-center justify-center p-3">
+                <img src="${imgSrc}" alt="${p.name}" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 drop-shadow-xs" onerror="this.onerror=null;this.src='https://placehold.co/400x300?text=Techashi';">
+                
+                ${hasOffer ? `
+                  <div class="absolute top-3 right-3 bg-red-600 text-white px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider shadow-xs">
+                    Special Offer
+                  </div>
+                ` : (p.stock != null ? `
+                  <div class="absolute top-3 right-3 bg-white/95 px-2 py-0.5 rounded-full text-[10px] font-bold text-brand-green-deep border border-slate-100 shadow-2xs">
+                    ${p.stock} In Stock
+                  </div>
+                ` : '')}
+
+                <div class="absolute bottom-2 left-3">
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-brand-blue bg-white/90 backdrop-blur-xs px-2 py-0.5 rounded-md border border-blue-100">
+                    ${catName}
+                  </span>
+                </div>
+              </div>
+
+              <div class="p-5">
+                <h3 class="font-heading font-bold text-slate-900 text-sm sm:text-base leading-snug group-hover:text-brand-blue transition-colors line-clamp-2">
+                  ${p.name}
+                </h3>
+                <p class="text-slate-500 text-xs mt-2 line-clamp-2 leading-relaxed">
+                  ${p.description || ''}
+                </p>
+
+                ${specsList.length ? `
+                  <div class="mt-3 flex flex-wrap gap-1">
+                    ${specsList.slice(0, 3).map(s => `
+                      <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-medium">
+                        ${s}
+                      </span>
+                    `).join('')}
+                  </div>
+                ` : ''}
+              </div>
+            </div>
+
+            <div class="p-5 pt-0">
+              <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
+                <div>
+                  <div class="text-[10px] text-slate-400 uppercase font-semibold">Pricing</div>
+                  ${hasOffer ? `
+                    <div class="flex items-baseline gap-1.5">
+                      <span class="text-xs text-slate-400 line-through">KES ${Number(p.price).toLocaleString()}</span>
+                      <span class="font-heading font-extrabold text-sm sm:text-base text-red-600">KES ${Number(p.offer_price).toLocaleString()}</span>
+                    </div>
+                  ` : `
+                    <div class="font-heading font-extrabold text-sm sm:text-base text-brand-navy">
+                      KES ${Number(p.price || 0).toLocaleString()}
+                    </div>
+                  `}
+                </div>
+
+                <button onclick="openQuoteModal('${p.name.replace(/'/g, "\\'")}')" class="px-3.5 py-2 rounded-xl text-xs font-bold text-brand-blue bg-brand-soft-blue hover:bg-brand-blue hover:text-white transition flex items-center gap-1">
+                  <span>Quote</span>
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      if (window.lucide) lucide.createIcons();
+    }
+
+    // Call loadHomeProducts on load
+    document.addEventListener('DOMContentLoaded', () => {
+      loadHomeProducts();
+    });
+  </script>
+</body>
+</html>

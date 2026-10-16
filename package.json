@@ -1,0 +1,14 @@
+{
+  "name": "techashi-solutions",
+  "version": "1.0.0",
+  "description": "Techashi Solutions Ltd. - Official Corporate Website",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "private": true,
+  "dependencies": {
+    "mysql2": "^3.24.6",
+    "nodemailer": "^10.1.1"
+  }
+}

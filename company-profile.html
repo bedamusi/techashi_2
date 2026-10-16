@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Company Profile · 2026 | Techashi Solutions Ltd.</title>
+  <link rel="icon" type="image/png" href="assets/logo-emblem.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              blue: '#075293',
+              'blue-dark': '#043A6B',
+              'blue-deep': '#03213D',
+              'blue-light': '#EBF4FC',
+              green: '#8EC640',
+              'green-dark': '#74A72E',
+              'green-deep': '#4C7317',
+              'green-light': '#F3F9EA',
+              charcoal: '#0F172A',
+              muted: '#64748B',
+              surface: '#F8FAFC',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    @media print {
+      body { background: white !important; }
+      .no-print { display: none !important; }
+      .page-break { page-break-after: always; }
+      .profile-page { box-shadow: none !important; border: none !important; margin: 0 !important; max-width: 100% !important; }
+    }
+  </style>
+</head>
+<body class="bg-slate-100 font-sans text-slate-800 antialiased min-h-screen py-6 sm:py-10">
+
+  <!-- Floating Sticky Action Bar (Top) -->
+  <div class="no-print fixed top-4 right-4 z-40 flex items-center gap-2 sm:gap-3 bg-white/95 backdrop-blur-md px-3 sm:px-4 py-2 rounded-2xl shadow-xl border border-slate-200">
+    <a href="/" class="text-xs font-bold text-slate-600 hover:text-brand-blue flex items-center gap-1.5 pr-2 border-r border-slate-200">
+      <i data-lucide="arrow-left" class="w-4 h-4"></i> <span class="hidden sm:inline">Back to</span> Home
+    </a>
+    <button onclick="openRealDealModal()" class="px-3 py-1.5 rounded-xl font-bold text-xs text-white bg-brand-blue hover:bg-brand-blue-dark transition-colors flex items-center gap-1.5 shadow-sm">
+      <i data-lucide="file-text" class="w-3.5 h-3.5 text-brand-green"></i> <span>View Real Deal Doc</span>
+    </button>
+    <a href="assets/Techashi_Solutions_Company_Profile_2026.pdf" download="Techashi_Solutions_Company_Profile_2026.pdf" class="px-3 py-1.5 rounded-xl font-bold text-xs text-brand-blue-deep bg-brand-green hover:bg-brand-green-dark transition-colors flex items-center gap-1.5 shadow-sm">
+      <i data-lucide="download" class="w-3.5 h-3.5"></i> <span class="hidden sm:inline">Download</span> PDF
+    </a>
+    <button onclick="window.print()" class="hidden md:flex px-3 py-1.5 rounded-xl font-semibold text-xs text-slate-700 hover:bg-slate-100 border border-slate-200 items-center gap-1.5">
+      <i data-lucide="printer" class="w-3.5 h-3.5"></i> Print
+    </button>
+  </div>
+
+  <div class="max-w-4xl mx-auto space-y-8 px-4 sm:px-6">
+
+    <!-- ================= REAL DEAL DOC CALLOUT BANNER ================= -->
+    <div class="no-print bg-gradient-to-r from-brand-blue-deep via-brand-blue to-brand-blue-dark rounded-3xl p-6 sm:p-7 text-white shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6 border border-brand-blue/30">
+      <div class="flex items-center gap-4 text-center sm:text-left">
+        <div class="w-14 h-14 rounded-2xl bg-brand-green/20 text-brand-green flex items-center justify-center shrink-0 mx-auto sm:mx-0 border border-brand-green/30">
+          <i data-lucide="file-check-2" class="w-7 h-7"></i>
+        </div>
+        <div>
+          <div class="flex items-center justify-center sm:justify-start gap-2">
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-brand-green text-brand-blue-deep uppercase">Original File</span>
+            <span class="text-xs text-blue-200">Official Signed 2026 Edition</span>
+          </div>
+          <h3 class="text-lg font-bold text-white mt-1">View the Real Deal Document</h3>
+          <p class="text-xs text-blue-100 mt-0.5">Inspect the original 7-page PDF corporate profile document with full graphics & schematics.</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3 shrink-0 w-full sm:w-auto">
+        <button onclick="openRealDealModal()" class="flex-1 sm:flex-initial px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm text-brand-blue-deep bg-brand-green hover:bg-brand-green-dark transition-all flex items-center justify-center gap-2 shadow-md">
+          <i data-lucide="eye" class="w-4 h-4"></i>
+          <span>Open Real Deal Doc</span>
+        </button>
+        <a href="assets/Techashi_Solutions_Company_Profile_2026.pdf" download="Techashi_Solutions_Company_Profile_2026.pdf" class="flex-1 sm:flex-initial px-5 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-white bg-white/10 hover:bg-white/20 border border-white/20 transition-all flex items-center justify-center gap-2">
+          <i data-lucide="download" class="w-4 h-4"></i>
+          <span>Download</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ================= PAGE 1: COVER ================= -->
+    <div class="profile-page bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-200 page-break">
+      <!-- Top Image with Server Rack & Logo Badge -->
+      <div class="relative h-[440px] bg-slate-900 overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=1200&q=80" alt="Techashi Server Infrastructure" class="w-full h-full object-cover opacity-85">
+        <div class="absolute inset-0 bg-gradient-to-t from-brand-blue/90 via-brand-blue/30 to-transparent"></div>
+        
+        <!-- Official Logo Floating Card -->
+        <div class="absolute top-8 left-8 bg-white p-4 rounded-2xl shadow-2xl border border-slate-100 flex items-center justify-center">
+          <img src="assets/logo.png" alt="Techashi Solutions Ltd." class="h-12 w-auto object-contain">
+        </div>
+      </div>
+
+      <!-- Bottom Cover Block -->
+      <div class="bg-brand-blue text-white p-8 sm:p-14 space-y-4">
+        <div class="text-xs font-bold tracking-widest uppercase text-brand-green">COMPANY PROFILE · 2026</div>
+        <h1 class="text-3xl sm:text-5xl font-extrabold font-display leading-tight">
+          Technology that keeps<br>your business moving.
+        </h1>
+        <p class="text-base sm:text-lg text-blue-100 max-w-2xl font-normal leading-relaxed pt-2">
+          Devices, networks, security, web and Microsoft 365 — one partner for every part of your ICT.
+        </p>
+        <div class="pt-8 border-t border-blue-400/30 flex items-center justify-between text-xs sm:text-sm text-blue-200">
+          <span>Techashi Solutions Ltd</span>
+          <span class="font-semibold text-white">techashisolutions.com</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= PAGE 2: ABOUT US & SERVICES AT A GLANCE ================= -->
+    <div class="profile-page bg-white rounded-3xl shadow-xl p-8 sm:p-14 border border-slate-200 page-break space-y-8">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-4 text-xs font-semibold text-slate-400">
+        <span class="uppercase tracking-wider text-brand-blue">TECHASHI SOLUTIONS LTD</span>
+        <span>COMPANY PROFILE · 02</span>
+      </div>
+
+      <div>
+        <span class="text-xs font-bold uppercase tracking-wider text-brand-green-deep">ABOUT US</span>
+        <h2 class="text-3xl font-extrabold font-display text-slate-900 mt-1">Who we are</h2>
+        <p class="text-sm sm:text-base text-slate-600 mt-3 leading-relaxed">
+          Techashi Solutions Ltd is a technology company that helps businesses, institutions and homes get more out of technology. We supply the devices people work on every day, design and install the networks and security systems that protect them, and build the websites and digital tools that help them grow — with practical advice at every step.
+        </p>
+      </div>
+
+      <!-- Mission & Vision Cards -->
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div class="bg-brand-blue text-white p-6 sm:p-8 rounded-2xl shadow-sm">
+          <div class="text-xs font-bold uppercase tracking-wider text-brand-green">OUR MISSION</div>
+          <p class="text-sm sm:text-base mt-3 leading-relaxed text-blue-50">
+            To deliver reliable, affordable technology solutions and honest advice that let our clients focus on running their business.
+          </p>
+        </div>
+        <div class="bg-brand-blue-deep text-white p-6 sm:p-8 rounded-2xl shadow-sm">
+          <div class="text-xs font-bold uppercase tracking-wider text-brand-green">OUR VISION</div>
+          <p class="text-sm sm:text-base mt-3 leading-relaxed text-blue-50">
+            To be the trusted technology partner for growing businesses — from the first laptop to the full office network.
+          </p>
+        </div>
+      </div>
+
+      <!-- 10 Services at a glance (Direct from PDF) -->
+      <div>
+        <h3 class="text-lg font-bold font-display text-slate-900 mb-4">Our services at a glance</h3>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80">
+            <span class="text-xs font-bold text-brand-blue">01</span>
+            <div class="text-xs sm:text-sm font-semibold text-slate-800 mt-1">Network design & installation</div>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80">
+            <span class="text-xs font-bold text-brand-blue">02</span>
+            <div class="text-xs sm:text-sm font-semibold text-slate-800 mt-1">CCTV sales & installation</div>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80">
+            <span class="text-xs font-bold text-brand-blue">03</span>
+            <div class="text-xs sm:text-sm font-semibold text-slate-800 mt-1">Tech gadget sales</div>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80">
+            <span class="text-xs font-bold text-brand-blue">04</span>
+            <div class="text-xs sm:text-sm font-semibold text-slate-800 mt-1">New & refurbished PCs</div>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80">
+            <span class="text-xs font-bold text-brand-blue">05</span>
+            <div class="text-xs sm:text-sm font-semibold text-slate-800 mt-1">PC servicing & maintenance</div>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80">
+            <span class="text-xs font-bold text-brand-blue">06</span>
+            <div class="text-xs sm:text-sm font-semibold text-slate-800 mt-1">Website creation</div>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80">
+            <span class="text-xs font-bold text-brand-blue">07</span>
+            <div class="text-xs sm:text-sm font-semibold text-slate-800 mt-1">Graphic design</div>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80">
+            <span class="text-xs font-bold text-brand-blue">08</span>
+            <div class="text-xs sm:text-sm font-semibold text-slate-800 mt-1">Microsoft 365 consultation</div>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80">
+            <span class="text-xs font-bold text-brand-blue">09</span>
+            <div class="text-xs sm:text-sm font-semibold text-slate-800 mt-1">Tech consultancy</div>
+          </div>
+          <div class="p-4 rounded-xl bg-brand-green-light border border-brand-green/40 col-span-2 sm:col-span-3">
+            <span class="text-xs font-bold text-brand-green-deep">10 Flagship Solution</span>
+            <div class="text-xs sm:text-sm font-bold text-slate-900 mt-1">Forecourt management systems (Fuel Retail Automation)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+        <span>One partner for all your ICT needs</span>
+        <span>techashisolutions.com</span>
+      </div>
+    </div>
+
+    <!-- ================= PAGE 3: INFRASTRUCTURE (NETWORKS & SECURITY) ================= -->
+    <div class="profile-page bg-white rounded-3xl shadow-xl p-8 sm:p-14 border border-slate-200 page-break space-y-8">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-4 text-xs font-semibold text-slate-400">
+        <span class="uppercase tracking-wider text-brand-blue">TECHASHI SOLUTIONS LTD</span>
+        <span>COMPANY PROFILE · 03</span>
+      </div>
+
+      <div>
+        <span class="text-xs font-bold uppercase tracking-wider text-brand-green-deep">WHAT WE DO · INFRASTRUCTURE</span>
+        <h2 class="text-3xl font-extrabold font-display text-slate-900 mt-1">Networks & Security</h2>
+      </div>
+
+      <!-- Network Design -->
+      <div class="grid sm:grid-cols-2 gap-8 items-center pt-2">
+        <div>
+          <h3 class="text-lg font-bold text-brand-blue">Network design & installation</h3>
+          <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
+            Fast, stable and secure networks for offices, shops and homes — planned around how you actually work, installed neatly and documented properly.
+          </p>
+          <ul class="mt-4 space-y-2 text-xs sm:text-sm font-medium text-slate-700">
+            <li class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded bg-brand-green"></span> Site survey & network design
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded bg-brand-green"></span> Structured cabling & racks
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded bg-brand-green"></span> Office-wide WiFi coverage
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded bg-brand-green"></span> Routers, switches & firewalls
+            </li>
+          </ul>
+        </div>
+        <div class="rounded-2xl overflow-hidden shadow-md h-52">
+          <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80" alt="Structured Cabling" class="w-full h-full object-cover">
+        </div>
+      </div>
+
+      <!-- CCTV Sales -->
+      <div class="grid sm:grid-cols-2 gap-8 items-center pt-6 border-t border-slate-100">
+        <div class="rounded-2xl overflow-hidden shadow-md h-52 order-2 sm:order-1">
+          <img src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=600&q=80" alt="CCTV Cameras" class="w-full h-full object-cover">
+        </div>
+        <div class="order-1 sm:order-2">
+          <h3 class="text-lg font-bold text-brand-blue">CCTV sales & installation</h3>
+          <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
+            Protect your premises, stock and people with surveillance you can check from anywhere. We supply the right cameras for each spot and install them end to end.
+          </p>
+          <ul class="mt-4 space-y-2 text-xs sm:text-sm font-medium text-slate-700">
+            <li class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded bg-brand-green"></span> Indoor & outdoor IP cameras
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded bg-brand-green"></span> NVR / DVR recording setup
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded bg-brand-green"></span> Remote viewing on your phone
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded bg-brand-green"></span> Maintenance & upgrades
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+        <span>Networks · CCTV</span>
+        <span>techashisolutions.com</span>
+      </div>
+    </div>
+
+    <!-- ================= PAGE 4: HARDWARE (DEVICES & SUPPORT) ================= -->
+    <div class="profile-page bg-white rounded-3xl shadow-xl p-8 sm:p-14 border border-slate-200 page-break space-y-8">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-4 text-xs font-semibold text-slate-400">
+        <span class="uppercase tracking-wider text-brand-blue">TECHASHI SOLUTIONS LTD</span>
+        <span>COMPANY PROFILE · 04</span>
+      </div>
+
+      <div>
+        <span class="text-xs font-bold uppercase tracking-wider text-brand-green-deep">WHAT WE DO · HARDWARE</span>
+        <h2 class="text-3xl font-extrabold font-display text-slate-900 mt-1">Devices & Support</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200">
+          <h3 class="text-base font-bold text-slate-900">Tech gadget sales</h3>
+          <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+            Smartwatches, accessories, storage, chargers and everyday tech — genuine products with honest advice on what suits you.
+          </p>
+        </div>
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200">
+          <h3 class="text-base font-bold text-slate-900">New & refurbished PCs</h3>
+          <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+            Laptops and desktops for every budget. Refurbished units are tested and prepared, so you get dependable machines for less.
+          </p>
+        </div>
+      </div>
+
+      <!-- PC Servicing Block -->
+      <div class="bg-brand-blue text-white p-6 sm:p-8 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div>
+          <span class="text-xs font-bold text-brand-green uppercase tracking-wider">REPAIRS · UPGRADES · PREVENTIVE CARE</span>
+          <h3 class="text-xl font-bold mt-1">PC servicing & maintenance</h3>
+          <p class="text-xs sm:text-sm text-blue-100 mt-2 leading-relaxed max-w-lg">
+            Keep your machines running. Diagnostics and repairs, upgrades, OS installs, cleaning and scheduled maintenance for office fleets.
+          </p>
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+        <span>Gadgets · PCs · Servicing</span>
+        <span>techashisolutions.com</span>
+      </div>
+    </div>
+
+    <!-- ================= PAGE 5: DIGITAL & ADVISORY ================= -->
+    <div class="profile-page bg-white rounded-3xl shadow-xl p-8 sm:p-14 border border-slate-200 page-break space-y-8">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-4 text-xs font-semibold text-slate-400">
+        <span class="uppercase tracking-wider text-brand-blue">TECHASHI SOLUTIONS LTD</span>
+        <span>COMPANY PROFILE · 05</span>
+      </div>
+
+      <div>
+        <span class="text-xs font-bold uppercase tracking-wider text-brand-green-deep">WHAT WE DO · DIGITAL</span>
+        <h2 class="text-3xl font-extrabold font-display text-slate-900 mt-1">Digital & Advisory</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div class="p-6 rounded-2xl border border-slate-200">
+          <h3 class="text-base font-bold text-slate-900">Website creation</h3>
+          <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+            Modern, mobile-friendly websites that present your business well and are easy for customers to find.
+          </p>
+        </div>
+        <div class="p-6 rounded-2xl border border-slate-200">
+          <h3 class="text-base font-bold text-slate-900">Microsoft 365 consultation</h3>
+          <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+            Licensing advice, setup and migration of business email, Teams, OneDrive and SharePoint, plus security settings and staff onboarding.
+          </p>
+        </div>
+        <div class="p-6 rounded-2xl border border-slate-200">
+          <h3 class="text-base font-bold text-slate-900">Graphic design</h3>
+          <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+            Logos, company profiles, flyers, social media posts and print material that give your brand a consistent, professional look.
+          </p>
+        </div>
+        <div class="p-6 rounded-2xl border border-slate-200">
+          <h3 class="text-base font-bold text-slate-900">Tech consultancy</h3>
+          <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+            Independent advice on IT strategy, systems selection, budgets and security — so every technology spend makes sense.
+          </p>
+        </div>
+      </div>
+
+      <div class="p-5 rounded-2xl bg-brand-blue-deep text-white flex items-center gap-4">
+        <div class="w-10 h-10 rounded-xl bg-brand-green/20 text-brand-green flex items-center justify-center shrink-0">
+          <i data-lucide="lightbulb" class="w-5 h-5"></i>
+        </div>
+        <p class="text-xs sm:text-sm text-blue-100">
+          <strong>Not sure where to start?</strong> We begin with a conversation about your goals, then recommend only what you need.
+        </p>
+      </div>
+
+      <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+        <span>Web · Design · Microsoft 365 · Consultancy</span>
+        <span>techashisolutions.com</span>
+      </div>
+    </div>
+
+    <!-- ================= PAGE 6: FUEL RETAIL (FORECOURT MANAGEMENT SYSTEM) ================= -->
+    <div class="profile-page bg-white rounded-3xl shadow-xl p-8 sm:p-14 border border-slate-200 page-break space-y-8">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-4 text-xs font-semibold text-slate-400">
+        <span class="uppercase tracking-wider text-brand-blue">TECHASHI SOLUTIONS LTD</span>
+        <span>COMPANY PROFILE · 06</span>
+      </div>
+
+      <div>
+        <span class="text-xs font-bold uppercase tracking-wider text-amber-600">WHAT WE DO · FUEL RETAIL</span>
+        <h2 class="text-3xl font-extrabold font-display text-slate-900 mt-1">Forecourt Management System</h2>
+        <p class="text-sm sm:text-base text-slate-600 mt-3 leading-relaxed">
+          A complete system for running fuel stations. It connects your pumps, tanks and payments so every litre sold is recorded, paid for and reported — giving you full control of stock, cash and staff at one site or across a whole network.
+        </p>
+      </div>
+
+      <!-- Authentic Forecourt Photo Banner -->
+      <div class="rounded-2xl overflow-hidden border border-slate-200 shadow-sm relative h-56 sm:h-64">
+        <img src="/assets/forecourt-fuel-automation.jpg" alt="Commercial Forecourt Fuel Dispenser Automation" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent"></div>
+        <div class="absolute bottom-4 left-5 right-5 text-white flex items-center justify-between">
+          <div>
+            <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-amber-500 text-slate-900">Live Station Automation</span>
+            <p class="text-xs sm:text-sm font-bold mt-1 text-white">Automated Dispenser Control · Wet-Stock Gauging · eTIMS Integration</p>
+          </div>
+          <span class="text-xs font-semibold text-slate-300 hidden sm:inline">Chaka Place, Nairobi</span>
+        </div>
+      </div>
+
+      <!-- 6 Key Features Grid -->
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+          <div class="flex items-center gap-2 font-bold text-sm text-slate-900">
+            <span class="w-2 h-2 rounded bg-amber-500"></span> Pump & dispenser control
+          </div>
+          <p class="text-xs text-slate-600 mt-1">Authorise and monitor every pump from one console, litre by litre.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+          <div class="flex items-center gap-2 font-bold text-sm text-slate-900">
+            <span class="w-2 h-2 rounded bg-amber-500"></span> Tank gauging & wet stock
+          </div>
+          <p class="text-xs text-slate-600 mt-1">Automatic tank readings, delivery records and variance alerts.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+          <div class="flex items-center gap-2 font-bold text-sm text-slate-900">
+            <span class="w-2 h-2 rounded bg-amber-500"></span> Shift & attendant management
+          </div>
+          <p class="text-xs text-slate-600 mt-1">Shift opening and closing, attendant tags and accurate cash-ups.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+          <div class="flex items-center gap-2 font-bold text-sm text-slate-900">
+            <span class="w-2 h-2 rounded bg-amber-500"></span> Cashless payments
+          </div>
+          <p class="text-xs text-slate-600 mt-1">M-Pesa, card and fleet-account payments matched to each sale.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+          <div class="flex items-center gap-2 font-bold text-sm text-slate-900">
+            <span class="w-2 h-2 rounded bg-amber-500"></span> Real-time reporting
+          </div>
+          <p class="text-xs text-slate-600 mt-1">Sales, stock and margins per station, viewable from anywhere.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+          <div class="flex items-center gap-2 font-bold text-sm text-slate-900">
+            <span class="w-2 h-2 rounded bg-amber-500"></span> ERP & eTIMS integration
+          </div>
+          <p class="text-xs text-slate-600 mt-1">Sales posted to your ERP, such as SAP Business One, and KRA eTIMS.</p>
+        </div>
+      </div>
+
+      <div class="p-4 rounded-xl bg-brand-blue text-white flex items-center gap-3">
+        <i data-lucide="check-circle" class="w-5 h-5 text-brand-green shrink-0"></i>
+        <div class="text-xs font-semibold">Supply, installation, staff training and ongoing support — for a single station or a whole network.</div>
+      </div>
+
+      <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+        <span>Forecourt · Fuel retail</span>
+        <span>techashisolutions.com</span>
+      </div>
+    </div>
+
+    <!-- ================= PAGE 7: WHY CHOOSE US & CONTACT ================= -->
+    <div class="profile-page bg-white rounded-3xl shadow-xl p-8 sm:p-14 border border-slate-200 space-y-8">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-4 text-xs font-semibold text-slate-400">
+        <span class="uppercase tracking-wider text-brand-blue">TECHASHI SOLUTIONS LTD</span>
+        <span>COMPANY PROFILE · 07</span>
+      </div>
+
+      <div>
+        <span class="text-xs font-bold uppercase tracking-wider text-brand-green-deep">WHY TECHASHI</span>
+        <h2 class="text-3xl font-extrabold font-display text-slate-900 mt-1">Why clients choose us</h2>
+      </div>
+
+      <!-- 4 Core Reasons -->
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div class="p-6 rounded-2xl bg-brand-blue text-white shadow-sm">
+          <div class="text-xs font-bold text-brand-green">01</div>
+          <h3 class="text-base font-bold mt-1">One partner, end to end</h3>
+          <p class="text-xs text-blue-100 mt-2 leading-relaxed">
+            Devices, networks, security and web from a single team that knows your setup.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-brand-blue text-white shadow-sm">
+          <div class="text-xs font-bold text-brand-green">02</div>
+          <h3 class="text-base font-bold mt-1">Business-first advice</h3>
+          <p class="text-xs text-blue-100 mt-2 leading-relaxed">
+            We recommend what fits your needs and budget — not the most expensive option.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-brand-blue text-white shadow-sm">
+          <div class="text-xs font-bold text-brand-green">03</div>
+          <h3 class="text-base font-bold mt-1">Quality equipment</h3>
+          <p class="text-xs text-blue-100 mt-2 leading-relaxed">
+            Genuine products and tested refurbished machines you can rely on.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-brand-blue text-white shadow-sm">
+          <div class="text-xs font-bold text-brand-green">04</div>
+          <h3 class="text-base font-bold mt-1">Support after the sale</h3>
+          <p class="text-xs text-blue-100 mt-2 leading-relaxed">
+            Installation is the start. We stay on hand for servicing, upgrades and questions.
+          </p>
+        </div>
+      </div>
+
+      <!-- Let's talk about your next project (Green Box from PDF) -->
+      <div class="bg-brand-green text-brand-blue-deep p-8 rounded-3xl shadow-md">
+        <h3 class="text-2xl font-extrabold font-display">Let’s talk about your next project.</h3>
+        
+        <div class="grid sm:grid-cols-2 gap-6 mt-6 pt-6 border-t border-brand-green-dark/30 text-xs sm:text-sm">
+          <div>
+            <div class="font-bold uppercase tracking-wider text-brand-green-deep text-[11px]">WEBSITE</div>
+            <a href="https://techashisolutions.com" target="_blank" class="font-extrabold text-base text-slate-900 hover:underline">techashisolutions.com</a>
+          </div>
+
+          <div>
+            <div class="font-bold uppercase tracking-wider text-brand-green-deep text-[11px]">PHONE / WHATSAPP</div>
+            <a href="tel:+254700357022" class="font-extrabold text-base text-slate-900 hover:underline">+254 700 357 022</a>
+          </div>
+
+          <div>
+            <div class="font-bold uppercase tracking-wider text-brand-green-deep text-[11px]">EMAIL</div>
+            <a href="mailto:info@techashisolutions.com" class="font-extrabold text-base text-slate-900 hover:underline">info@techashisolutions.com</a>
+          </div>
+
+          <div>
+            <div class="font-bold uppercase tracking-wider text-brand-green-deep text-[11px]">LOCATION</div>
+            <div class="font-extrabold text-slate-900">
+              Chaka Place Building, 3rd Floor<br>
+              Argwings Kodhek Rd, Nairobi, Kenya
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-100">
+        <img src="assets/logo.png" alt="Techashi" class="h-10 w-auto">
+        <span class="text-xs font-medium text-slate-500">Technology that keeps your business moving.</span>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ================= REAL DEAL PDF DOCUMENT MODAL VIEWER ================= -->
+  <div id="real-deal-modal" class="no-print fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-2 sm:p-6 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="bg-white rounded-3xl w-full max-w-5xl h-[92vh] flex flex-col shadow-2xl overflow-hidden relative border border-slate-700">
+      
+      <div class="p-4 bg-brand-blue-deep text-white flex items-center justify-between border-b border-slate-800">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-brand-green/20 text-brand-green flex items-center justify-center font-bold">
+            <i data-lucide="file-text" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-white">Techashi Solutions Ltd. - Official Company Profile 2026</h4>
+            <p class="text-[11px] text-blue-200">Real Deal PDF Document Viewer • 7 Pages</p>
+          </div>
+        </div>
+        
+        <div class="flex items-center gap-3">
+          <a href="assets/Techashi_Solutions_Company_Profile_2026.pdf" download="Techashi_Solutions_Company_Profile_2026.pdf" class="px-3.5 py-1.5 rounded-xl text-xs font-bold text-brand-blue-deep bg-brand-green hover:bg-brand-green-dark flex items-center gap-1.5 shadow-sm">
+            <i data-lucide="download" class="w-3.5 h-3.5"></i> Download PDF
+          </a>
+          <button onclick="closeRealDealModal()" class="p-1.5 rounded-full hover:bg-white/10 text-slate-300 hover:text-white transition-colors">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Embedded PDF Frame -->
+      <div class="flex-1 w-full bg-slate-900 relative">
+        <iframe src="assets/Techashi_Solutions_Company_Profile_2026.pdf#toolbar=1" class="w-full h-full border-0" title="Techashi Company Profile Original PDF"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    const realDealModal = document.getElementById('real-deal-modal');
+
+    function openRealDealModal() {
+      realDealModal.classList.remove('opacity-0', 'pointer-events-none');
+    }
+
+    function closeRealDealModal() {
+      realDealModal.classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    realDealModal.addEventListener('click', (e) => {
+      if (e.target === realDealModal) closeRealDealModal();
+    });
+  </script>
+</body>
+</html>

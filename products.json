@@ -1,0 +1,200 @@
+[
+  {
+    "id": "prod-1",
+    "name": "Lenovo ThinkPad T480s / T490 (Refurbished)",
+    "category": "laptops",
+    "description": "Enterprise-grade ultrabook with proven durability, multi-point tested and verified with warranty. Ideal for finance, coding, and everyday office performance.",
+    "price": 38500,
+    "offer_price": 35000,
+    "specs": [
+      "Intel Core i7 8th Gen Quad-Core",
+      "16 GB DDR4 High-Speed RAM",
+      "512 GB NVMe M.2 Fast SSD",
+      "14-inch Full HD IPS Anti-Glare Display",
+      "Dual Battery System with Rapid Charge",
+      "Genuine Windows 11 Pro Licensed"
+    ],
+    "sku": "TECH-TP480S",
+    "stock": 14,
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=800&q=80",
+        "name": "thinkpad-front.jpg"
+      }
+    ],
+    "updatedAt": "2026-10-15T12:00:00Z"
+  },
+  {
+    "id": "prod-2",
+    "name": "HP EliteBook 840 G6 / G7 (New & Refurbished)",
+    "category": "laptops",
+    "description": "Premium ultra-slim aluminum business laptop featuring Bang & Olufsen audio, spill-resistant backlit keyboard, and privacy camera shutter.",
+    "price": 42000,
+    "offer_price": null,
+    "specs": [
+      "Intel Core i5 10th Gen Processor",
+      "16 GB DDR4 RAM (Expandable to 32 GB)",
+      "256 GB PCIe NVMe SSD",
+      "14.0\" FHD Sure View Privacy Screen",
+      "Backlit Keyboard & Precision Trackpad",
+      "Bang & Olufsen Dual Stereo Speakers"
+    ],
+    "sku": "TECH-HP840G7",
+    "stock": 9,
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=800&q=80",
+        "name": "elitebook-desk.jpg"
+      }
+    ],
+    "updatedAt": "2026-10-15T12:00:00Z"
+  },
+  {
+    "id": "prod-3",
+    "name": "Ubiquiti UniFi U6-Lite / U6-Pro Access Point",
+    "category": "networking",
+    "description": "High-efficiency WiFi 6 dual-band ceiling-mount access points engineered for high-density office environments, hotels, and multi-tenant buildings.",
+    "price": 24500,
+    "offer_price": 22500,
+    "specs": [
+      "WiFi 6 (802.11ax) Standard",
+      "Supports 300+ Concurrent Devices",
+      "Gigabit Ethernet with 802.3af PoE Power",
+      "UniFi Cloud Controller Integrated Management",
+      "Zero-Handoff Seamless Roaming"
+    ],
+    "sku": "TECH-U6PRO",
+    "stock": 25,
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80",
+        "name": "unifi-ap.jpg"
+      }
+    ],
+    "updatedAt": "2026-10-15T12:00:00Z"
+  },
+  {
+    "id": "prod-4",
+    "name": "Hikvision 4K 8-Channel NVR + 4 IP Camera Surveillance Kit",
+    "category": "cctv",
+    "description": "Commercial-grade 4K security bundle with intelligent human and vehicle target classification, smart night vision, and instant mobile phone viewing.",
+    "price": 48500,
+    "offer_price": 45000,
+    "specs": [
+      "4x 4K Ultra-HD Weatherproof IP Bullet/Dome Cameras",
+      "8-Channel PoE Network Video Recorder (NVR)",
+      "2 TB WD Purple Surveillance Hard Drive Included",
+      "ColorVu 24/7 Full-Color Night Vision",
+      "Hik-Connect Mobile App Remote Streaming"
+    ],
+    "sku": "TECH-HIK4K-KIT",
+    "stock": 8,
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=800&q=80",
+        "name": "hikvision-cam.jpg"
+      }
+    ],
+    "updatedAt": "2026-10-15T12:00:00Z"
+  },
+  {
+    "id": "prod-5",
+    "name": "Forecourt Management Fuel Automation Controller",
+    "category": "forecourt",
+    "description": "End-to-end service station automation system integrating fuel dispensers, ATG automatic tank gauging, electronic price totems, and eTIMS tax compliance.",
+    "price": 185000,
+    "offer_price": null,
+    "specs": [
+      "Multi-Pump Protocol Support (Wayne, Gilbarco, Tokheim, Tatsuno)",
+      "Real-Time Automatic Wet-Stock Reconciliation",
+      "Automated eTIMS KRA Tax Invoicing at Dispenser",
+      "M-Pesa Till & Cashless POS Direct Integration",
+      "Cloud Web Portal & Centralized Head Office Sync"
+    ],
+    "sku": "TECH-FMS-CORE",
+    "stock": 4,
+    "images": [
+      {
+        "src": "/assets/forecourt-fuel-automation.jpg",
+        "name": "forecourt-fuel-automation.jpg"
+      },
+      {
+        "src": "/assets/forecourt-digital-pump.jpg",
+        "name": "forecourt-digital-pump.jpg"
+      }
+    ],
+    "updatedAt": "2026-10-15T12:00:00Z"
+  },
+  {
+    "id": "prod-6",
+    "name": "Dell PowerEdge R440 / R640 1U Rack Server",
+    "category": "servers",
+    "description": "High-density 1U dual-socket enterprise rack server designed for virtualization, database processing, and central file sharing with redundant power.",
+    "price": 165000,
+    "offer_price": 150000,
+    "specs": [
+      "Dual Intel Xeon Silver 4210 Processors (20 Cores Total)",
+      "64 GB DDR4 ECC Registered RAM (Up to 1TB)",
+      "2x 960 GB Enterprise Mixed-Use SAS SSDs (RAID 1)",
+      "iDRAC9 Enterprise Remote Management",
+      "Dual 550W Hot-Plug Redundant Power Supplies"
+    ],
+    "sku": "TECH-DELL-R440",
+    "stock": 3,
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80",
+        "name": "dell-server.jpg"
+      }
+    ],
+    "updatedAt": "2026-10-15T12:00:00Z"
+  },
+  {
+    "id": "prod-7",
+    "name": "Dell OptiPlex 7070 / 7080 Tower Desktop (Refurbished)",
+    "category": "desktops",
+    "description": "High-performance business desktop workstation with quiet acoustics, multiple video outputs, and ample expansion for high productivity tasks.",
+    "price": 34000,
+    "offer_price": null,
+    "specs": [
+      "Intel Core i7 9th Gen 8-Core Processor",
+      "16 GB DDR4 RAM",
+      "512 GB Fast NVMe SSD + 1 TB Secondary Storage",
+      "Dual DisplayPort + HDMI 4K Output Support",
+      "Windows 11 Pro 64-Bit Licensed"
+    ],
+    "sku": "TECH-DELL7070",
+    "stock": 11,
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=800&q=80",
+        "name": "dell-desktop.jpg"
+      }
+    ],
+    "updatedAt": "2026-10-15T12:00:00Z"
+  },
+  {
+    "id": "prod-8",
+    "name": "Dell 24-inch UltraSharp FHD IPS Monitor with USB-C Hub",
+    "category": "accessories",
+    "description": "Color-accurate InfinityEdge display with USB-C power delivery, height adjustable ergonomic stand, and blue light reduction.",
+    "price": 28500,
+    "offer_price": 26000,
+    "specs": [
+      "23.8-inch Full HD (1920 x 1080) at 60Hz",
+      "IPS Panel with 99% sRGB Color Accuracy",
+      "USB-C Connectivity with 65W Power Delivery",
+      "Pivot, Tilt, Swivel and Height Adjustable Stand",
+      "HDMI, DisplayPort, and 4x USB 3.2 Ports"
+    ],
+    "sku": "TECH-DELL-U2422",
+    "stock": 18,
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=800&q=80",
+        "name": "dell-monitor.jpg"
+      }
+    ],
+    "updatedAt": "2026-10-15T12:00:00Z"
+  }
+]

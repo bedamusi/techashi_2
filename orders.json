@@ -1,0 +1,130 @@
+[
+  {
+    "id": "ac2e3d01-1990-4e18-ae31-915a9303bc8c",
+    "order_number": "TA-261016-82E0",
+    "idempotency_key": "8917fb3b-c9ce-4640-aa8c-a1bda4b95a07",
+    "customer_name": "Walk-in Customer",
+    "customer_email": "info@techashisolutions.com",
+    "customer_phone": "+254 700 357 022",
+    "fulfillment": "pickup",
+    "delivery_address": null,
+    "payment_method": "arranged_with_store",
+    "payment_status": "unpaid",
+    "status": "pending",
+    "subtotal": 0,
+    "delivery_fee": 0,
+    "total": 0,
+    "customer_notes": null,
+    "inventory_reserved": 1,
+    "created_at": "2026-10-16 06:38:35",
+    "items": [
+      {
+        "product_name": "ATB Fuel Automation Controller",
+        "category": "general",
+        "sku": "",
+        "image_src": null,
+        "unit_price": 0,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": "e81d7f19-3c72-4d51-87ab-98e6c7104a11",
+    "order_number": "TA-261015-9A1",
+    "idempotency_key": "4c98f801-b542-4f33-8a30-0199e1208941",
+    "customer_name": "Samuel Mwangi",
+    "customer_email": "samuel.mwangi@apexlogistics.co.ke",
+    "customer_phone": "+254 712 345 678",
+    "fulfillment": "delivery",
+    "delivery_address": "Apex Logistics HQ, Enterprise Road, Industrial Area, Nairobi",
+    "payment_method": "arranged_with_store",
+    "payment_status": "unpaid",
+    "status": "pending",
+    "subtotal": 127000,
+    "delivery_fee": 0,
+    "total": 127000,
+    "customer_notes": "Please deliver during office hours (9am - 4pm). Kindly include VAT ETR receipt.",
+    "inventory_reserved": 1,
+    "created_at": "2026-10-15 14:35:00",
+    "items": [
+      {
+        "product_id": "prod-1",
+        "product_name": "Lenovo ThinkPad T480s / T490 (Refurbished)",
+        "category": "laptops",
+        "sku": "TECH-TP480",
+        "image_src": "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=800&q=80",
+        "unit_price": 38500,
+        "quantity": 2
+      },
+      {
+        "product_id": "prod-4",
+        "product_name": "Hikvision 4K 8-Channel NVR + 4 IP Camera Surveillance Kit",
+        "category": "cctv",
+        "sku": "TECH-HIK4K",
+        "image_src": "https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=800&q=80",
+        "unit_price": 50000,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": "b34e8f22-1d90-4c66-9811-76a089cd4f18",
+    "order_number": "TA-261014-4C7",
+    "idempotency_key": "89b52a12-87c1-4201-a1b9-399fa140b902",
+    "customer_name": "Dr. Beatrice Odhiambo",
+    "customer_email": "beatrice.odhiambo@kilimaniclinic.org",
+    "customer_phone": "+254 722 987 654",
+    "fulfillment": "pickup",
+    "delivery_address": null,
+    "payment_method": "arranged_with_store",
+    "payment_status": "paid",
+    "status": "ready_for_pickup",
+    "subtotal": 42000,
+    "delivery_fee": 0,
+    "total": 42000,
+    "customer_notes": "Will collect from Chaka Place Building 3rd Floor today afternoon.",
+    "inventory_reserved": 1,
+    "created_at": "2026-10-14 10:15:20",
+    "items": [
+      {
+        "product_id": "prod-2",
+        "product_name": "HP EliteBook 840 G6 / G7 (New & Refurbished)",
+        "category": "laptops",
+        "sku": "TECH-HP840",
+        "image_src": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=800&q=80",
+        "unit_price": 42000,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": "76d29a01-44ee-48bb-b890-53cb810e62a3",
+    "order_number": "TA-261012-3B2",
+    "idempotency_key": "33a92178-6512-4f32-8499-90bca8711412",
+    "customer_name": "Kevin Kiprop",
+    "customer_email": "kevin@nexustech.co.ke",
+    "customer_phone": "+254 733 112 233",
+    "fulfillment": "delivery",
+    "delivery_address": "Nexus Towers, 5th Floor, Upper Hill, Nairobi",
+    "payment_method": "arranged_with_store",
+    "payment_status": "paid",
+    "status": "completed",
+    "subtotal": 73500,
+    "delivery_fee": 0,
+    "total": 73500,
+    "customer_notes": "Completed and installed on site.",
+    "inventory_reserved": 0,
+    "created_at": "2026-10-12 16:20:00",
+    "items": [
+      {
+        "product_id": "prod-3",
+        "product_name": "Ubiquiti UniFi U6-Lite / U6-Pro Access Point",
+        "category": "networking",
+        "sku": "TECH-U6PRO",
+        "image_src": "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80",
+        "unit_price": 24500,
+        "quantity": 3
+      }
+    ]
+  }
+]

@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Portal | Techashi Solutions Ltd</title>
+  <link rel="icon" type="image/png" href="/assets/logo-emblem.png">
+
+  <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              blue: '#075293',
+              'soft-blue': '#EBF4FC',
+              navy: '#0B131E',
+              green: '#8EC640',
+              'green-dark': '#74A72E',
+              'green-soft': '#F3F9EA',
+              charcoal: '#1E293B',
+              slate: '#64748B',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+  </style>
+</head>
+<body class="bg-[#f6f7f9] font-sans text-brand-charcoal antialiased min-h-screen flex flex-col selection:bg-brand-blue selection:text-white">
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 pointer-events-none"></div>
+
+  <!-- Global Admin Header Navigation -->
+  <header id="admin-header" class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-xs transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo & Brand Badge -->
+        <div class="flex items-center gap-4">
+          <a href="/" class="flex items-center gap-3">
+            <img src="/assets/logo.png" alt="Techashi Solutions" class="h-9 w-auto object-contain">
+          </a>
+          <span class="hidden md:inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-brand-soft-blue text-brand-blue border border-blue-100">
+            <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+            Admin Workspace
+          </span>
+        </div>
+
+        <!-- Right Side Nav Actions -->
+        <div id="header-authenticated-actions" class="flex items-center gap-2 sm:gap-3">
+          <button onclick="navigateTo('/admin/products')" id="nav-btn-products" class="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-brand-navy hover:border-brand-blue hover:text-brand-blue transition">
+            <i data-lucide="archive" class="w-3.5 h-3.5 text-brand-blue"></i>
+            <span class="hidden sm:inline">Products</span>
+            <span id="nav-products-count" class="ml-1 text-[10px] bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded-full font-bold">...</span>
+          </button>
+
+          <button onclick="navigateTo('/admin/orders')" id="nav-btn-orders" class="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-brand-navy hover:border-brand-blue hover:text-brand-blue transition">
+            <i data-lucide="clipboard-list" class="w-3.5 h-3.5 text-brand-blue"></i>
+            <span class="hidden sm:inline">Orders</span>
+            <span id="nav-orders-count" class="ml-1 text-[10px] bg-brand-soft-blue text-brand-blue px-1.5 py-0.5 rounded-full font-bold">0</span>
+          </button>
+
+          <button onclick="navigateTo('/admin/inquiries')" id="nav-btn-inquiries" class="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-brand-navy hover:border-brand-blue hover:text-brand-blue transition">
+            <i data-lucide="mail" class="w-3.5 h-3.5 text-brand-green-dark"></i>
+            <span class="hidden sm:inline">Inquiries</span>
+            <span id="nav-inquiries-count" class="ml-1 text-[10px] bg-brand-green-soft text-brand-green-dark px-1.5 py-0.5 rounded-full font-bold">0</span>
+          </button>
+
+          <button onclick="navigateTo('/admin/accounts')" id="nav-btn-accounts" class="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-brand-navy hover:border-brand-blue hover:text-brand-blue transition">
+            <i data-lucide="user-plus" class="w-3.5 h-3.5 text-brand-blue"></i>
+            <span class="hidden md:inline">Create account</span>
+          </button>
+
+          <div class="h-6 w-px bg-slate-200 mx-1"></div>
+
+          <a href="/" target="_blank" class="hidden lg:inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-brand-blue px-2 py-1">
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            Live Site
+          </a>
+
+          <button onclick="signOut()" class="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-600 hover:border-red-300 hover:text-red-600 transition">
+            <i data-lucide="log-out" class="w-3.5 h-3.5"></i>
+            <span class="hidden sm:inline">Sign out</span>
+          </button>
+        </div>
+
+        <!-- Header Unauthenticated (shown on login screen) -->
+        <div id="header-guest-actions" class="hidden items-center gap-3">
+          <a href="/" class="text-xs font-semibold text-brand-blue hover:underline flex items-center gap-1.5">
+            <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+            Back to Website
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= MAIN VIEW CONTAINER ================= -->
+  <main class="flex-1 w-full">
+
+    <!-- VIEW 1: ADMINISTRATOR LOGIN -->
+    <section id="view-login" class="hidden min-h-[75vh] py-16 px-4 sm:px-8 grid place-items-center">
+      <div class="w-full max-w-md rounded-3xl border border-slate-200 bg-white p-7 shadow-sm sm:p-9">
+        <div class="grid h-12 w-12 place-items-center rounded-2xl bg-brand-soft-blue text-brand-blue">
+          <i data-lucide="lock" class="h-5 w-5"></i>
+        </div>
+        <p class="mt-6 text-[10px] font-bold uppercase tracking-[0.18em] text-brand-blue">Restricted area</p>
+        <h1 class="mt-2 text-3xl font-heading font-bold text-brand-navy">Administrator sign-in</h1>
+        <p class="mt-2 text-sm leading-relaxed text-slate-500">Sign in with an approved administrator account to manage the product catalog and customer orders.</p>
+
+        <form id="form-login" onsubmit="handleLogin(event)" class="mt-7 space-y-4">
+          <label class="block text-xs font-semibold text-slate-700">
+            Email
+            <input required type="email" id="login-email" autocomplete="username" value="admin@techashisolutions.com" class="mt-1.5 w-full rounded-xl border border-slate-200 px-3.5 py-3 text-sm outline-none focus:border-brand-blue transition">
+          </label>
+          <label class="block text-xs font-semibold text-slate-700">
+            Password
+            <input required type="password" id="login-password" autocomplete="current-password" value="Techashi@2026" class="mt-1.5 w-full rounded-xl border border-slate-200 px-3.5 py-3 text-sm outline-none focus:border-brand-blue transition">
+          </label>
+          
+          <div id="login-error" class="hidden rounded-xl bg-red-50 border border-red-200 px-3.5 py-2.5 text-xs text-red-700"></div>
+
+          <button type="submit" id="login-btn-submit" class="w-full rounded-full bg-brand-navy px-5 py-3.5 text-xs font-bold text-white transition hover:bg-brand-blue disabled:opacity-60 flex items-center justify-center gap-2">
+            <span>Sign in securely</span>
+          </button>
+        </form>
+
+        <div class="mt-6 pt-5 border-t border-slate-100 flex items-center justify-between text-xs">
+          <a href="/" class="font-semibold text-brand-blue hover:underline flex items-center gap-1">
+            <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+            Return to public catalog
+          </a>
+          <span class="text-[10px] text-slate-400">Default: admin@techashisolutions.com</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 2: PRODUCT MANAGEMENT -->
+    <section id="view-products" class="hidden min-h-[80vh] px-4 pb-20 pt-8 sm:px-8 lg:px-12">
+      <div class="mx-auto max-w-7xl">
+        
+        <!-- Top Workspace Bar -->
+        <div class="flex flex-col justify-between gap-6 border-b border-slate-200 pb-8 sm:flex-row sm:items-end">
+          <div>
+            <p class="text-xs font-bold uppercase tracking-[0.18em] text-brand-blue">Catalog workspace</p>
+            <h1 class="mt-2 text-3xl font-heading font-bold tracking-tight text-brand-navy sm:text-5xl">Product management</h1>
+            <p class="mt-3 max-w-2xl text-sm leading-relaxed text-slate-600">Create and maintain the products shown in your customer catalog.</p>
+          </div>
+          <div class="flex flex-wrap items-center gap-3">
+            <button onclick="navigateTo('/admin/orders')" class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-3 text-xs font-semibold text-brand-navy transition hover:border-brand-blue hover:text-brand-blue">
+              <i data-lucide="clipboard-list" class="h-4 w-4 text-brand-blue"></i>
+              <span>Orders</span>
+            </button>
+            <button onclick="navigateTo('/admin/accounts')" class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-3 text-xs font-semibold text-brand-navy transition hover:border-brand-blue hover:text-brand-blue">
+              <i data-lucide="user-plus" class="h-4 w-4 text-brand-blue"></i>
+              <span>Create account</span>
+            </button>
+            <div class="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white px-5 py-2.5">
+              <i data-lucide="archive" class="h-5 w-5 text-brand-blue"></i>
+              <div>
+                <p id="stat-product-count" class="text-xl font-bold text-brand-navy leading-none">0</p>
+                <p class="text-[10px] uppercase tracking-wider text-slate-500 mt-0.5">Products</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2-Column Responsive Workspace -->
+        <div class="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1.35fr)_minmax(320px,.65fr)] lg:items-start">
+          
+          <!-- LEFT COLUMN: CATALOG LIST & BULK UPLOAD -->
+          <section class="order-2 lg:order-1">
+            <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <h2 class="text-xl font-heading font-bold text-brand-navy">Catalog</h2>
+                <p id="catalog-count-subtitle" class="mt-1 text-xs text-slate-500">0 shown · saved products appear on the Products page</p>
+              </div>
+              <label class="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2.5 shadow-2xs">
+                <i data-lucide="search" class="h-4 w-4 text-slate-400"></i>
+                <input id="product-query" oninput="renderProductCatalog()" placeholder="Search products" class="w-full bg-transparent text-xs outline-none sm:w-48" />
+              </label>
+            </div>
+
+            <!-- Bulk Upload CSV Box -->
+            <div class="mt-5 rounded-2xl border border-slate-200 bg-white p-4 sm:p-5">
+              <div class="flex flex-wrap items-center justify-between gap-3">
+                <div>
+                  <h3 class="text-sm font-heading font-bold text-brand-navy">Bulk upload products</h3>
+                  <p class="mt-1 text-xs text-slate-500">Import a CSV, review the rows, then add them to the catalog.</p>
+                </div>
+                <button type="button" onclick="downloadCsvTemplate()" class="inline-flex items-center gap-2 rounded-full border border-slate-200 px-3.5 py-2 text-[11px] font-semibold text-brand-navy hover:border-brand-blue hover:text-brand-blue transition">
+                  <i data-lucide="file-down" class="h-4 w-4"></i>
+                  Download template
+                </button>
+              </div>
+
+              <label class="mt-4 flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-dashed border-slate-300 bg-slate-50 px-4 py-3 text-xs font-semibold text-slate-600 transition hover:border-brand-blue hover:text-brand-blue">
+                <i data-lucide="upload" class="h-4 w-4"></i>
+                <span>Choose CSV file</span>
+                <input type="file" id="csv-file-input" accept=".csv,text/csv" class="sr-only" onchange="handleChooseCsv(event)">
+              </label>
+              <p class="mt-2 text-[10px] leading-relaxed text-slate-400">Required columns: name, category, description, price, specs. Optional: sku, stock. Separate multiple specs with | or ;. Images can be added after import.</p>
+              
+              <div id="bulk-error" class="hidden mt-3 rounded-xl bg-red-50 border border-red-200 px-3 py-2.5 text-xs text-red-700"></div>
+
+              <!-- Bulk Preview Table Container -->
+              <div id="bulk-preview-wrap" class="hidden mt-4">
+                <div class="max-h-60 overflow-auto rounded-xl border border-slate-200">
+                  <table class="w-full min-w-[560px] text-left text-[11px]">
+                    <thead class="sticky top-0 bg-slate-50 text-slate-500 border-b border-slate-200">
+                      <tr>
+                        <th class="px-3 py-2 font-semibold">Row</th>
+                        <th class="px-3 py-2 font-semibold">Product</th>
+                        <th class="px-3 py-2 font-semibold">Category</th>
+                        <th class="px-3 py-2 font-semibold">Price</th>
+                        <th class="px-3 py-2 font-semibold">Validation</th>
+                      </tr>
+                    </thead>
+                    <tbody id="bulk-table-tbody" class="divide-y divide-slate-100"></tbody>
+                  </table>
+                </div>
+                <div class="mt-3 flex flex-wrap items-center justify-between gap-3">
+                  <p id="bulk-preview-summary" class="text-xs text-slate-500">0 ready · 0 with errors</p>
+                  <div class="flex gap-2">
+                    <button type="button" onclick="clearBulkRows()" class="rounded-full px-4 py-2 text-xs font-semibold text-slate-500 hover:bg-slate-100">Clear</button>
+                    <button type="button" id="btn-import-csv" onclick="importBulkCsv()" class="inline-flex items-center gap-2 rounded-full bg-brand-navy px-4 py-2 text-xs font-semibold text-white hover:bg-brand-blue disabled:cursor-not-allowed disabled:opacity-50">
+                      <i data-lucide="upload" class="h-3.5 w-3.5"></i>
+                      <span>Import valid products</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Category Filter Pills -->
+            <div id="category-filter-pills" class="mt-5 flex gap-2 overflow-x-auto pb-2 scrollbar-none">
+              <!-- Dynamically populated -->
+            </div>
+
+            <!-- Products List Display -->
+            <div id="products-list-container" class="mt-4">
+              <!-- Rendered via JS -->
+            </div>
+          </section>
+
+          <!-- RIGHT COLUMN: STICKY PRODUCT EDITOR -->
+          <section id="product-editor" class="order-1 scroll-mt-28 rounded-3xl border border-slate-200 bg-white p-5 shadow-sm sm:p-7 lg:sticky lg:top-28 lg:order-2">
+            <div class="flex items-start justify-between gap-4 border-b border-slate-100 pb-5">
+              <div>
+                <p class="text-[10px] font-bold uppercase tracking-[0.16em] text-brand-blue">Product details</p>
+                <h2 id="editor-title" class="mt-1 text-xl font-heading font-bold text-brand-navy">Add a product</h2>
+              </div>
+              <button id="editor-cancel-btn" onclick="cancelEditing()" type="button" class="hidden rounded-full p-2 text-slate-400 hover:bg-slate-100 transition" aria-label="Cancel editing">
+                <i data-lucide="x" class="h-4 w-4"></i>
+              </button>
+            </div>
+
+            <form id="form-product" onsubmit="handleSaveProduct(event)" class="mt-5 space-y-4">
+              <input type="hidden" id="field-id" value="">
+
+              <label class="block text-xs font-semibold text-slate-700">
+                Product name *
+                <input required id="field-name" maxlength="100" placeholder="e.g. Dell Latitude 5440" class="mt-1.5 w-full rounded-xl border border-slate-200 px-3.5 py-3 text-sm font-normal outline-none transition focus:border-brand-blue" />
+              </label>
+
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <label class="block text-xs font-semibold text-slate-700">
+                  Category *
+                  <select id="field-category" class="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-3 text-xs font-normal outline-none focus:border-brand-blue">
+                    <option value="laptops">Laptops</option>
+                    <option value="desktops">Desktops & Workstations</option>
+                    <option value="servers">Servers & Storage</option>
+                    <option value="refurbished">Refurbished PCs</option>
+                    <option value="accessories">Accessories & Peripherals</option>
+                    <option value="cctv">CCTV Systems</option>
+                    <option value="networking">Networking Equipment</option>
+                    <option value="forecourt">Fuel Forecourt Systems</option>
+                  </select>
+                </label>
+                <label class="block text-xs font-semibold text-slate-700">
+                  Price (KES) *
+                  <input required type="number" id="field-price" min="0" step="1" placeholder="0" class="mt-1.5 w-full rounded-xl border border-slate-200 px-3 py-3 text-xs font-normal outline-none focus:border-brand-blue" />
+                </label>
+                <label class="block text-xs font-semibold text-slate-700">
+                  Offer (KES) <span class="font-normal text-slate-400">(opt)</span>
+                  <input type="number" id="field-offer-price" min="0" step="1" placeholder="Discounted" class="mt-1.5 w-full rounded-xl border border-slate-200 px-3 py-3 text-xs font-normal outline-none focus:border-brand-blue" />
+                </label>
+              </div>
+
+              <label class="block text-xs font-semibold text-slate-700">
+                Description *
+                <textarea required id="field-description" maxlength="700" rows="3" placeholder="Describe condition, intended use, and key benefits" class="mt-1.5 w-full resize-y rounded-xl border border-slate-200 px-3.5 py-3 text-sm font-normal outline-none focus:border-brand-blue"></textarea>
+              </label>
+
+              <label class="block text-xs font-semibold text-slate-700">
+                Specifications *
+                <textarea required id="field-specs" rows="3" placeholder="One specification per line&#10;Core i5 · 16 GB RAM&#10;512 GB SSD" class="mt-1.5 w-full resize-y rounded-xl border border-slate-200 px-3.5 py-3 text-sm font-normal outline-none focus:border-brand-blue"></textarea>
+              </label>
+
+              <div class="grid grid-cols-2 gap-3">
+                <label class="block text-xs font-semibold text-slate-700">
+                  SKU <span class="font-normal text-slate-400">(opt)</span>
+                  <input id="field-sku" maxlength="40" placeholder="TECH-001" class="mt-1.5 w-full rounded-xl border border-slate-200 px-3 py-3 text-xs font-normal outline-none focus:border-brand-blue" />
+                </label>
+                <label class="block text-xs font-semibold text-slate-700">
+                  Stock <span class="font-normal text-slate-400">(opt)</span>
+                  <input type="number" id="field-stock" min="0" step="1" placeholder="Not tracked" class="mt-1.5 w-full rounded-xl border border-slate-200 px-3 py-3 text-xs font-normal outline-none focus:border-brand-blue" />
+                </label>
+              </div>
+
+              <!-- Product Images Upload -->
+              <div>
+                <div class="mb-2 flex items-center justify-between">
+                  <p class="text-xs font-semibold text-slate-700">Product images</p>
+                  <span class="text-[10px] text-slate-400">Up to 5 · 5 MB each</span>
+                </div>
+                <label class="flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-dashed border-slate-300 bg-slate-50 px-4 py-4 text-xs font-semibold text-slate-600 transition hover:border-brand-blue hover:text-brand-blue">
+                  <i data-lucide="image-plus" class="h-4 w-4"></i>
+                  <span id="label-upload-images">Choose images</span>
+                  <input type="file" id="field-images-input" accept="image/*" multiple class="sr-only" onchange="handleChooseImages(event)">
+                </label>
+                
+                <div id="image-previews-grid" class="mt-3 grid grid-cols-5 gap-2"></div>
+              </div>
+
+              <div id="product-error" class="hidden rounded-xl bg-red-50 border border-red-200 px-3 py-2.5 text-xs text-red-700"></div>
+
+              <button type="submit" id="btn-save-product" class="flex w-full items-center justify-center gap-2 rounded-full bg-brand-navy px-5 py-3.5 text-xs font-bold text-white transition hover:bg-brand-blue disabled:cursor-wait disabled:opacity-60">
+                <i data-lucide="plus" class="h-4 w-4"></i>
+                <span id="btn-save-product-text">Add product</span>
+              </button>
+              <p class="text-center text-[10px] leading-relaxed text-slate-400">Products and images are saved to the shared catalog database.</p>
+            </form>
+          </section>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 3: ORDER MANAGEMENT -->
+    <section id="view-orders" class="hidden min-h-[80vh] px-4 pb-20 pt-8 sm:px-8 lg:px-12">
+      <div class="mx-auto max-w-7xl">
+        <button onclick="navigateTo('/admin/products')" class="inline-flex items-center gap-2 text-xs font-semibold text-slate-500 hover:text-brand-blue transition">
+          <i data-lucide="arrow-left" class="h-4 w-4"></i>
+          <span>Product management</span>
+        </button>
+
+        <div class="mt-5 flex flex-col justify-between gap-5 border-b border-slate-200 pb-7 sm:flex-row sm:items-end">
+          <div>
+            <p class="text-xs font-bold uppercase tracking-[.18em] text-brand-blue">Store operations</p>
+            <h1 class="mt-2 text-3xl font-heading font-bold tracking-tight text-brand-navy sm:text-5xl">Orders</h1>
+            <p class="mt-3 text-sm text-slate-600">Review incoming orders and coordinate stock, payment, and fulfillment.</p>
+          </div>
+          <button type="button" onclick="loadOrders()" id="btn-refresh-orders" class="inline-flex items-center justify-center gap-2 self-start rounded-full border border-slate-200 bg-white px-4 py-3 text-xs font-semibold text-brand-navy transition hover:border-brand-blue hover:text-brand-blue sm:self-auto">
+            <i data-lucide="refresh-cw" class="h-4 w-4"></i>
+            <span>Refresh orders</span>
+          </button>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div id="order-filter-pills" class="mt-7 flex flex-wrap items-center gap-2">
+          <!-- Populated dynamically via renderOrders -->
+        </div>
+
+        <!-- Orders Container -->
+        <div id="orders-list-container" class="mt-6 space-y-4">
+          <!-- Populated via renderOrders -->
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 4: ADMIN ACCOUNT CREATION -->
+    <section id="view-accounts" class="hidden min-h-[75vh] py-16 px-4 pb-20 sm:px-8 grid place-items-center">
+      <div class="w-full max-w-lg rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-9">
+        <button onclick="navigateTo('/admin/products')" class="inline-flex items-center gap-2 text-xs font-semibold text-slate-500 transition hover:text-brand-blue">
+          <i data-lucide="arrow-left" class="h-4 w-4"></i>
+          <span>Product management</span>
+        </button>
+
+        <div class="mt-7 grid h-12 w-12 place-items-center rounded-2xl bg-brand-soft-blue text-brand-blue">
+          <i data-lucide="user-plus" class="h-5 w-5"></i>
+        </div>
+
+        <p class="mt-6 text-[10px] font-bold uppercase tracking-[0.18em] text-brand-blue">Administrator access</p>
+        <h1 class="mt-2 text-3xl font-heading font-bold text-brand-navy">Create an account</h1>
+        <p class="mt-2 text-sm leading-relaxed text-slate-500">Add an administrator who can manage the product catalog and customer orders. Only signed-in administrators can create accounts.</p>
+
+        <div id="account-created-success" class="hidden mt-6 flex items-start gap-3 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-900">
+          <i data-lucide="check-circle-2" class="mt-0.5 h-5 w-5 text-emerald-600 shrink-0"></i>
+          <p id="account-created-msg">Account created successfully.</p>
+        </div>
+
+        <form id="form-create-account" onsubmit="handleCreateAccount(event)" class="mt-6 space-y-4">
+          <label class="block text-xs font-semibold text-slate-700">
+            Email address
+            <input required type="email" id="create-email" maxlength="254" autocomplete="email" class="mt-1.5 w-full rounded-xl border border-slate-200 px-3.5 py-3 text-sm outline-none focus:border-brand-blue transition" />
+          </label>
+          <label class="block text-xs font-semibold text-slate-700">
+            Password <span class="font-normal text-slate-400">(12–200 characters)</span>
+            <input required type="password" id="create-password" minlength="12" maxlength="200" autocomplete="new-password" class="mt-1.5 w-full rounded-xl border border-slate-200 px-3.5 py-3 text-sm outline-none focus:border-brand-blue transition" />
+          </label>
+          <label class="block text-xs font-semibold text-slate-700">
+            Confirm password
+            <input required type="password" id="create-confirmation" minlength="12" maxlength="200" autocomplete="new-password" class="mt-1.5 w-full rounded-xl border border-slate-200 px-3.5 py-3 text-sm outline-none focus:border-brand-blue transition" />
+          </label>
+          
+          <div id="create-error" class="hidden rounded-xl border border-red-200 bg-red-50 px-3 py-2.5 text-xs text-red-700"></div>
+
+          <button type="submit" id="btn-submit-account" class="w-full rounded-full bg-brand-navy px-5 py-3.5 text-xs font-bold text-white transition hover:bg-brand-blue disabled:opacity-60">
+            <span>Create administrator account</span>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- VIEW 5: QUOTE INQUIRIES & LEADS INBOX -->
+    <section id="view-inquiries" class="hidden min-h-[80vh] px-4 pb-20 pt-8 sm:px-8 lg:px-12">
+      <div class="mx-auto max-w-7xl">
+        <button onclick="navigateTo('/admin/products')" class="inline-flex items-center gap-2 text-xs font-semibold text-slate-500 hover:text-brand-blue transition">
+          <i data-lucide="arrow-left" class="h-4 w-4"></i>
+          <span>Product management</span>
+        </button>
+
+        <div class="mt-5 flex flex-col justify-between gap-5 border-b border-slate-200 pb-7 sm:flex-row sm:items-end">
+          <div>
+            <p class="text-xs font-bold uppercase tracking-[.18em] text-brand-green-dark">Customer leads</p>
+            <h1 class="mt-2 text-3xl font-heading font-bold tracking-tight text-brand-navy sm:text-5xl">Inquiries & Leads</h1>
+            <p class="mt-3 text-sm text-slate-600">Client inquiries submitted from the website quote modal and service requests.</p>
+          </div>
+          <button type="button" onclick="loadInquiries()" class="inline-flex items-center justify-center gap-2 self-start rounded-full border border-slate-200 bg-white px-4 py-3 text-xs font-semibold text-brand-navy transition hover:border-brand-blue hover:text-brand-blue sm:self-auto">
+            <i data-lucide="refresh-cw" class="h-4 w-4"></i>
+            <span>Refresh leads</span>
+          </button>
+        </div>
+
+        <div class="mt-6 bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs sm:text-sm">
+              <thead class="bg-slate-50 border-b border-slate-200 text-slate-500 font-semibold uppercase text-[11px] tracking-wider">
+                <tr>
+                  <th class="py-3.5 px-5">Date</th>
+                  <th class="py-3.5 px-5">Client Name</th>
+                  <th class="py-3.5 px-5">Contact</th>
+                  <th class="py-3.5 px-5">Service Needed</th>
+                  <th class="py-3.5 px-5">Message / Requirements</th>
+                  <th class="py-3.5 px-5 text-right">Quick Contact</th>
+                </tr>
+              </thead>
+              <tbody id="inquiries-tbody" class="divide-y divide-slate-100">
+                <!-- Rendered dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= CLIENT JAVASCRIPT APP ================= -->
+  <script>
+    // Configuration & State
+    const PRODUCT_CATEGORIES = [
+      { id: 'all', name: 'All products' },
+      { id: 'laptops', name: 'Laptops' },
+      { id: 'desktops', name: 'Desktops & Workstations' },
+      { id: 'servers', name: 'Servers & Storage' },
+      { id: 'refurbished', name: 'Refurbished PCs' },
+      { id: 'accessories', name: 'Accessories & Peripherals' },
+      { id: 'cctv', name: 'CCTV Systems' },
+      { id: 'networking', name: 'Networking Equipment' },
+      { id: 'forecourt', name: 'Fuel Forecourt Systems' },
+    ];
+
+    const ORDER_STATUS_LABELS = {
+      pending: 'New order',
+      confirmed: 'Confirmed',
+      processing: 'Preparing',
+      ready_for_pickup: 'Ready for collection',
+      out_for_delivery: 'Out for delivery',
+      completed: 'Completed',
+      cancelled: 'Cancelled',
+    };
+
+    function getNextStatuses(order) {
+      if (order.status === 'pending') return ['confirmed', 'cancelled'];
+      if (order.status === 'confirmed') return ['processing', 'cancelled'];
+      if (order.status === 'processing') return [order.fulfillment === 'pickup' ? 'ready_for_pickup' : 'out_for_delivery', 'cancelled'];
+      if (['ready_for_pickup', 'out_for_delivery'].includes(order.status)) return ['completed', 'cancelled'];
+      return [];
+    }
+
+    const CSV_TEMPLATE = 'name,category,description,price,offer_price,specs,sku,stock\n"Dell Latitude 5440",laptops,"Core i5 laptop with 16 GB RAM",85000,75000,"Core i5 | 16 GB RAM | 512 GB SSD",TECH-001,5\n';
+
+    let currentUser = null;
+    let csrfToken = '';
+    let products = [];
+    let orders = [];
+    let inquiries = [];
+    let currentCategoryFilter = 'all';
+    let currentOrderFilter = 'active';
+    let editingProductId = null;
+    let currentFormImages = [];
+    let bulkRows = [];
+
+    // --- Toast Notification Helper ---
+    function showToast(message, type = 'success') {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      const isError = type === 'error';
+      toast.className = `pointer-events-auto transform transition-all duration-300 ease-out flex items-center gap-3 px-4 py-3 rounded-2xl shadow-lg border text-xs font-semibold ${
+        isError ? 'bg-red-900 text-white border-red-800' : 'bg-brand-navy text-white border-slate-700'
+      }`;
+      toast.innerHTML = `
+        <span class="${isError ? 'text-red-400' : 'text-brand-green'} flex items-center shrink-0">
+          <i data-lucide="${isError ? 'alert-triangle' : 'check-circle-2'}" class="w-4 h-4"></i>
+        </span>
+        <span class="flex-1">${message}</span>
+      `;
+      container.appendChild(toast);
+      if (window.lucide) lucide.createIcons();
+
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'translate-y-2');
+        setTimeout(() => toast.remove(), 300);
+      }, 3500);
+    }
+
+    // --- CSV Parser matching techashi ---
+    function parseCsv(text) {
+      const rows = [];
+      let row = [];
+      let cell = '';
+      let quoted = false;
+      for (let index = 0; index < text.length; index += 1) {
+        const char = text[index];
+        if (quoted) {
+          if (char === '"' && text[index + 1] === '"') { cell += '"'; index += 1; }
+          else if (char === '"') quoted = false;
+          else cell += char;
+        } else if (char === '"' && cell === '') quoted = true;
+        else if (char === ',') { row.push(cell.trim()); cell = ''; }
+        else if (char === '\n' || char === '\r') {
+          if (char === '\r' && text[index + 1] === '\n') index += 1;
+          row.push(cell.trim());
+          if (row.some(Boolean)) rows.push(row);
+          row = []; cell = '';
+        } else cell += char;
+      }
+      if (quoted) throw new Error('The CSV has an unclosed quoted field.');
+      row.push(cell.trim());
+      if (row.some(Boolean)) rows.push(row);
+      if (rows.length < 2) throw new Error('Add a header row and at least one product row.');
+
+      const headers = rows[0].map((header) => header.toLowerCase().replace(/^\uFEFF/, ''));
+      const required = ['name', 'category', 'description', 'price', 'specs'];
+      const missing = required.filter((header) => !headers.includes(header));
+      if (missing.length) throw new Error(`Missing required CSV columns: ${missing.join(', ')}.`);
+      const knownCategories = PRODUCT_CATEGORIES.map(({ id }) => id).filter(id => id !== 'all');
+
+      return rows.slice(1).map((cells, index) => {
+        const value = (key) => cells[headers.indexOf(key)] || '';
+        const offerVal = value('offer_price') || value('offer');
+        const product = {
+          name: value('name'),
+          category: value('category').toLowerCase(),
+          description: value('description'),
+          price: Number(value('price')),
+          offer_price: offerVal === '' ? null : Number(offerVal),
+          specs: value('specs').split(/[|;]/).map((spec) => spec.trim()).filter(Boolean),
+          sku: value('sku'),
+          stock: value('stock') === '' ? null : Number(value('stock')),
+          images: [],
+        };
+        const issues = [];
+        if (!product.name || product.name.length > 100) issues.push('name is required (max 100 chars)');
+        if (!knownCategories.includes(product.category)) issues.push(`category must be one of: ${knownCategories.join(', ')}`);
+        if (!product.description || product.description.length > 700) issues.push('description is required (max 700 chars)');
+        if (!Number.isFinite(product.price) || product.price < 0) issues.push('price must be a positive number');
+        if (product.offer_price !== null && (!Number.isFinite(product.offer_price) || product.offer_price < 0)) issues.push('offer must be a non-negative number');
+        if (!product.specs.length) issues.push('at least one spec is required');
+        if (product.sku && product.sku.length > 40) issues.push('SKU must be 40 chars or fewer');
+        if (product.stock !== null && (!Number.isInteger(product.stock) || product.stock < 0)) issues.push('stock must be blank or whole number');
+        return { line: index + 2, product, issues };
+      });
+    }
+
+    // --- SPA Routing ---
+    function getCleanRoute() {
+      const p = window.location.pathname.replace(/\/+$/, '') || '/admin';
+      return p;
+    }
+
+    function navigateTo(targetPath, replace = false) {
+      if (replace) {
+        window.history.replaceState({}, '', targetPath);
+      } else {
+        window.history.pushState({}, '', targetPath);
+      }
+      applyRoute();
+    }
+
+    window.addEventListener('popstate', () => {
+      applyRoute();
+    });
+
+    function applyRoute() {
+      const route = getCleanRoute();
+
+      // If user is not authenticated, lock into login view unless navigating away
+      if (!currentUser && route !== '/admin/login') {
+        renderView('login');
+        return;
+      }
+
+      if (route === '/admin' || route === '/admin/products') {
+        renderView('products');
+      } else if (route === '/admin/orders') {
+        renderView('orders');
+      } else if (route === '/admin/accounts') {
+        renderView('accounts');
+      } else if (route === '/admin/inquiries') {
+        renderView('inquiries');
+      } else if (route === '/admin/login') {
+        if (currentUser) {
+          navigateTo('/admin/products', true);
+        } else {
+          renderView('login');
+        }
+      } else {
+        renderView('products');
+      }
+    }
+
+    function renderView(viewName) {
+      const views = ['login', 'products', 'orders', 'accounts', 'inquiries'];
+      views.forEach(v => {
+        const el = document.getElementById(`view-${v}`);
+        if (el) el.classList.add('hidden');
+      });
+
+      const targetEl = document.getElementById(`view-${viewName}`);
+      if (targetEl) targetEl.classList.remove('hidden');
+
+      // Update header bar
+      const guestActions = document.getElementById('header-guest-actions');
+      const authActions = document.getElementById('header-authenticated-actions');
+      if (viewName === 'login') {
+        guestActions.classList.remove('hidden');
+        guestActions.classList.add('flex');
+        authActions.classList.add('hidden');
+      } else {
+        guestActions.classList.add('hidden');
+        authActions.classList.remove('hidden');
+        authActions.classList.add('flex');
+      }
+
+      // Refresh corresponding data
+      if (viewName === 'products') {
+        loadProducts();
+      } else if (viewName === 'orders') {
+        loadOrders();
+      } else if (viewName === 'inquiries') {
+        loadInquiries();
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (window.lucide) lucide.createIcons();
+    }
+
+    // --- Authentication & Session Handling ---
+    async function checkSession() {
+      try {
+        const res = await fetch('/api/session', { credentials: 'include' });
+        if (res.ok) {
+          const data = await res.json();
+          csrfToken = data.csrfToken || '';
+          currentUser = data.user || null;
+        }
+      } catch (e) {
+        console.error('Session check failed:', e);
+      }
+      applyRoute();
+    }
+
+    async function handleLogin(e) {
+      e.preventDefault();
+      const errBox = document.getElementById('login-error');
+      const submitBtn = document.getElementById('login-btn-submit');
+      errBox.classList.add('hidden');
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span>Signing in securely…</span>';
+
+      const email = document.getElementById('login-email').value.trim();
+      const password = document.getElementById('login-password').value;
+
+      try {
+        const res = await fetch('/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+          body: JSON.stringify({ email, password }),
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Sign-in failed.');
+
+        currentUser = data.user;
+        csrfToken = data.csrfToken;
+        showToast('Signed in successfully.');
+        navigateTo('/admin/products');
+      } catch (err) {
+        errBox.textContent = err.message || 'Login failed. Check your credentials.';
+        errBox.classList.remove('hidden');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<span>Sign in securely</span>';
+      }
+    }
+
+    async function signOut() {
+      try {
+        await fetch('/api/logout', { method: 'POST', credentials: 'include' });
+      } catch (e) {}
+      currentUser = null;
+      showToast('Signed out of admin workspace.');
+      navigateTo('/admin/login');
+    }
+
+    // --- Create Admin Account ---
+    async function handleCreateAccount(e) {
+      e.preventDefault();
+      const email = document.getElementById('create-email').value.trim();
+      const password = document.getElementById('create-password').value;
+      const confirmation = document.getElementById('create-confirmation').value;
+      const errBox = document.getElementById('create-error');
+      const successBox = document.getElementById('account-created-success');
+      const submitBtn = document.getElementById('btn-submit-account');
+
+      errBox.classList.add('hidden');
+      successBox.classList.add('hidden');
+
+      if (password !== confirmation) {
+        errBox.textContent = 'The passwords do not match.';
+        errBox.classList.remove('hidden');
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span>Creating account…</span>';
+
+      try {
+        const res = await fetch('/api/admins', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': csrfToken },
+          body: JSON.stringify({ email, password }),
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Failed to create administrator account.');
+
+        document.getElementById('account-created-msg').innerHTML = `Account created for <strong>${email}</strong>. They can now sign in at the admin login page.`;
+        successBox.classList.remove('hidden');
+        document.getElementById('form-create-account').reset();
+        showToast('Administrator account created successfully.');
+      } catch (err) {
+        errBox.textContent = err.message || 'Could not create account.';
+        errBox.classList.remove('hidden');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<span>Create administrator account</span>';
+      }
+    }
+
+    // --- Products Operations ---
+    async function loadProducts() {
+      try {
+        const res = await fetch('/api/products');
+        if (res.ok) {
+          const data = await res.json();
+          products = data.products || data || [];
+          document.getElementById('nav-products-count').textContent = products.length;
+          document.getElementById('stat-product-count').textContent = products.length;
+          renderCategoryPills();
+          renderProductCatalog();
+        }
+      } catch (err) {
+        console.error('Error loading products:', err);
+      }
+    }
+
+    function renderCategoryPills() {
+      const container = document.getElementById('category-filter-pills');
+      container.innerHTML = PRODUCT_CATEGORIES.map(cat => {
+        const isActive = currentCategoryFilter === cat.id;
+        return `
+          <button type="button" onclick="setCategoryFilter('${cat.id}')" class="shrink-0 rounded-full px-4 py-2 text-[11px] font-semibold transition-colors ${
+            isActive ? 'bg-brand-navy text-white' : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
+          }">
+            ${cat.name}
+          </button>
+        `;
+      }).join('');
+    }
+
+    function setCategoryFilter(catId) {
+      currentCategoryFilter = catId;
+      renderCategoryPills();
+      renderProductCatalog();
+    }
+
+    function renderProductCatalog() {
+      const container = document.getElementById('products-list-container');
+      const query = (document.getElementById('product-query')?.value || '').trim().toLowerCase();
+
+      const filtered = products.filter(p => {
+        const matchCat = currentCategoryFilter === 'all' || p.category === currentCategoryFilter;
+        const matchText = `${p.name || ''} ${p.description || ''} ${p.sku || ''}`.toLowerCase().includes(query);
+        return matchCat && matchText;
+      });
+
+      document.getElementById('catalog-count-subtitle').textContent = `${filtered.length} shown · saved products appear on the Products page`;
+
+      if (!filtered.length) {
+        container.innerHTML = `
+          <div class="rounded-2xl border border-dashed border-slate-300 bg-white px-6 py-14 text-center">
+            <i data-lucide="package-plus" class="mx-auto h-8 w-8 text-slate-300"></i>
+            <h3 class="mt-4 font-heading font-bold text-brand-navy">${products.length ? 'No matching products' : 'Your catalog is ready'}</h3>
+            <p class="mx-auto mt-2 max-w-sm text-xs leading-relaxed text-slate-500">${products.length ? 'Try a different search or category.' : 'Add your first product to make it available in customer listings.'}</p>
+            ${!products.length ? `<button onclick="document.getElementById('product-editor')?.scrollIntoView({ behavior: 'smooth' })" class="mt-5 inline-flex items-center gap-2 rounded-full bg-brand-navy px-5 py-2.5 text-xs font-semibold text-white"><i data-lucide="plus" class="h-4 w-4"></i> Add first product</button>` : ''}
+          </div>
+        `;
+        if (window.lucide) lucide.createIcons();
+        return;
+      }
+
+      container.innerHTML = `
+        <div class="divide-y divide-slate-200 border-y border-slate-200 bg-white rounded-2xl overflow-hidden shadow-2xs">
+          ${filtered.map(product => {
+            const catObj = PRODUCT_CATEGORIES.find(c => c.id === product.category);
+            const catName = catObj ? catObj.name : product.category;
+            const imgSrc = (product.images && product.images[0]?.src) || null;
+            const hasOffer = product.offer_price != null && Number(product.offer_price) > 0 && Number(product.offer_price) < Number(product.price);
+
+            return `
+              <article class="flex gap-4 p-4 sm:gap-5 sm:p-5 hover:bg-slate-50/60 transition">
+                <div class="relative h-24 w-28 shrink-0 overflow-hidden rounded-xl bg-slate-50 border border-slate-200 sm:h-28 sm:w-36 flex items-center justify-center">
+                  ${imgSrc ? `
+                    <img src="${imgSrc}" alt="${product.name}" class="h-full w-full object-contain p-1.5" onerror="this.onerror=null;this.src='https://placehold.co/200x200?text=Techashi';">
+                  ` : `
+                    <div class="grid h-full place-items-center text-slate-300">
+                      <i data-lucide="archive" class="h-7 w-7"></i>
+                    </div>
+                  `}
+                </div>
+                <div class="min-w-0 flex-1">
+                  <p class="text-[10px] font-bold uppercase tracking-wider text-brand-blue">${catName}</p>
+                  <h3 class="mt-1 truncate font-heading font-bold text-brand-navy text-sm sm:text-base">${product.name}</h3>
+                  <p class="mt-1 line-clamp-2 text-xs text-slate-500">${product.description || ''}</p>
+                  
+                  <div class="mt-2 flex flex-wrap items-center gap-2">
+                    ${hasOffer ? `
+                      <span class="text-xs text-slate-400 line-through">KES ${Number(product.price).toLocaleString()}</span>
+                      <span class="text-xs font-bold text-red-600">KES ${Number(product.offer_price).toLocaleString()}</span>
+                      <span class="rounded bg-red-50 text-red-600 px-1.5 py-0.5 text-[10px] font-bold">Offer</span>
+                    ` : `
+                      <span class="text-xs font-bold text-slate-800">KES ${Number(product.price).toLocaleString()}</span>
+                    `}
+                    ${product.stock != null ? `<span class="text-xs text-slate-500">· ${product.stock} in stock</span>` : ''}
+                    ${product.sku ? `<span class="text-[10px] font-mono text-slate-400 bg-slate-100 px-1.5 py-0.5 rounded">SKU: ${product.sku}</span>` : ''}
+                  </div>
+                </div>
+
+                <div class="flex shrink-0 flex-col gap-2 sm:flex-row sm:items-center">
+                  <button type="button" onclick="editProduct('${product.id}')" aria-label="Edit product" class="grid h-9 w-9 place-items-center rounded-full bg-slate-100 text-slate-600 hover:bg-brand-soft-blue hover:text-brand-blue transition">
+                    <i data-lucide="pencil" class="h-4 w-4"></i>
+                  </button>
+                  <button type="button" onclick="deleteProduct('${product.id}')" aria-label="Delete product" class="grid h-9 w-9 place-items-center rounded-full bg-slate-100 text-slate-600 hover:bg-red-50 hover:text-red-600 transition">
+                    <i data-lucide="trash-2" class="h-4 w-4"></i>
+                  </button>
+                </div>
+              </article>
+            `;
+          }).join('')}
+        </div>
+      `;
+
+      if (window.lucide) lucide.createIcons();
+    }
+
+    // --- Product Form Actions (Add / Edit / Image Upload) ---
+    function editProduct(productId) {
+      const prod = products.find(p => String(p.id) === String(productId));
+      if (!prod) return;
+
+      editingProductId = prod.id;
+      document.getElementById('field-id').value = prod.id;
+      document.getElementById('field-name').value = prod.name || '';
+      document.getElementById('field-category').value = prod.category || 'laptops';
+      document.getElementById('field-price').value = prod.price || '';
+      document.getElementById('field-offer-price').value = prod.offer_price != null ? prod.offer_price : '';
+      document.getElementById('field-description').value = prod.description || '';
+      document.getElementById('field-specs').value = Array.isArray(prod.specs) ? prod.specs.join('\n') : (prod.specs || '');
+      document.getElementById('field-sku').value = prod.sku || '';
+      document.getElementById('field-stock').value = prod.stock != null ? prod.stock : '';
+
+      currentFormImages = Array.isArray(prod.images) ? [...prod.images] : [];
+      renderImagePreviews();
+
+      document.getElementById('editor-title').textContent = 'Edit product';
+      document.getElementById('btn-save-product-text').textContent = 'Save changes';
+      document.getElementById('editor-cancel-btn').classList.remove('hidden');
+
+      document.getElementById('product-editor')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function cancelEditing() {
+      editingProductId = null;
+      document.getElementById('form-product').reset();
+      document.getElementById('field-id').value = '';
+      currentFormImages = [];
+      renderImagePreviews();
+
+      document.getElementById('editor-title').textContent = 'Add a product';
+      document.getElementById('btn-save-product-text').textContent = 'Add product';
+      document.getElementById('editor-cancel-btn').classList.add('hidden');
+      document.getElementById('product-error').classList.add('hidden');
+    }
+
+    async function handleChooseImages(event) {
+      const files = event.target.files;
+      if (!files || !files.length) return;
+
+      const uploadLabel = document.getElementById('label-upload-images');
+      uploadLabel.textContent = 'Uploading images…';
+
+      for (let i = 0; i < files.length; i++) {
+        if (currentFormImages.length >= 5) break;
+        const file = files[i];
+        if (file.size > 5 * 1024 * 1024) {
+          showToast(`File ${file.name} is larger than 5 MB`, 'error');
+          continue;
+        }
+
+        // Convert to base64 and send to /api/upload
+        const reader = new FileReader();
+        await new Promise((resolve) => {
+          reader.onload = async (e) => {
+            try {
+              const res = await fetch('/api/upload', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ images: [e.target.result] }),
+              });
+              if (res.ok) {
+                const data = await res.json();
+                if (data.images && data.images.length) {
+                  currentFormImages.push(data.images[0]);
+                }
+              }
+            } catch (err) {
+              console.error('Image upload failed:', err);
+            }
+            resolve();
+          };
+          reader.readAsDataURL(file);
+        });
+      }
+
+      uploadLabel.textContent = 'Choose images';
+      event.target.value = '';
+      renderImagePreviews();
+    }
+
+    function renderImagePreviews() {
+      const container = document.getElementById('image-previews-grid');
+      container.innerHTML = currentFormImages.map((img, index) => `
+        <div class="relative aspect-square overflow-hidden rounded-lg bg-slate-50 border border-slate-200">
+          <img src="${img.src}" alt="${img.name || 'preview'}" class="h-full w-full object-contain p-1">
+          <button type="button" onclick="removeImage(${index})" class="absolute right-1 top-1 rounded-full bg-white/90 p-1 text-slate-500 hover:text-red-600 shadow-xs">
+            <i data-lucide="x" class="h-3 w-3"></i>
+          </button>
+        </div>
+      `).join('');
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function removeImage(index) {
+      currentFormImages.splice(index, 1);
+      renderImagePreviews();
+    }
+
+    async function handleSaveProduct(e) {
+      e.preventDefault();
+      const errBox = document.getElementById('product-error');
+      errBox.classList.add('hidden');
+
+      const name = document.getElementById('field-name').value.trim();
+      const category = document.getElementById('field-category').value;
+      const price = Number(document.getElementById('field-price').value);
+      const offerPriceRaw = document.getElementById('field-offer-price').value;
+      const offerPrice = offerPriceRaw !== '' ? Number(offerPriceRaw) : null;
+      const description = document.getElementById('field-description').value.trim();
+      const specsRaw = document.getElementById('field-specs').value.trim();
+      const sku = document.getElementById('field-sku').value.trim();
+      const stockRaw = document.getElementById('field-stock').value;
+      const stock = stockRaw !== '' ? Number(stockRaw) : null;
+
+      if (!name || !description || isNaN(price) || price < 0 || !specsRaw) {
+        errBox.textContent = 'Add a product name, description, valid price, and at least one specification.';
+        errBox.classList.remove('hidden');
+        return;
+      }
+
+      if (offerPrice !== null && (isNaN(offerPrice) || offerPrice < 0)) {
+        errBox.textContent = 'Enter a valid non-negative offer price.';
+        errBox.classList.remove('hidden');
+        return;
+      }
+
+      if (offerPrice !== null && offerPrice >= price) {
+        errBox.textContent = 'Offer price should be lower than original price.';
+        errBox.classList.remove('hidden');
+        return;
+      }
+
+      const specs = specsRaw.split('\n').map(s => s.trim()).filter(Boolean);
+      const btn = document.getElementById('btn-save-product');
+      btn.disabled = true;
+
+      const productPayload = {
+        ...(editingProductId ? { id: editingProductId } : {}),
+        name,
+        category,
+        description,
+        price,
+        offer_price: offerPrice,
+        specs,
+        sku,
+        stock,
+        images: currentFormImages,
+      };
+
+      try {
+        const res = await fetch('/api/products', {
+          method: editingProductId ? 'PUT' : 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(productPayload),
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Failed to save product.');
+
+        showToast(editingProductId ? 'Product updated.' : 'Product added to the catalog.');
+        cancelEditing();
+        await loadProducts();
+      } catch (err) {
+        errBox.textContent = err.message || 'Error saving product.';
+        errBox.classList.remove('hidden');
+      } finally {
+        btn.disabled = false;
+      }
+    }
+
+    async function deleteProduct(productId) {
+      const prod = products.find(p => String(p.id) === String(productId));
+      if (!confirm(`Are you sure you want to remove "${prod?.name || 'this product'}" from the catalog?`)) return;
+
+      try {
+        const res = await fetch(`/api/products?id=${productId}`, { method: 'DELETE' });
+        if (!res.ok) throw new Error('Could not delete product');
+        showToast('Product removed from catalog.');
+        if (editingProductId === productId) cancelEditing();
+        await loadProducts();
+      } catch (err) {
+        showToast(err.message || 'Error deleting product.', 'error');
+      }
+    }
+
+    // --- Bulk CSV Actions ---
+    function downloadCsvTemplate() {
+      const blob = new Blob([CSV_TEMPLATE], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.setAttribute('href', url);
+      link.setAttribute('download', 'techashi-products-template.csv');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    async function handleChooseCsv(e) {
+      const file = e.target.files?.[0];
+      const errBox = document.getElementById('bulk-error');
+      const wrap = document.getElementById('bulk-preview-wrap');
+      errBox.classList.add('hidden');
+      bulkRows = [];
+
+      if (!file) return;
+
+      try {
+        if (!/\.csv$/i.test(file.name)) throw new Error('Please choose a .csv file.');
+        if (file.size > 2 * 1024 * 1024) throw new Error('CSV files must be 2 MB or smaller.');
+        const text = await file.text();
+        bulkRows = parseCsv(text);
+        renderBulkPreview();
+        wrap.classList.remove('hidden');
+      } catch (err) {
+        errBox.textContent = err.message || 'Could not parse CSV file.';
+        errBox.classList.remove('hidden');
+        wrap.classList.add('hidden');
+      }
+      e.target.value = '';
+    }
+
+    function renderBulkPreview() {
+      const tbody = document.getElementById('bulk-table-tbody');
+      const summary = document.getElementById('bulk-preview-summary');
+      const importBtn = document.getElementById('btn-import-csv');
+
+      const validCount = bulkRows.filter(r => !r.issues.length).length;
+      const errorCount = bulkRows.filter(r => r.issues.length).length;
+
+      summary.textContent = `${validCount} ready · ${errorCount} with errors`;
+      importBtn.disabled = validCount === 0;
+
+      tbody.innerHTML = bulkRows.map(({ line, product, issues }) => `
+        <tr class="${issues.length ? 'bg-red-50/70 text-red-900' : ''}">
+          <td class="px-3 py-2 text-slate-400 font-mono">${line}</td>
+          <td class="px-3 py-2 font-semibold text-brand-navy">${product.name || '—'}</td>
+          <td class="px-3 py-2">${product.category || '—'}</td>
+          <td class="px-3 py-2">
+            ${Number.isFinite(product.price) ? `KES ${product.price.toLocaleString()}` : '—'}
+            ${product.offer_price ? `<span class="text-red-600 font-bold ml-1">(Offer: KES ${product.offer_price.toLocaleString()})</span>` : ''}
+          </td>
+          <td class="px-3 py-2 ${issues.length ? 'text-red-700 font-semibold' : 'text-emerald-700'}">
+            ${issues.length ? issues.join('; ') : 'Ready'}
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function clearBulkRows() {
+      bulkRows = [];
+      document.getElementById('bulk-preview-wrap').classList.add('hidden');
+      document.getElementById('bulk-error').classList.add('hidden');
+    }
+
+    async function importBulkCsv() {
+      const validRows = bulkRows.filter(r => !r.issues.length);
+      if (!validRows.length) return;
+
+      const importBtn = document.getElementById('btn-import-csv');
+      importBtn.disabled = true;
+      importBtn.innerHTML = '<span>Importing…</span>';
+
+      let imported = 0;
+      let failed = 0;
+
+      for (const row of validRows) {
+        try {
+          const res = await fetch('/api/products', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(row.product),
+          });
+          if (res.ok) imported++;
+          else failed++;
+        } catch (e) {
+          failed++;
+        }
+      }
+
+      await loadProducts();
+      importBtn.disabled = false;
+      importBtn.innerHTML = '<i data-lucide="upload" class="h-3.5 w-3.5"></i><span>Import valid products</span>';
+
+      if (failed > 0) {
+        showToast(`${imported} imported, ${failed} failed.`, 'error');
+      } else {
+        showToast(`${imported} product${imported === 1 ? '' : 's'} imported successfully.`);
+        clearBulkRows();
+      }
+      if (window.lucide) lucide.createIcons();
+    }
+
+    // --- Orders Operations ---
+    async function loadOrders() {
+      const btn = document.getElementById('btn-refresh-orders');
+      if (btn) btn.classList.add('opacity-50');
+
+      try {
+        const res = await fetch('/api/orders');
+        if (res.ok) {
+          const data = await res.json();
+          orders = data.orders || [];
+          document.getElementById('nav-orders-count').textContent = orders.filter(o => o.status === 'pending').length;
+          renderOrderFilters();
+          renderOrders();
+        }
+      } catch (err) {
+        console.error('Failed to load orders:', err);
+      } finally {
+        if (btn) btn.classList.remove('opacity-50');
+      }
+    }
+
+    function renderOrderFilters() {
+      const container = document.getElementById('order-filter-pills');
+      const pendingCount = orders.filter(o => o.status === 'pending').length;
+
+      const filterOptions = [
+        ['active', 'Active'],
+        ['pending', 'New'],
+        ['all', 'All orders'],
+        ['completed', 'Completed'],
+        ['cancelled', 'Cancelled'],
+      ];
+
+      container.innerHTML = filterOptions.map(([val, label]) => `
+        <button type="button" onclick="setOrderFilter('${val}')" class="rounded-full px-4 py-2 text-xs font-semibold transition ${
+          currentOrderFilter === val ? 'bg-brand-navy text-white' : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
+        }">
+          ${label}
+          ${val === 'pending' && pendingCount > 0 ? `<span class="ml-1.5 px-1.5 py-0.2 rounded-full bg-brand-green text-brand-navy font-bold text-[10px]">${pendingCount}</span>` : ''}
+        </button>
+      `).join('');
+    }
+
+    function setOrderFilter(f) {
+      currentOrderFilter = f;
+      renderOrderFilters();
+      renderOrders();
+    }
+
+    function renderOrders() {
+      const container = document.getElementById('orders-list-container');
+      const visible = orders.filter(o => {
+        if (currentOrderFilter === 'all') return true;
+        if (currentOrderFilter === 'active') return !['completed', 'cancelled'].includes(o.status);
+        return o.status === currentOrderFilter;
+      });
+
+      if (!visible.length) {
+        container.innerHTML = `
+          <div class="rounded-2xl border border-slate-200 bg-white px-6 py-16 text-center">
+            <i data-lucide="clipboard-list" class="mx-auto h-8 w-8 text-slate-300"></i>
+            <h2 class="mt-4 font-heading text-lg font-bold text-brand-navy">${orders.length ? 'No orders in this view' : 'No orders yet'}</h2>
+            <p class="mt-2 text-sm text-slate-500">Customer equipment orders will appear here automatically.</p>
+          </div>
+        `;
+        if (window.lucide) lucide.createIcons();
+        return;
+      }
+
+      container.innerHTML = visible.map(order => {
+        const next = getNextStatuses(order);
+        const statusBadgeStyle = 
+          order.status === 'pending' ? 'bg-amber-50 text-amber-800 border-amber-200' :
+          order.status === 'cancelled' ? 'bg-red-50 text-red-700 border-red-200' :
+          order.status === 'completed' ? 'bg-emerald-50 text-emerald-800 border-emerald-200' :
+          'bg-blue-50 text-brand-blue border-blue-200';
+
+        return `
+          <article class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xs">
+            <div class="flex flex-col justify-between gap-4 border-b border-slate-100 px-5 py-4 sm:flex-row sm:items-center sm:px-6 bg-slate-50/50">
+              <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+                <span class="font-heading text-sm font-bold text-brand-navy font-mono">${order.order_number}</span>
+                <span class="rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wide border ${statusBadgeStyle}">
+                  ${ORDER_STATUS_LABELS[order.status] || order.status}
+                </span>
+                <span class="text-xs text-slate-400">${order.created_at || ''}</span>
+              </div>
+              <strong class="font-heading text-lg text-brand-navy">KES ${Number(order.total || 0).toLocaleString()}</strong>
+            </div>
+
+            <div class="grid gap-6 px-5 py-5 sm:px-6 lg:grid-cols-[minmax(0,1fr)_280px]">
+              <div>
+                <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+                  <strong class="text-brand-navy">${order.customer_name}</strong>
+                  <a href="mailto:${order.customer_email}" class="text-slate-600 hover:text-brand-blue">${order.customer_email}</a>
+                  <a href="tel:${order.customer_phone}" class="inline-flex items-center gap-1.5 text-slate-600 hover:text-brand-blue font-semibold">
+                    <i data-lucide="phone" class="h-3.5 w-3.5 text-brand-green-dark"></i>
+                    ${order.customer_phone}
+                  </a>
+                </div>
+
+                <p class="mt-3 flex items-start gap-2 text-xs leading-relaxed text-slate-600">
+                  <span class="mt-0.5 text-brand-blue">
+                    <i data-lucide="${order.fulfillment === 'delivery' ? 'truck' : 'map-pin'}" class="h-4 w-4"></i>
+                  </span>
+                  <span>
+                    <strong class="text-slate-700">${order.fulfillment === 'delivery' ? 'Delivery' : 'Store Collection (Chaka Place)'}</strong>
+                    ${order.delivery_address ? ` · ${order.delivery_address}` : ''}
+                  </span>
+                </p>
+
+                ${order.customer_notes ? `
+                  <p class="mt-3 rounded-xl bg-slate-50 px-3.5 py-2 text-xs leading-relaxed text-slate-600 border border-slate-100">
+                    <span class="font-semibold text-slate-700">Client Note:</span> ${order.customer_notes}
+                  </p>
+                ` : ''}
+
+                <!-- Items Table -->
+                <div class="mt-5 divide-y divide-slate-100 border-y border-slate-100">
+                  ${(order.items || []).map(item => `
+                    <div class="flex items-center gap-3 py-3">
+                      <div class="grid h-12 w-14 shrink-0 place-items-center overflow-hidden rounded-lg bg-slate-50 border border-slate-100">
+                        ${item.image_src ? `
+                          <img src="${item.image_src}" alt="" class="h-full w-full object-contain p-1">
+                        ` : `
+                          <i data-lucide="package-check" class="h-4 w-4 text-slate-300"></i>
+                        `}
+                      </div>
+                      <div class="min-w-0 flex-1">
+                        <p class="truncate text-xs font-semibold text-brand-navy">${item.product_name}</p>
+                        <p class="mt-0.5 text-[10px] text-slate-500">${item.category || ''} · Qty ${item.quantity} ${item.sku ? `· SKU: ${item.sku}` : ''}</p>
+                      </div>
+                      <span class="shrink-0 text-xs font-semibold text-slate-700">KES ${(item.unit_price * item.quantity).toLocaleString()}</span>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+
+              <!-- Aside Operational Box -->
+              <aside class="flex flex-col justify-between gap-4 rounded-2xl bg-slate-50 p-4 border border-slate-200">
+                <div>
+                  <p class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Payment Status</p>
+                  <p class="mt-1 text-xs font-semibold text-brand-navy">Payment: ${order.payment_method || 'Direct with Store'}</p>
+                  <p class="mt-1 text-[11px] font-medium ${order.payment_status === 'paid' ? 'text-emerald-700 font-bold' : 'text-amber-700'}">
+                    ${order.payment_status === 'paid' ? '✓ Payment Received' : '⏳ Awaiting Payment'}
+                  </p>
+
+                  ${order.payment_status !== 'paid' && order.status !== 'cancelled' ? `
+                    <button type="button" onclick="markOrderPaid('${order.id}')" class="mt-2.5 inline-block text-[11px] font-bold text-brand-blue hover:text-brand-navy underline underline-offset-2">
+                      Mark Payment Received
+                    </button>
+                  ` : ''}
+
+                  <div class="mt-4 border-t border-slate-200 pt-3">
+                    <p class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Order Subtotal</p>
+                    <p class="mt-1 font-heading text-lg font-bold text-brand-navy">KES ${Number(order.subtotal || order.total || 0).toLocaleString()}</p>
+                    <p class="mt-1 text-[10px] text-slate-400">Delivery fee confirmed on dispatch.</p>
+                  </div>
+                </div>
+
+                ${next.length > 0 ? `
+                  <label class="block text-[10px] font-semibold text-slate-700">
+                    Update Order Status
+                    <select onchange="updateOrderStatus('${order.id}', this.value)" class="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-brand-navy outline-none focus:border-brand-blue">
+                      <option value="">Move to next step…</option>
+                      ${next.map(st => `<option value="${st}">${ORDER_STATUS_LABELS[st] || st}</option>`).join('')}
+                    </select>
+                  </label>
+                ` : `
+                  <p class="text-[10px] text-slate-400 text-center italic">Order finalized (${ORDER_STATUS_LABELS[order.status] || order.status})</p>
+                `}
+              </aside>
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      if (window.lucide) lucide.createIcons();
+    }
+
+    async function markOrderPaid(orderId) {
+      try {
+        const res = await fetch(`/api/orders?id=${orderId}`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ paymentStatus: 'paid' }),
+        });
+        if (!res.ok) throw new Error('Could not update payment');
+        showToast('Payment marked as received.');
+        await loadOrders();
+      } catch (err) {
+        showToast(err.message || 'Payment update failed.', 'error');
+      }
+    }
+
+    async function updateOrderStatus(orderId, status) {
+      if (!status) return;
+      try {
+        const res = await fetch(`/api/orders?id=${orderId}`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ status }),
+        });
+        if (!res.ok) throw new Error('Could not change status');
+        showToast(`Order updated to ${ORDER_STATUS_LABELS[status] || status}.`);
+        await loadOrders();
+      } catch (err) {
+        showToast(err.message || 'Status update failed.', 'error');
+      }
+    }
+
+    // --- Inquiries Operations ---
+    async function loadInquiries() {
+      try {
+        const res = await fetch('/api/inquiries');
+        if (res.ok) {
+          inquiries = await res.json();
+          document.getElementById('nav-inquiries-count').textContent = inquiries.length;
+          renderInquiries();
+        }
+      } catch (err) {
+        console.error('Error loading inquiries:', err);
+      }
+    }
+
+    function renderInquiries() {
+      const tbody = document.getElementById('inquiries-tbody');
+      if (!inquiries.length) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" class="py-12 text-center text-slate-400 text-xs">
+              No customer inquiries recorded yet.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = inquiries.map(inq => {
+        const cleanPhone = (inq.phone || '').replace(/[^0-9]/g, '');
+        const waLink = `https://wa.me/${cleanPhone.startsWith('254') ? cleanPhone : '254' + cleanPhone.replace(/^0/, '')}?text=${encodeURIComponent(`Hi ${inq.name}, thank you for contacting Techashi Solutions regarding ${inq.service}. How can we assist you today?`)}`;
+
+        return `
+          <tr class="hover:bg-slate-50 transition">
+            <td class="py-3 px-5 text-slate-400 font-mono text-[11px]">${inq.date || 'Recent'}</td>
+            <td class="py-3 px-5 font-bold text-brand-navy">${inq.name}</td>
+            <td class="py-3 px-5">
+              <div class="font-medium text-slate-700">${inq.phone}</div>
+              <div class="text-[11px] text-slate-400">${inq.email || '—'}</div>
+            </td>
+            <td class="py-3 px-5">
+              <span class="inline-block px-2.5 py-1 rounded-full text-[11px] font-semibold bg-brand-soft-blue text-brand-blue">
+                ${inq.service}
+              </span>
+            </td>
+            <td class="py-3 px-5 text-slate-600 max-w-xs truncate" title="${inq.message || ''}">
+              ${inq.message || '—'}
+            </td>
+            <td class="py-3 px-5 text-right">
+              <a href="${waLink}" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold text-brand-green-dark bg-brand-green-soft hover:bg-brand-green hover:text-white transition">
+                <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+                WhatsApp
+              </a>
+            </td>
+          </tr>
+        `;
+      }).join('');
+
+      if (window.lucide) lucide.createIcons();
+    }
+
+    // --- Bootstrap App on Page Load ---
+    document.addEventListener('DOMContentLoaded', () => {
+      checkSession();
+      if (window.lucide) lucide.createIcons();
+    });
+  </script>
+</body>
+</html>

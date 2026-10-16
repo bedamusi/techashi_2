@@ -1,0 +1,42 @@
+[
+  {
+    "id": "inq-1792132705137",
+    "name": "Bedan Test Lead",
+    "phone": "+254 700 357 022",
+    "email": "bedamusindalo299@gmail.com",
+    "service": "Forecourt Management & Fuel Automation",
+    "message": "Hello, testing the live Gmail notification engine for Techashi Solutions!",
+    "status": "New",
+    "date": "2026-10-16 06:38"
+  },
+  {
+    "id": "inq-1792132414837",
+    "name": "Test Customer",
+    "phone": "+254712345678",
+    "email": "client@example.com",
+    "service": "Fuel Automation & POS",
+    "message": "Testing email notification and database persistence",
+    "status": "New",
+    "date": "2026-10-16 06:33"
+  },
+  {
+    "id": "inq-101",
+    "name": "David Kamau",
+    "phone": "+254 722 123 456",
+    "email": "david.kamau@logistics.co.ke",
+    "service": "Structured Cabling & WiFi",
+    "message": "We are expanding to a 2nd floor in Westlands. Need 24 network drops and 2 UniFi APs.",
+    "status": "New",
+    "date": "2026-10-15 14:30"
+  },
+  {
+    "id": "inq-102",
+    "name": "Grace Wambui",
+    "phone": "+254 733 987 654",
+    "email": "grace@africatech.io",
+    "service": "Forecourt Management Systems",
+    "message": "We operate 2 fuel retail stations along Thika Road. Interested in automated tank gauging and eTIMS pump integration.",
+    "status": "Contacted",
+    "date": "2026-10-15 11:15"
+  }
+]
