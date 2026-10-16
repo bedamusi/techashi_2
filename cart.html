@@ -346,6 +346,7 @@
 
     function setStep(step) {
       currentStep = step;
+      try { sessionStorage.setItem('techashi_cart_step', step); } catch (e) {}
       renderView();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -827,6 +828,12 @@
     });
 
     document.addEventListener('DOMContentLoaded', () => {
+      try {
+        const savedStep = sessionStorage.getItem('techashi_cart_step');
+        if (savedStep && ['cart', 'checkout'].includes(savedStep)) {
+          currentStep = savedStep;
+        }
+      } catch (e) {}
       loadCatalogAndRender();
     });
   </script>

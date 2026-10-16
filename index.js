@@ -857,18 +857,22 @@ function createServer(port) {
       }
     }
 
-    // --- FRIENDLY ROUTING FOR PAGES ---
+    // --- FRIENDLY ROUTING FOR PAGES & ASSETS ---
+    const cleanPath = (pathname.length > 1 && pathname.endsWith('/')) ? pathname.slice(0, -1) : pathname;
     let targetFile = pathname;
-    if (pathname === '/' || pathname === '') {
+
+    if (cleanPath === '/' || cleanPath === '') {
       targetFile = '/index.html';
-    } else if (pathname === '/admin' || pathname.startsWith('/admin/')) {
+    } else if (cleanPath === '/admin' || pathname.startsWith('/admin/')) {
       targetFile = '/admin.html';
-    } else if (pathname === '/company-profile' || pathname === '/profile') {
+    } else if (cleanPath === '/company-profile' || cleanPath === '/profile' || cleanPath === '/company-profile.html') {
       targetFile = '/company-profile.html';
-    } else if (pathname === '/products' || pathname === '/catalog' || pathname === '/equipment') {
+    } else if (cleanPath === '/products' || cleanPath === '/catalog' || cleanPath === '/equipment' || cleanPath === '/products.html') {
       targetFile = '/products.html';
-    } else if (pathname === '/cart' || pathname === '/bag' || pathname === '/checkout') {
+    } else if (cleanPath === '/cart' || cleanPath === '/bag' || cleanPath === '/checkout' || cleanPath === '/cart.html') {
       targetFile = '/cart.html';
+    } else if (!path.extname(cleanPath) && fs.existsSync(path.join(__dirname, cleanPath + '.html'))) {
+      targetFile = cleanPath + '.html';
     }
 
     const filePath = path.join(__dirname, targetFile);
@@ -880,7 +884,10 @@ function createServer(port) {
         if (err.code === 'ENOENT') {
           if (pathname.startsWith('/admin')) {
             const adminHtml = fs.readFileSync(path.join(__dirname, 'admin.html'));
-            res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+            res.writeHead(200, { 
+              'Content-Type': 'text/html; charset=utf-8',
+              'Cache-Control': 'no-cache, no-store, must-revalidate'
+            });
             res.end(adminHtml);
             return;
           }
@@ -891,7 +898,13 @@ function createServer(port) {
           res.end(`Server Error: ${err.code}`);
         }
       } else {
-        res.writeHead(200, { 'Content-Type': contentType });
+        const headers = { 'Content-Type': contentType };
+        if (ext === '.html' || ext === '') {
+          headers['Cache-Control'] = 'no-cache, no-store, must-revalidate';
+          headers['Pragma'] = 'no-cache';
+          headers['Expires'] = '0';
+        }
+        res.writeHead(200, headers);
         res.end(content);
       }
     });

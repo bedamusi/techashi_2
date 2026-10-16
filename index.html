@@ -1998,6 +1998,7 @@
     });
 
     function filterCards(category) {
+      try { sessionStorage.setItem('techashi_service_cat', category); } catch (e) {}
       const tabs = document.querySelectorAll('.filter-tab');
       tabs.forEach(tab => {
         if (tab.dataset.category === category) {
@@ -2299,6 +2300,9 @@
           homeProducts = data.products || data || [];
           renderHomeCategories();
           renderHomeProducts();
+          if (window.location.hash) {
+            setTimeout(restoreAppropriateLocation, 80);
+          }
         }
       } catch (err) {
         console.error('Error fetching home products:', err);
@@ -2323,6 +2327,7 @@
     }
 
     function setHomeCategory(catId) {
+      try { sessionStorage.setItem('techashi_home_cat', catId); } catch (e) {}
       homeCurrentCategory = catId;
       homeShowAllProducts = false;
       renderHomeCategories();
@@ -2507,10 +2512,49 @@
       setTimeout(update, 250);
     }
 
-    // Call loadHomeProducts on load
+    // Scroll & Location Restoration on Refresh
+    function restoreAppropriateLocation() {
+      const hash = window.location.hash;
+      if (hash) {
+        const el = document.querySelector(hash);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          return;
+        }
+      }
+      try {
+        const savedScroll = sessionStorage.getItem('techashi_scroll_y');
+        if (savedScroll !== null && !hash) {
+          window.scrollTo({ top: parseInt(savedScroll, 10), behavior: 'instant' });
+        }
+      } catch (e) {}
+    }
+
+    window.addEventListener('beforeunload', () => {
+      try {
+        sessionStorage.setItem('techashi_scroll_y', window.scrollY.toString());
+      } catch (e) {}
+    });
+
+    // Call loadHomeProducts on load and restore appropriate states
     document.addEventListener('DOMContentLoaded', () => {
+      // Restore previously active service or home categories on refresh
+      try {
+        const savedService = sessionStorage.getItem('techashi_service_cat');
+        if (savedService) filterCards(savedService);
+        const savedHomeCat = sessionStorage.getItem('techashi_home_cat');
+        if (savedHomeCat && HOME_CATEGORIES.some(c => c.id === savedHomeCat)) {
+          homeCurrentCategory = savedHomeCat;
+        }
+      } catch (e) {}
+
       loadHomeProducts();
       setupCategoryScrollProgress('home-product-categories', 'home-cat-progress');
+      setTimeout(restoreAppropriateLocation, 80);
+    });
+
+    window.addEventListener('load', () => {
+      setTimeout(restoreAppropriateLocation, 200);
     });
   </script>
   <script src="cart.js"></script>
