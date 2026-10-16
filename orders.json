@@ -38,7 +38,7 @@
     "fulfillment": "delivery",
     "delivery_address": "Apex Logistics HQ, Enterprise Road, Industrial Area, Nairobi",
     "payment_method": "arranged_with_store",
-    "payment_status": "unpaid",
+    "payment_status": "paid",
     "status": "pending",
     "subtotal": 127000,
     "delivery_fee": 0,
@@ -65,7 +65,8 @@
         "unit_price": 50000,
         "quantity": 1
       }
-    ]
+    ],
+    "updated_at": "2026-10-16 07:01:10"
   },
   {
     "id": "b34e8f22-1d90-4c66-9811-76a089cd4f18",
