@@ -59,7 +59,7 @@
     
     <!-- Left: Back Navigation & Brand -->
     <div class="flex items-center gap-3 sm:gap-4">
-      <a href="/" class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-300 hover:text-white px-2.5 py-1.5 rounded-lg hover:bg-white/5 transition-all" title="Return to Techashi Home">
+      <a href="/" onclick="if(window.history.length>1){window.history.back();return false;}" class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-300 hover:text-white px-2.5 py-1.5 rounded-lg hover:bg-white/5 transition-all" title="Return to Previous Page or Home">
         <i data-lucide="arrow-left" class="w-4 h-4 text-brand-green"></i>
         <span class="hidden xs:inline">Back to</span> <span>Home</span>
       </a>
