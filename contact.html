@@ -249,58 +249,20 @@
       line-height: 1.5;
     }
 
-    /* Client / Partner Logo Marquee */
-    .contact-logos {
-      margin-top: 40px;
-      overflow: hidden;
-      -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-      mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-    }
-
-    .contact-logos ul {
-      width: max-content;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      animation: 32s linear infinite techashi-brands-drift;
-      display: flex;
-      align-items: center;
-    }
-
-    .contact-logos:hover ul {
-      animation-play-state: paused;
-    }
-
-    .contact-logos li {
-      flex: none;
-      place-items: center;
-      height: 40px;
-      padding: 0 20px;
-      display: grid;
-    }
-
-    .contact-logos span.brand-badge {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 0.8125rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      color: #64748b;
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      padding: 6px 14px;
-      border-radius: 9999px;
-      transition: all 0.2s;
-    }
-
-    .contact-logos span.brand-badge:hover {
-      color: var(--color-blue);
-      border-color: var(--color-blue);
-      box-shadow: 0 4px 12px rgba(7, 82, 147, 0.08);
-    }
-
-    @keyframes techashi-brands-drift {
-      0% { transform: translateX(0); }
+    /* Client & Partner Logo Moving Marquee (Same as Homepage) */
+    @keyframes marqueeLeft {
+      0% { transform: translateX(0%); }
       100% { transform: translateX(-50%); }
+    }
+
+    .animate-marquee-left {
+      display: flex;
+      width: max-content;
+      animation: marqueeLeft 36s linear infinite;
+    }
+
+    .marquee-container:hover .animate-marquee-left {
+      animation-play-state: paused;
     }
 
     /* Right Column: Contact Card */
@@ -851,31 +813,158 @@
           We serve corporate businesses, government agencies, non-profits, healthcare, retail facilities, and SMEs across Nairobi, Mombasa, Kisumu, Nakuru, Eldoret, and countrywide in Kenya.
         </p>
 
-        <!-- Partner Brand Marquee Rail -->
-        <div class="contact-logos" aria-label="Hardware & technology partners we work with">
-          <ul>
-            <li><span class="brand-badge">HP Enterprise</span></li>
-            <li><span class="brand-badge">Dell Technologies</span></li>
-            <li><span class="brand-badge">Lenovo ThinkPad</span></li>
-            <li><span class="brand-badge">Cisco Systems</span></li>
-            <li><span class="brand-badge">Ubiquiti UniFi</span></li>
-            <li><span class="brand-badge">Hikvision</span></li>
-            <li><span class="brand-badge">Dahua Security</span></li>
-            <li><span class="brand-badge">Microsoft 365</span></li>
-            <li><span class="brand-badge">APC Schneider</span></li>
-            <li><span class="brand-badge">Epson WorkForce</span></li>
-            <!-- Loop Duplicate -->
-            <li aria-hidden="true"><span class="brand-badge">HP Enterprise</span></li>
-            <li aria-hidden="true"><span class="brand-badge">Dell Technologies</span></li>
-            <li aria-hidden="true"><span class="brand-badge">Lenovo ThinkPad</span></li>
-            <li aria-hidden="true"><span class="brand-badge">Cisco Systems</span></li>
-            <li aria-hidden="true"><span class="brand-badge">Ubiquiti UniFi</span></li>
-            <li aria-hidden="true"><span class="brand-badge">Hikvision</span></li>
-            <li aria-hidden="true"><span class="brand-badge">Dahua Security</span></li>
-            <li aria-hidden="true"><span class="brand-badge">Microsoft 365</span></li>
-            <li aria-hidden="true"><span class="brand-badge">APC Schneider</span></li>
-            <li aria-hidden="true"><span class="brand-badge">Epson WorkForce</span></li>
-          </ul>
+        <!-- Hardware & Enterprise Partners Moving Marquee (Same as Homepage) -->
+        <div class="mt-8 pt-6 border-t border-slate-200/80">
+          <p class="text-xs sm:text-sm text-slate-500 font-medium flex flex-wrap items-center gap-2 mb-4">
+            <span>The technology partner trusted by</span>
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold text-slate-800 bg-white border border-slate-200/80 shadow-2xs">
+              <i data-lucide="shield-check" class="w-3.5 h-3.5 text-brand-green"></i>
+              <span>250+ Kenyan Businesses & Institutions</span>
+            </span>
+            <span>backed by tier-1 enterprise hardware</span>
+          </p>
+
+          <div class="marquee-container relative w-full overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_5%,black_95%,transparent)] [-webkit-mask-image:linear-gradient(90deg,transparent,black_5%,black_95%,transparent)]">
+            <div class="animate-marquee-left flex items-center gap-6 sm:gap-8 py-2 hover:[animation-play-state:paused]">
+              
+              <!-- Track Set 1 -->
+              <div class="flex items-center gap-6 sm:gap-8 shrink-0">
+                <!-- Dell -->
+                <div class="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200/80 hover:border-blue-300 transition-all shadow-2xs group">
+                  <span class="w-7 h-7 rounded-lg bg-blue-600 text-white font-extrabold text-[11px] grid place-items-center shadow-xs">DELL</span>
+                  <span class="text-xs sm:text-sm font-bold text-slate-700 group-hover:text-brand-blue transition-colors">Dell Technologies</span>
+                </div>
+
+                <!-- HP -->
+                <div class="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200/80 hover:border-blue-300 transition-all shadow-2xs group">
+                  <span class="w-7 h-7 rounded-full bg-[#0096D6] text-white font-bold text-[11px] grid place-items-center shadow-xs italic">hp</span>
+                  <span class="text-xs sm:text-sm font-bold text-slate-700 group-hover:text-brand-blue transition-colors">HP Enterprise</span>
+                </div>
+
+                <!-- Lenovo -->
+                <div class="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200/80 hover:border-blue-300 transition-all shadow-2xs group">
+                  <span class="px-2 py-0.5 rounded bg-[#E2231A] text-white font-black text-[10px] tracking-wider shadow-xs">LENOVO</span>
+                  <span class="text-xs sm:text-sm font-bold text-slate-700 group-hover:text-brand-blue transition-colors">ThinkPad & Servers</span>
+                </div>
+
+                <!-- Cisco -->
+                <div class="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200/80 hover:border-blue-300 transition-all shadow-2xs group">
+                  <span class="w-7 h-7 rounded-lg bg-[#049FD9] text-white font-extrabold text-[10px] grid place-items-center shadow-xs">CISCO</span>
+                  <span class="text-xs sm:text-sm font-bold text-slate-700 group-hover:text-brand-blue transition-colors">Cisco Networking</span>
+                </div>
+
+                <!-- Microsoft 365 -->
+                <div class="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200/80 hover:border-blue-300 transition-all shadow-2xs group">
+                  <div class="grid grid-cols-2 gap-0.5 w-4 h-4 shrink-0">
+                    <span class="bg-[#F25022] rounded-[1px]"></span>
+                    <span class="bg-[#7FBA00] rounded-[1px]"></span>
+                    <span class="bg-[#00A4EF] rounded-[1px]"></span>
+                    <span class="bg-[#FFB900] rounded-[1px]"></span>
+                  </div>
+                  <span class="text-xs sm:text-sm font-bold text-slate-700 group-hover:text-brand-blue transition-colors">Microsoft 365 Cloud</span>
+                </div>
+
+                <!-- Hikvision -->
+                <div class="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200/80 hover:border-blue-300 transition-all shadow-2xs group">
+                  <span class="w-7 h-7 rounded-lg bg-[#D32F2F] text-white font-black text-[9px] grid place-items-center shadow-xs">HIK</span>
+                  <span class="text-xs sm:text-sm font-bold text-slate-700 group-hover:text-brand-blue transition-colors">Hikvision 4K CCTV</span>
+                </div>
+
+                <!-- MikroTik -->
+                <div class="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200/80 hover:border-blue-300 transition-all shadow-2xs group">
+                  <span class="w-7 h-7 rounded-lg bg-slate-900 text-white font-bold text-[10px] grid place-items-center shadow-xs">MT</span>
+                  <span class="text-xs sm:text-sm font-bold text-slate-700 group-hover:text-brand-blue transition-colors">MikroTik RouterOS</span>
+                </div>
+
+                <!-- APC Schneider -->
+                <div class="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200/80 hover:border-blue-300 transition-all shadow-2xs group">
+                  <span class="w-7 h-7 rounded-lg bg-[#3DCD58] text-white font-black text-[10px] grid place-items-center shadow-xs">APC</span>
+                  <span class="text-xs sm:text-sm font-bold text-slate-700 group-hover:text-brand-blue transition-colors">Schneider Electric UPS</span>
+                </div>
+
+                <!-- Ubiquiti -->
+                <div class="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200/80 hover:border-blue-300 transition-all shadow-2xs group">
+                  <span class="w-7 h-7 rounded-lg bg-[#006FFF] text-white font-bold text-[10px] grid place-items-center shadow-xs">UI</span>
+                  <span class="text-xs sm:text-sm font-bold text-slate-700 group-hover:text-brand-blue transition-colors">Ubiquiti UniFi</span>
+                </div>
+
+                <!-- Dahua -->
+                <div class="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200/80 hover:border-blue-300 transition-all shadow-2xs group">
+                  <span class="w-7 h-7 rounded-lg bg-[#E53935] text-white font-black text-[9px] grid place-items-center shadow-xs">DH</span>
+                  <span class="text-xs sm:text-sm font-bold text-slate-700 group-hover:text-brand-blue transition-colors">Dahua Surveillance</span>
+                </div>
+              </div>
+
+              <!-- Track Set 2 (Exact Duplicate for Continuous Loop) -->
+              <div class="flex items-center gap-6 sm:gap-8 shrink-0" aria-hidden="true">
+                <!-- Dell -->
+                <div class="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200/80 hover:border-blue-300 transition-all shadow-2xs group">
+                  <span class="w-7 h-7 rounded-lg bg-blue-600 text-white font-extrabold text-[11px] grid place-items-center shadow-xs">DELL</span>
+                  <span class="text-xs sm:text-sm font-bold text-slate-700 group-hover:text-brand-blue transition-colors">Dell Technologies</span>
+                </div>
+
+                <!-- HP -->
+                <div class="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200/80 hover:border-blue-300 transition-all shadow-2xs group">
+                  <span class="w-7 h-7 rounded-full bg-[#0096D6] text-white font-bold text-[11px] grid place-items-center shadow-xs italic">hp</span>
+                  <span class="text-xs sm:text-sm font-bold text-slate-700 group-hover:text-brand-blue transition-colors">HP Enterprise</span>
+                </div>
+
+                <!-- Lenovo -->
+                <div class="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200/80 hover:border-blue-300 transition-all shadow-2xs group">
+                  <span class="px-2 py-0.5 rounded bg-[#E2231A] text-white font-black text-[10px] tracking-wider shadow-xs">LENOVO</span>
+                  <span class="text-xs sm:text-sm font-bold text-slate-700 group-hover:text-brand-blue transition-colors">ThinkPad & Servers</span>
+                </div>
+
+                <!-- Cisco -->
+                <div class="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200/80 hover:border-blue-300 transition-all shadow-2xs group">
+                  <span class="w-7 h-7 rounded-lg bg-[#049FD9] text-white font-extrabold text-[10px] grid place-items-center shadow-xs">CISCO</span>
+                  <span class="text-xs sm:text-sm font-bold text-slate-700 group-hover:text-brand-blue transition-colors">Cisco Networking</span>
+                </div>
+
+                <!-- Microsoft 365 -->
+                <div class="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200/80 hover:border-blue-300 transition-all shadow-2xs group">
+                  <div class="grid grid-cols-2 gap-0.5 w-4 h-4 shrink-0">
+                    <span class="bg-[#F25022] rounded-[1px]"></span>
+                    <span class="bg-[#7FBA00] rounded-[1px]"></span>
+                    <span class="bg-[#00A4EF] rounded-[1px]"></span>
+                    <span class="bg-[#FFB900] rounded-[1px]"></span>
+                  </div>
+                  <span class="text-xs sm:text-sm font-bold text-slate-700 group-hover:text-brand-blue transition-colors">Microsoft 365 Cloud</span>
+                </div>
+
+                <!-- Hikvision -->
+                <div class="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200/80 hover:border-blue-300 transition-all shadow-2xs group">
+                  <span class="w-7 h-7 rounded-lg bg-[#D32F2F] text-white font-black text-[9px] grid place-items-center shadow-xs">HIK</span>
+                  <span class="text-xs sm:text-sm font-bold text-slate-700 group-hover:text-brand-blue transition-colors">Hikvision 4K CCTV</span>
+                </div>
+
+                <!-- MikroTik -->
+                <div class="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200/80 hover:border-blue-300 transition-all shadow-2xs group">
+                  <span class="w-7 h-7 rounded-lg bg-slate-900 text-white font-bold text-[10px] grid place-items-center shadow-xs">MT</span>
+                  <span class="text-xs sm:text-sm font-bold text-slate-700 group-hover:text-brand-blue transition-colors">MikroTik RouterOS</span>
+                </div>
+
+                <!-- APC Schneider -->
+                <div class="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200/80 hover:border-blue-300 transition-all shadow-2xs group">
+                  <span class="w-7 h-7 rounded-lg bg-[#3DCD58] text-white font-black text-[10px] grid place-items-center shadow-xs">APC</span>
+                  <span class="text-xs sm:text-sm font-bold text-slate-700 group-hover:text-brand-blue transition-colors">Schneider Electric UPS</span>
+                </div>
+
+                <!-- Ubiquiti -->
+                <div class="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200/80 hover:border-blue-300 transition-all shadow-2xs group">
+                  <span class="w-7 h-7 rounded-lg bg-[#006FFF] text-white font-bold text-[10px] grid place-items-center shadow-xs">UI</span>
+                  <span class="text-xs sm:text-sm font-bold text-slate-700 group-hover:text-brand-blue transition-colors">Ubiquiti UniFi</span>
+                </div>
+
+                <!-- Dahua -->
+                <div class="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200/80 hover:border-blue-300 transition-all shadow-2xs group">
+                  <span class="w-7 h-7 rounded-lg bg-[#E53935] text-white font-black text-[9px] grid place-items-center shadow-xs">DH</span>
+                  <span class="text-xs sm:text-sm font-bold text-slate-700 group-hover:text-brand-blue transition-colors">Dahua Surveillance</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
         </div>
 
       </div>
